@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="以最优传输规范 3D Gaussian Splatting 自适应致密化的研究图谱">
+  <meta name="description" content="从 GHAP 出发，以最优传输规范动态 3D Gaussian Splatting 致密化的研究图谱">
   <meta name="theme-color" content="#081613">
-  <title>最优传输驱动的高斯致密化研究图谱</title>
+  <title>动态高斯 OT 致密化研究图谱</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
@@ -27,8 +27,8 @@
       <div class="eyebrow">Research dossier · 2026.10</div>
       <div class="hero-grid">
         <div>
-          <h1>让每一次致密化<br><em>都有目标。</em></h1>
-          <p class="hero-lead">继承 GHAP 已验证的静态 CTD 高斯约简，不重新发明它：先把它变成周期性规整经验致密化的投影算子，再从固定保留率推进到自适应模型阶数，最终扩展到动态场景的时空一致性。</p>
+          <h1>让高斯的生长<br><em>跟得上运动。</em></h1>
+          <p class="hero-lead">从 GHAP 已验证的静态 CTD-GMR 出发，研究动态场景里 Gaussian 何时出生、合并、迁移与消失：不再逐帧套用经验 ADC，而以跨时间的输运失真和轨迹一致性规范致密化。</p>
           <div class="hero-actions">
             <a class="button primary" href="#framework">查看核心框架 <span>↓</span></a>
             <a class="button ghost" href="#papers">浏览文献 <span>↗</span></a>
@@ -36,73 +36,73 @@
         </div>
         <aside class="thesis-card" aria-label="核心研究命题">
           <span class="card-label">CORE THESIS</span>
-          <div class="equation hero-equation">min<sub>N,θ</sub> D<sub>OT</sub>(ν, μ<sub>N,θ</sub>) <b>+</b> λN</div>
-          <p>GHAP 负责有理论保证的“减”；新问题是让减法反过来规范何时继续加、保留多少，以及跨时间如何保持一致。</p>
-          <div class="signal-row"><span>CTD / GMR</span><span>自适应阶数</span><span>时空扩展</span></div>
+          <div class="equation hero-equation">min Σ<sub>t</sub>[D<sub>CTD</sub>(ν<sub>t</sub>,μ<sub>t</sub>)+λN<sub>t</sub>] <b>+</b> γR<sub>time</sub></div>
+          <p>一次 split 不只要改善当前帧，还要在时间窗口内减少运输代价，并延续稳定的 Gaussian 身份与运动。</p>
+          <div class="signal-row"><span>动态 CTD</span><span>轨迹一致性</span><span>自适应生灭</span></div>
         </aside>
       </div>
       <div class="hero-stats">
         <div><strong id="paperCount">21</strong><span>核心工作</span></div>
-        <div><strong>4</strong><span>原子操作</span></div>
-        <div><strong>3</strong><span>数学层级</span></div>
+        <div><strong>4</strong><span>动态变阶操作</span></div>
+        <div><strong>3</strong><span>时间建模层级</span></div>
         <div><strong>1</strong><span>可证伪命题</span></div>
       </div>
     </section>
 
     <section id="judgement" class="section-shell section-block">
-      <div class="section-heading"><span>01 / POSITION</span><h2>先分清 GHAP 已验证什么</h2><p>静态 CTD 降阶已经有理论与实验；需要研究的不是重复证明 GHAP，而是把固定比例、训练后压缩推进为自适应、训练期和动态的容量控制。</p></div>
+      <div class="section-heading"><span>01 / POSITION</span><h2>目标是动态，GHAP 是起点</h2><p>GHAP 解决静态表示的全局约简；本项目研究同一分布观点进入时间轴后，如何规范动态 Gaussian 的生长、合并、对应和长期演化。</p></div>
       <div class="matrix-wrap">
         <div class="matrix-label y">理论约束强度 ↑</div>
         <div class="research-matrix">
-          <article class="quadrant muted"><span>经验容量控制</span><h3>3DGS / Taming / ResGS</h3><p>用梯度、尺度、颜色、可见性或预算回答“哪里加点”；有效，但依赖评分、阈值与训练日程。</p></article>
-          <article class="quadrant target"><span>目标区域</span><h3>GHAP 规整的变阶优化</h3><p>经验 densification 先提出候选，CTD/GMR 再做全局投影；进一步以失真—复杂度权衡决定局部阶数，并扩展到动态窗口。</p><div class="target-dot"></div></article>
-          <article class="quadrant muted"><span>有原理的密度控制</span><h3>3DGS-MCMC / SteepGS</h3><p>分别以采样状态转移和损失 Hessian 规范高斯更新，是必须超过而非忽略的强基线。</p></article>
-          <article class="quadrant muted"><span>已验证的直接起点</span><h3>GHAP / CTD-GMR</h3><p>GHAP 已验证静态 blockwise GMR、固定保留率压缩与外观微调；其 k-means 式硬分配是 CTD 优化的推导结果，不是随意近似。</p></article>
+          <article class="quadrant muted"><span>动态表示骨架</span><h3>4DGS / LagrangianSplats</h3><p>提供 deformation、轨迹或速度场，但通常沿用逐帧/训练期启发式密度控制，不回答模型阶数如何随运动变化。</p></article>
+          <article class="quadrant target"><span>目标区域</span><h3>动态 OT 致密化</h3><p>在时间窗口内联合决定 split、merge、move、drop，让当前画质、未来运动与模型复杂度使用同一个变分目标。</p><div class="target-dot"></div></article>
+          <article class="quadrant muted"><span>静态致密化理论</span><h3>MCMC / SteepGS / MMGS</h3><p>采样状态转移、Hessian 最速分裂和矩保持拆分提供强静态对照，但都没有解决跨帧身份和变阶一致性。</p></article>
+          <article class="quadrant muted"><span>静态 OT 基础</span><h3>GHAP / CTD-GMR</h3><p>GHAP 已验证 blockwise GMR 和固定保留率压缩。我们继承其分布观点与优化器，把输入从单个静态 GMM 推进到时间相关 GMM 序列。</p></article>
         </div>
         <div class="matrix-label x">从局部启发式到全局变分目标 →</div>
       </div>
       <div class="verdict-grid">
-        <article class="verdict yes"><span>论文已验证</span><h3>静态固定比例约简</h3><p>训练后的冗余 GMM 经 KD-tree 分块，在 CTD 下约简到预设 ρ，并微调颜色与 opacity；论文在静态基准上验证了 10% / 20% 保留率的质量—效率收益。</p></article>
-        <article class="verdict caution"><span>我们的增量</span><h3>自适应、训练期、动态</h3><p>让 GHAP 周期性规整 ADC 结果，以失真与复杂度自动选择局部阶数，再为相邻时刻加入一致性；只有这些新增命题需要实验验证。</p></article>
-        <article class="verdict no"><span>无需重做</span><h3>不必强行换成 Sinkhorn</h3><p>当 reduced mixture 的权重也被优化时，CTD 可化为最近代表元的硬分配。W₂/Bures 是可比较的替代组件代价，不是 GHAP 成立的前提。</p></article>
+        <article class="verdict yes"><span>真正缺口</span><h3>跨时间的变阶对应</h3><p>某帧产生的新 Gaussian 在下一帧应对应谁？遮挡是暂时不可见还是应当删除？局部细节应只在一帧 split，还是沿整段轨迹分裂？</p></article>
+        <article class="verdict caution"><span>核心扩展</span><h3>从静态 CTD 到轨迹 CTD</h3><p>除位置和协方差，还要比较速度、deformation 或时间轨迹；assignment 应在滑动窗口内稳定，而不是每帧独立重聚类。</p></article>
+        <article class="verdict no"><span>建模警戒</span><h3>生灭不等于质量源汇</h3><p>Gaussian primitive 的增加和删除首先是表示容量变化。只有其权重被明确定义为物理密度时，才能进一步谈连续性方程与守恒。</p></article>
       </div>
-      <div class="note-strip"><strong>论文边界</strong><span>GHAP 假设已有一个质量足够好的、但冗余的静态 3DGS；原始 densification 仍由 3DGS、AtomGS 或 Mini-Splatting-D 完成。论文明确把 dynamic 3DGS 与 adaptive reduction 留作未来工作。</span></div>
+      <div class="note-strip"><strong>为什么从 GHAP 出发</strong><span>它已经把“独立删点”提升为分布级全局约简，并明确把 dynamic 3DGS 和 adaptive reduction 留作未来工作；我们的主问题正是这两个方向的交叉。</span></div>
     </section>
 
     <section id="framework" class="section-block dark-band">
       <div class="section-shell">
-        <div class="section-heading light"><span>02 / FORMULATION</span><h2>把致密化写成变阶测度优化</h2><p>OT 不只回答“两个高斯像不像”，而要回答增加、移动或删除一个高斯后，全局表示失真究竟下降多少。</p></div>
+        <div class="section-heading light"><span>02 / FORMULATION</span><h2>把动态致密化写成时空变阶优化</h2><p>OT 不只比较一帧中的两个高斯，还要衡量一个 Gaussian 操作对整段时间窗口的表示、运动和复杂度产生什么影响。</p></div>
         <div class="pipeline" role="img" aria-label="最优传输驱动的高斯致密化方法流程">
-          <div class="pipe-node"><b>经验生长</b><span>ADC 提出候选</span></div><i>→</i>
-          <div class="pipe-node accent"><b>GHAP 投影</b><span>CTD 全局规整</span></div><i>→</i>
-          <div class="pipe-node accent"><b>自适应阶数</b><span>失真 ↔ 复杂度</span></div><i>→</i>
-          <div class="pipe-node"><b>动态窗口</b><span>跨时间一致性</span></div>
+          <div class="pipe-node"><b>动态窗口</b><span>G<sub>t:t+K</sub> 与观测</span></div><i>→</i>
+          <div class="pipe-node accent"><b>时空 CTD</b><span>几何 + 运动 + 对应</span></div><i>→</i>
+          <div class="pipe-node accent"><b>变阶操作</b><span>split · merge · move · drop</span></div><i>→</i>
+          <div class="pipe-node"><b>稳定轨迹</b><span>质量—画质—时间</span></div>
         </div>
         <div class="formula-grid">
           <article class="formula-card wide key">
-            <div class="formula-top"><span>0 · GHAP 已验证问题</span><small>直接继承，不重新证明</small></div>
+            <div class="formula-top"><span>0 · 静态锚点：GHAP</span><small>动态方法的 t=constant 特例</small></div>
             <div class="equation small">Ḡ<sub>m</sub>=arg min<sub>|G′|=m</sub> 𝒯<sub>c</sub>(G<sub>n</sub>,G′), &nbsp; m=ρn<br>c(i,j)=‖μ<sub>i</sub>−μ̄<sub>j</sub>‖²+‖Σ<sub>i</sub>−Σ̄<sub>j</sub>‖²<sub>F</sub></div>
-            <p>论文已给出 CTD-GMR 的 assignment / barycenter 迭代、有限收敛到局部最优的依据，以及静态 3DGS 压缩实验。官方实现中的硬分配正对应这一推导。</p>
+            <p>论文已给出 CTD-GMR 的 assignment / barycenter 迭代与静态压缩实验。动态扩展应在窗口长度 K=1、关闭运动项时退化回这一基线。</p>
           </article>
           <article class="formula-card wide">
             <div class="formula-top"><span>A · 测度状态</span><small>先定义“运什么”</small></div>
-            <div class="equation">μ<sub>N,θ</sub>(x) = Σ<sub>i=1</sub><sup>N</sup> m<sub>i</sub> 𝒩(x; q<sub>i</sub>, Σ<sub>i</sub>)</div>
-            <p>m 可以是归一化表示质量、几何重要度或独立物理质量，但不能默认等于 opacity。颜色/SH 与 α 属于渲染通道，可通过数据项耦合。</p>
+            <div class="equation">μ<sub>t</sub>(x) = Σ<sub>i=1</sub><sup>N(t)</sup> m<sub>i,t</sub> 𝒩(x; q<sub>i,t</sub>, Σ<sub>i,t</sub>)</div>
+            <p>N、位置、协方差和权重都随时间变化；还需保存 velocity、deformation 或 canonical identity。m 不能默认等于渲染 opacity。</p>
           </article>
           <article class="formula-card">
             <div class="formula-top"><span>B · 变阶目标</span><small>失真与容量同一把尺</small></div>
-            <div class="equation small">ℱ(N,θ)=D<sub>GMM</sub>(ν,μ<sub>N,θ</sub>)+βℒ<sub>render</sub>(θ)<br>𝒥(N,θ)=ℱ(N,θ)+λN</div>
-            <p>这是对 GHAP 固定 m=ρn 的自适应扩展：λ 是每个 primitive 的价格。D 首先沿用 CTD/Frobenius 以控制变量，之后再消融 W₂/Bures 组件代价。</p>
+            <div class="equation small">𝒥=Σ<sub>t</sub>[D<sub>GMM</sub>(ν<sub>t</sub>,μ<sub>t</sub>)+βℒ<sub>render,t</sub>+λN(t)]<br>+γΣ<sub>t</sub>R<sub>match</sub>(π<sub>t</sub>,π<sub>t+1</sub>)</div>
+            <p>前三项控制每帧表达与容量，R<sub>match</sub> 约束相邻时刻的运输计划、Gaussian 身份或轨迹不要无意义跳变。</p>
           </article>
           <article class="formula-card">
             <div class="formula-top"><span>C · 致密化判据</span><small>边际收益超过价格</small></div>
-            <div class="equation small">Δ<sub>i</sub>=ℱ(μ<sub>N</sub>)−min<sub>split(i)</sub>ℱ(μ<sub>N+1</sub>)<br>split(i) ⇔ Δ<sub>i</sub> &gt; λ</div>
-            <p>它同时回答 where / when / stop。真正的研究难点是高效估计 Δ，而不是每次为所有候选完整重跑 Sinkhorn。</p>
+            <div class="equation small">Δ<sub>i,t:t+K</sub>=𝒥(G<sub>t:t+K</sub>)−min<sub>split trajectory i</sub>𝒥(G′<sub>t:t+K</sub>)<br>split(i) ⇔ Δ<sub>i,t:t+K</sub> &gt; λ</div>
+            <p>候选由当前残差提出，但是否分裂由未来 K 帧的累计收益决定，避免只为单帧噪声或瞬时遮挡反复增删。</p>
           </article>
           <article class="formula-card">
             <div class="formula-top"><span>D · 矩保持 split</span><small>改变参数化，不突变分布</small></div>
             <div class="equation small">m₁+m₂=m<br>m₁q₁+m₂q₂=mq<br>Σ<sub>k</sub>m<sub>k</sub>[Σ<sub>k</sub>+(q<sub>k</sub>−q)(q<sub>k</sub>−q)<sup>T</sup>]=mΣ</div>
-            <p>这给出稳定的父子初始化，但 MMGS 已覆盖对称二分和一、二阶矩保持；创新不能只停在这里。</p>
+            <p>单帧矩保持只负责无突变初始化；动态版本还要让两个子 Gaussian 继承父节点的速度、deformation 与轨迹身份，并允许之后逐渐分化。</p>
           </article>
           <article class="formula-card key">
             <div class="formula-top"><span>E · 高斯 W₂ 几何</span><small>区别于参数 Frobenius 距离</small></div>
@@ -110,7 +110,7 @@
             <p>均值项是欧氏搬运，协方差项是 Bures 几何。GHAP 有意采用更便宜、barycenter 可闭式更新的 Frobenius 代价；替换成 W₂ 是可选研究变量，而不是修复 GHAP。</p>
           </article>
           <article class="formula-card wide key">
-            <div class="formula-top"><span>F · 动态最优传输</span><small>把逐帧 ADC 变成时空容量分配</small></div>
+            <div class="formula-top"><span>F · 连续时间解释</span><small>把逐帧 ADC 变成轨迹级容量分配</small></div>
             <div class="equation small">min<sub>ρ,v</sub> ∫₀ᵀ∫ ½ρ‖v‖² dxdt + γ∫₀ᵀD(ρ<sub>t</sub>,μ<sub>N(t)</sub>)dt<br>s.t. ∂<sub>t</sub>ρ+∇·(ρv)=s</div>
             <p>s=0 是质量保持的 Benamou–Brenier 动态 OT；只有确有源汇或表示质量变化时才使用 unbalanced OT。动态致密化应由时间窗口累计输运失真触发，而非逐帧阈值。</p>
           </article>
@@ -129,11 +129,11 @@
     </section>
 
     <section id="roadmap" class="section-shell section-block">
-      <div class="section-heading"><span>04 / EXECUTION</span><h2>不重验 GHAP，只验证新增命题</h2><p>官方结果只需复现并锁定为基线；研究实验集中回答：周期性规整是否改善 ADC、自适应阶数是否优于固定 ρ、动态一致性是否带来长时收益。</p></div>
+      <div class="section-heading"><span>04 / EXECUTION</span><h2>围绕动态主问题推进</h2><p>GHAP 复现只是入口检查；主体实验从一开始就使用动态序列，逐层加入逐帧约简、窗口一致性和轨迹级变阶。</p></div>
       <div class="roadmap">
-        <article class="phase"><div class="phase-head"><span>01</span><small>基线锁定</small></div><h3>官方 GHAP 对齐</h3><ul><li>复现固定 10% / 20% retention 流程</li><li>核对 CTD、KD block、外观微调与开销</li><li>冻结官方配置、指标和 checkpoint</li></ul><div class="exit">性质：工程复现，不作为新科学命题</div></article>
-        <article class="phase"><div class="phase-head"><span>02</span><small>核心增量</small></div><h3>训练期自适应规整</h3><ul><li>ADC 提候选，GHAP 周期性全局规整</li><li>以 CTD 降幅与 λ 自动决定每块保留数</li><li>对比单次固定 ρ、周期固定 ρ 与无 GHAP</li></ul><div class="exit">退出条件：同画质更少高斯，且减少手工 ratio / schedule</div></article>
-        <article class="phase"><div class="phase-head"><span>03</span><small>未来工作</small></div><h3>动态 CTD / 时空 GHAP</h3><ul><li>在 canonical 或变形后的空间定义分块</li><li>约束相邻窗口 assignment 与 barycenter 演化</li><li>对遮挡和生灭比较 balanced / unbalanced OT</li></ul><div class="exit">退出条件：长时稳定性增益不能被逐帧 GHAP 解释</div></article>
+        <article class="phase"><div class="phase-head"><span>01</span><small>动态基线</small></div><h3>逐帧 GHAP 接入</h3><ul><li>选定 4DGS / LagrangianSplats 动态骨架</li><li>把官方 GHAP 应用于关键帧或 canonical Gaussians</li><li>建立无约简、逐帧约简与静态 retention 对照</li></ul><div class="exit">退出条件：明确逐帧独立 GMR 的闪烁、漂移与身份断裂</div></article>
+        <article class="phase"><div class="phase-head"><span>02</span><small>核心方法</small></div><h3>窗口一致的动态 CTD</h3><ul><li>代价加入位置、协方差、速度与 deformation</li><li>滑动窗口共享或正则化 assignment</li><li>ADC 提候选，窗口累计收益决定 split / merge</li></ul><div class="exit">退出条件：同预算下时序质量和长时轨迹显著优于逐帧 GHAP</div></article>
+        <article class="phase"><div class="phase-head"><span>03</span><small>完整扩展</small></div><h3>自适应生灭与物理语义</h3><ul><li>自动选择每个区域和时刻的 Gaussian 数量</li><li>区分遮挡、拓扑变化与真正质量源汇</li><li>在有物理密度的数据上测试 continuity / UOT</li></ul><div class="exit">退出条件：质量—画质—时间—规模 Pareto 前沿成立</div></article>
       </div>
       <div class="metric-board">
         <div><span>测度</span><b>D<sub>GMM</sub> · W₂ · split gain</b></div><div><span>视觉</span><b>PSNR · SSIM · LPIPS</b></div><div><span>效率</span><b>#G · time · FPS · VRAM</b></div><div><span>动态</span><b>transport · flicker · rollout</b></div>
@@ -154,11 +154,11 @@
 
     <section class="section-shell conclusion">
       <div><span class="eyebrow">RESEARCH BET</span><h2>一句话版本</h2></div>
-      <blockquote>不是再设计一个 densification score，而是让<strong>高斯数量的每次变化都对应可计算的全局变分收益</strong>。</blockquote>
+      <blockquote>不是把 GHAP 逐帧调用，而是让<strong>动态 Gaussian 的每次生长、合并与消失都服从跨时间的运输目标</strong>。</blockquote>
     </section>
   </main>
 
-  <footer><div><span class="brand-mark">G↝G</span><p>最优传输驱动的高斯致密化 · 持续更新</p></div><p>研究导航，不替代对原论文与代码的核验。</p></footer>
+  <footer><div><span class="brand-mark">G↝G</span><p>动态高斯 OT 致密化 · 持续更新</p></div><p>研究导航，不替代对原论文与代码的核验。</p></footer>
   <script src="data/papers.js"></script>
   <script src="app.js"></script>
 </body>
