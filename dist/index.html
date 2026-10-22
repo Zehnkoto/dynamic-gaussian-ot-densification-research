@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="面向物理守恒的动态 3D Gaussian Splatting 约简研究图谱">
+  <meta name="theme-color" content="#081613">
+  <title>动态高斯约简研究图谱</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="返回顶部"><span class="brand-mark">G↝G</span><span>研究图谱</span></a>
+    <nav aria-label="主要导航">
+      <a href="#judgement">研究判断</a><a href="#framework">数学框架</a><a href="#roadmap">实验路线</a><a href="#papers">文献台账</a>
+    </nav>
+    <button id="themeToggle" class="icon-button" type="button" aria-label="切换明暗主题">◐</button>
+  </header>
+
+  <main id="main">
+    <section id="top" class="hero section-shell">
+      <div class="eyebrow">Research dossier · 2026.10</div>
+      <div class="hero-grid">
+        <div>
+          <h1>让高斯约简<br><em>跟得上流动。</em></h1>
+          <p class="hero-lead">从静态 GHAP 出发，真正值得研究的不是“加一个 NS loss”，而是构造一个在时空中稳定、在约简时守恒、与动力学演化近似可交换的高斯表示。</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#framework">查看核心框架 <span>↓</span></a>
+            <a class="button ghost" href="#papers">浏览文献 <span>↗</span></a>
+          </div>
+        </div>
+        <aside class="thesis-card" aria-label="核心研究命题">
+          <span class="card-label">CORE THESIS</span>
+          <div class="equation hero-equation"><i>R</i>(Φ<sub>Δt</sub>(G<sub>t</sub>)) <b>≈</b> Φ<sub>Δt</sub>(<i>R</i>(G<sub>t</sub>))</div>
+          <p>先演化再约简，应当接近先约简再演化。</p>
+          <div class="signal-row"><span>守恒矩</span><span>稀疏 OT</span><span>含时 PDE</span></div>
+        </aside>
+      </div>
+      <div class="hero-stats">
+        <div><strong id="paperCount">11</strong><span>核心工作</span></div>
+        <div><strong>4</strong><span>研究象限</span></div>
+        <div><strong>3</strong><span>守恒层级</span></div>
+        <div><strong>1</strong><span>可证伪命题</span></div>
+      </div>
+    </section>
+
+    <section id="judgement" class="section-shell section-block">
+      <div class="section-heading"><span>01 / POSITION</span><h2>先把研究边界说清楚</h2><p>动态、压缩、物理三条线已有大量工作；空缺位于它们的交叉，而不是任意两项的简单叠加。</p></div>
+      <div class="matrix-wrap">
+        <div class="matrix-label y">物理一致性 ↑</div>
+        <div class="research-matrix">
+          <article class="quadrant muted"><span>动态 + 物理</span><h3>PIDG / LagrangianSplats</h3><p>学习速度场、散度或 PDE 约束，但不回答“如何保守地减少高斯”。</p></article>
+          <article class="quadrant target"><span>目标区域</span><h3>动态 + 物理 + 约简</h3><p>硬矩守恒、交换一致性、稀疏时空 OT。这里才是可形成方法论的缺口。</p><div class="target-dot"></div></article>
+          <article class="quadrant muted"><span>静态 + 约简</span><h3>GHAP / CTD-GMR</h3><p>以混合分布距离做聚合；几何漂亮，但没有时间演化与流体守恒。</p></article>
+          <article class="quadrant muted"><span>动态 + 压缩</span><h3>TC3DGS / MEGA</h3><p>关注参数、显存和码率；通常不把约简视为物理投影。</p></article>
+        </div>
+        <div class="matrix-label x">约简与压缩强度 →</div>
+      </div>
+      <div class="verdict-grid">
+        <article class="verdict yes"><span>值得做</span><h3>约简算子本身守恒</h3><p>让质量、线动量和中心二阶矩在 fine → coarse 映射中成为约束或解析映射，而非训练后的偶然结果。</p></article>
+        <article class="verdict caution"><span>需要改写</span><h3>“把 NS 塞进 OT”</h3><p>NS 约束的是速度与压力场，不直接约束渲染 opacity。先定义物理状态，再谈 PDE 残差。</p></article>
+        <article class="verdict no"><span>不宜作为主创新</span><h3>换 KD-tree / 单纯加 loss</h3><p>邻域索引是必要工程，常规 PDE loss 是组件；两者都不足以单独支撑核心贡献。</p></article>
+      </div>
+    </section>
+
+    <section id="framework" class="section-block dark-band">
+      <div class="section-shell">
+        <div class="section-heading light"><span>02 / FORMULATION</span><h2>一个可落地的数学骨架</h2><p>物理通道与渲染通道分离；Bures 几何负责“谁与谁合并”，矩投影负责“合并后是什么”。</p></div>
+        <div class="pipeline" role="img" aria-label="动态高斯约简方法流程">
+          <div class="pipe-node"><b>G<sub>t</sub></b><span>细粒度动态高斯</span></div><i>→</i>
+          <div class="pipe-node accent"><b>稀疏 OT</b><span>Bures + 轨迹代价</span></div><i>→</i>
+          <div class="pipe-node accent"><b>矩投影</b><span>m, p, M₂ 守恒</span></div><i>→</i>
+          <div class="pipe-node"><b>Ḡ<sub>t</sub></b><span>可演化粗粒度高斯</span></div>
+        </div>
+        <div class="formula-grid">
+          <article class="formula-card wide">
+            <div class="formula-top"><span>A · 状态定义</span><small>不要把 opacity 当质量</small></div>
+            <div class="equation">ρ<sub>t</sub>(x) = Σ<sub>i</sub> m<sub>i</sub> 𝒩(x; μ<sub>i</sub>(t), Σ<sub>i</sub>(t))</div>
+            <p>物理通道：质量 m、位置 μ、协方差 Σ、速度 v；渲染通道：不透明度 α、颜色/SH。二者可耦合，但不可混称。</p>
+          </article>
+          <article class="formula-card">
+            <div class="formula-top"><span>B · 半松弛输运</span><small>目标质量由分配产生</small></div>
+            <div class="equation small">min<sub>π≥0,Ḡ</sub> Σ<sub>ij</sub>π<sub>ij</sub>C<sub>ij</sub> + εΣ<sub>ij</sub>π<sub>ij</sub>(logπ<sub>ij</sub>−1)<br>s.t. Σ<sub>j</sub>π<sub>ij</sub>=m<sub>i</sub>, &nbsp;m̄<sub>j</sub>=Σ<sub>i</sub>π<sub>ij</sub></div>
+            <p>开放边界、源项或消散场景可进一步使用 unbalanced OT，而不是强行固定两侧边缘分布。</p>
+          </article>
+          <article class="formula-card">
+            <div class="formula-top"><span>C · 保守代表元</span><small>解析矩匹配</small></div>
+            <div class="equation small">μ̄<sub>j</sub>=m̄<sub>j</sub><sup>−1</sup>Σ<sub>i</sub>π<sub>ij</sub>μ<sub>i</sub><br>v̄<sub>j</sub>=m̄<sub>j</sub><sup>−1</sup>Σ<sub>i</sub>π<sub>ij</sub>v<sub>i</sub><br>Σ̄<sub>j</sub>=m̄<sub>j</sub><sup>−1</sup>Σ<sub>i</sub>π<sub>ij</sub>[Σ<sub>i</sub>+δμ<sub>ij</sub>δμ<sub>ij</sub><sup>T</sup>]</div>
+            <p>这是混合分布矩匹配/全协方差公式，本身不是新颖点；新意在动态约简与物理一致性的组合。</p>
+          </article>
+          <article class="formula-card">
+            <div class="formula-top"><span>D · 拉格朗日演化</span><small>一阶局部形变</small></div>
+            <div class="equation small">μ̇ = u(μ,t)<br>Σ̇ = AΣ + ΣA<sup>T</sup> + 2κI,&nbsp; A=∇u</div>
+            <p>协方差随局部速度梯度拉伸旋转，扩散项控制尺度增长；比逐帧独立剪枝更符合连续运动。</p>
+          </article>
+          <article class="formula-card key">
+            <div class="formula-top"><span>E · 交换损失</span><small>核心可证伪命题</small></div>
+            <div class="equation small">ℒ<sub>comm</sub> = D(R(Φ<sub>Δt</sub>(G<sub>t</sub>)), Φ<sub>Δt</sub>(R(G<sub>t</sub>)))</div>
+            <p>若该项不能改善长时滚动误差、时间稳定性或物理漂移，方法主张就应被否定或重构。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-shell section-block">
+      <div class="section-heading"><span>03 / PHYSICS</span><h2>流体约束放在哪里</h2><p>从低风险的不可压与标量输运开始，再决定是否引入完整 Navier–Stokes。</p></div>
+      <div class="levels">
+        <article><span class="level-no">L1</span><h3>运动学一致性</h3><div class="equation small">μ̇=u(μ,t), &nbsp; ∇·u=0</div><p>先保证粒子随场移动、速度场近似无散。最适合首个可运行版本。</p></article>
+        <article><span class="level-no">L2</span><h3>标量输运</h3><div class="equation small">∂<sub>t</sub>q+u·∇q=κΔq+s</div><p>烟雾密度或温度作为被输运量。可直接测质量漂移与重模拟误差。</p></article>
+        <article><span class="level-no">L3</span><h3>动力学约束</h3><div class="equation small">∂<sub>t</sub>ω+(u·∇)ω−(ω·∇)u=νΔω+∇×f</div><p>涡量形式避开显式压力，但训练和采样代价更高，适合作为后续增强。</p></article>
+      </div>
+      <div class="note-strip"><strong>建模警戒线</strong><span>只有当高斯确实表示物理密度时，协方差才能与惯性/二阶质量矩建立关系。视觉高斯的尺度不能自动获得这一物理含义。</span></div>
+    </section>
+
+    <section id="roadmap" class="section-shell section-block">
+      <div class="section-heading"><span>04 / EXECUTION</span><h2>三阶段实验路线</h2><p>每一阶段都有明确的退出条件，避免一开始就陷入百万高斯上的全量 Sinkhorn。</p></div>
+      <div class="roadmap">
+        <article class="phase"><div class="phase-head"><span>01</span><small>1–2 周</small></div><h3>合成 GMM 单元测试</h3><ul><li>验证质量、动量、二阶矩机器精度守恒</li><li>比较欧氏、KL、Bures 分配行为</li><li>构造剪切、旋转、扩散场验证交换误差</li></ul><div class="exit">退出条件：保守映射与梯度均稳定</div></article>
+        <article class="phase"><div class="phase-head"><span>02</span><small>3–5 周</small></div><h3>动态高斯基线接入</h3><ul><li>以 LagrangianSplats 为首选动态骨架</li><li>ScalarSyn / Sphere / Biplume 小场景</li><li>对比随机、逐帧 GHAP、锚点约简、保守约简</li></ul><div class="exit">退出条件：质量漂移与时序指标显著改善</div></article>
+        <article class="phase"><div class="phase-head"><span>03</span><small>4–8 周</small></div><h3>规模化与完整消融</h3><ul><li>kNN 候选图 + top-k 稀疏 Sinkhorn</li><li>滑动窗口共享分配与自适应预算</li><li>unbalanced OT、涡量/黏性与层次聚合</li></ul><div class="exit">退出条件：质量—画质—速度 Pareto 前沿成立</div></article>
+      </div>
+      <div class="metric-board">
+        <div><span>视觉</span><b>PSNR · SSIM · LPIPS</b></div><div><span>时序</span><b>tLPIPS · Flicker</b></div><div><span>效率</span><b>#G · MB · FPS · VRAM</b></div><div><span>物理</span><b>Δmass · Δmomentum · div · rollout</b></div>
+      </div>
+    </section>
+
+    <section id="papers" class="section-block paper-section">
+      <div class="section-shell">
+        <div class="section-heading"><span>05 / LITERATURE</span><h2>可维护的文献台账</h2><p>优先链接论文主页、出版社与作者官方仓库。点击标签筛选；搜索支持标题、作者、方法和备注。</p></div>
+        <div class="paper-tools">
+          <label class="search"><span>⌕</span><input id="paperSearch" type="search" placeholder="搜索论文、方法或关键词…" autocomplete="off"></label>
+          <div id="filters" class="filters" aria-label="文献分类筛选"></div>
+        </div>
+        <div id="paperGrid" class="paper-grid" aria-live="polite"></div>
+        <p id="emptyState" class="empty" hidden>没有匹配的文献，换个关键词试试。</p>
+      </div>
+    </section>
+
+    <section class="section-shell conclusion">
+      <div><span class="eyebrow">RESEARCH BET</span><h2>一句话版本</h2></div>
+      <blockquote>不是给静态剪枝补一个物理损失，而是把<strong>高斯约简定义成动力系统中的保守粗粒化算子</strong>。</blockquote>
+    </section>
+  </main>
+
+  <footer><div><span class="brand-mark">G↝G</span><p>动态高斯约简研究图谱 · 持续更新</p></div><p>研究导航，不替代对原论文与代码的核验。</p></footer>
+  <script src="data/papers.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
