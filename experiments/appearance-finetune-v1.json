@@ -1,0 +1,13 @@
+{
+  "version": "E04-appearance-v1", "status": "predeclared fixed-final-step pilot",
+  "budget": 10000, "epochs": 20, "updates_per_arm": 1520, "training_size": 400, "seed": 42,
+  "geometry": "Immutable E02 refined K10000 shared and perframe CTD states",
+  "appearance": "Zero initialized time-shared residuals: SH DC, SH rest, opacity logits; 49*K parameters per arm",
+  "control": "Perframe oracle geometry plus shared slot appearance residuals, not independent frame appearance fitting or official GHAP fine-tuning",
+  "learning_rates": {"dc": 0.0025, "rest": 0.000125, "opacity": 0.01},
+  "optimizer": "Adam eps=1e-8; identical seeded orders across arms",
+  "loss": "0.8 L1 + 0.2 (1-SSIM) to frozen full-model teacher renders",
+  "split": "76 fitting views/times from reduction-ctd-v2; 74 held out from appearance training. Base model saw all times.",
+  "evaluation": "Fixed final weights: official20GT at800px saved-equivalent8bit PSNR/SSIM/standardLPIPS normalize=True; 150 teacher-view fidelity at400px split76/74; fixedcamera256px temporal delta residual",
+  "limitations": ["Single scene and seed", "No adaptive split", "No independent compressed deformation", "Matched appearance parameter counts and steps, not total storage", "No GT/holdout/test training or checkpoint selection"]
+}

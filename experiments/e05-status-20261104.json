@@ -1,0 +1,87 @@
+{
+  "run": "/data3/store1/yhy-b26/outputs/ot/e05-split-20261104T103723Z",
+  "report": {
+    "rows": [
+      {
+        "arm": "continue",
+        "gaussians": 10000,
+        "holdout_CTD_reduction_percent": 0,
+        "PSNR_before": 37.49478454589844,
+        "PSNR_after": 37.689711570739746,
+        "LPIPS_after": 0.014587600016966462,
+        "temporal_after": 0.000602892217938882,
+        "holdout_PSNR_to_full": 40.30753548080857,
+        "PSNR_delta_vs_continue": 0.0
+      },
+      {
+        "arm": "window",
+        "gaussians": 10256,
+        "holdout_CTD_reduction_percent": 23.982420102850547,
+        "PSNR_before": 37.83275871276855,
+        "PSNR_after": 38.087264442443846,
+        "LPIPS_after": 0.01399889406748116,
+        "temporal_after": 0.0005479201748881227,
+        "holdout_PSNR_to_full": 41.17692040108346,
+        "PSNR_delta_vs_continue": 0.39755287170410014
+      },
+      {
+        "arm": "global",
+        "gaussians": 10256,
+        "holdout_CTD_reduction_percent": 25.513911585043445,
+        "PSNR_before": 37.79954433441162,
+        "PSNR_after": 38.044725227355954,
+        "LPIPS_after": 0.01401915862224996,
+        "temporal_after": 0.0005574827641092441,
+        "holdout_PSNR_to_full": 40.98307480683198,
+        "PSNR_delta_vs_continue": 0.3550136566162081
+      },
+      {
+        "arm": "first",
+        "gaussians": 10256,
+        "holdout_CTD_reduction_percent": 20.44118841727245,
+        "PSNR_before": 37.74769268035889,
+        "PSNR_after": 37.976562881469725,
+        "LPIPS_after": 0.014134058821946382,
+        "temporal_after": 0.0005607920399579476,
+        "holdout_PSNR_to_full": 40.86909335368389,
+        "PSNR_delta_vs_continue": 0.28685131072997905
+      },
+      {
+        "arm": "random",
+        "gaussians": 10256,
+        "holdout_CTD_reduction_percent": 2.9961262394838517,
+        "PSNR_before": 37.611308860778806,
+        "PSNR_after": 37.822988510131836,
+        "LPIPS_after": 0.014399111224338412,
+        "temporal_after": 0.0005903124159605136,
+        "holdout_PSNR_to_full": 40.550447567089186,
+        "PSNR_delta_vs_continue": 0.13327693939208984
+      }
+    ],
+    "checks": {
+      "window": {
+        "exact_10256_nonempty_clusters": true,
+        "independent_SSE_gain_max_relative_error": 7.210006617191733e-08
+      },
+      "global": {
+        "exact_10256_nonempty_clusters": true,
+        "independent_SSE_gain_max_relative_error": 6.256277802511034e-08
+      },
+      "first": {
+        "exact_10256_nonempty_clusters": true,
+        "independent_SSE_gain_max_relative_error": 3.389837656619075e-08
+      },
+      "random": {
+        "exact_10256_nonempty_clusters": true,
+        "independent_SSE_gain_max_relative_error": 5.6326632991826824e-08
+      }
+    },
+    "input_hashes_unchanged": true,
+    "source_hash_verified": true,
+    "finite_checkpoints": true,
+    "fixed1520steps_each": true,
+    "20view_means_verified": true,
+    "scope": "Offline fixed+256 split; not training-time adaptive densification. Single scene/seed; scoring-only windows; first-frame score still uses fit76 shared child partition."
+  },
+  "adaptive_training_split_implemented": false
+}

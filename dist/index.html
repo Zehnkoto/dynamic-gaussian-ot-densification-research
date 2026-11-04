@@ -17,21 +17,21 @@
   <header class="topbar">
     <a class="brand" href="#top" aria-label="返回顶部"><span class="brand-mark">G↝G</span><span>研究图谱</span></a>
     <nav aria-label="主要导航">
-      <a href="#judgement">研究判断</a><a href="#framework">数学框架</a><a href="#roadmap">实验路线</a><a href="#papers">文献台账</a>
+      <a href="#progress">当前进度</a><a href="#judgement">研究判断</a><a href="#framework">数学框架</a><a href="#roadmap">实验路线</a><a href="#papers">文献台账</a>
     </nav>
     <button id="themeToggle" class="icon-button" type="button" aria-label="切换明暗主题">◐</button>
   </header>
 
   <main id="main">
     <section id="top" class="hero section-shell">
-      <div class="eyebrow">Research dossier · 2026.10</div>
+      <div class="eyebrow">Research dossier · 2026.11</div>
       <div class="hero-grid">
         <div>
           <h1>让高斯的生长<br><em>跟得上运动。</em></h1>
           <p class="hero-lead">从 GHAP 已验证的静态 CTD-GMR 出发，研究动态场景里 Gaussian 何时出生、合并、迁移与消失：不再逐帧套用经验 ADC，而以跨时间的输运失真和轨迹一致性规范致密化。</p>
           <div class="hero-actions">
             <a class="button primary" href="#framework">查看核心框架 <span>↓</span></a>
-            <a class="button ghost" href="#papers">浏览文献 <span>↗</span></a>
+            <a class="button ghost" href="#progress">查看实验进度 <span>↓</span></a>
           </div>
         </div>
         <aside class="thesis-card" aria-label="核心研究命题">
@@ -47,6 +47,20 @@
         <div><strong>3</strong><span>时间建模层级</span></div>
         <div><strong>1</strong><span>可证伪命题</span></div>
       </div>
+    </section>
+
+    <section id="progress" class="section-shell section-block" aria-labelledby="progressTitle">
+      <div class="section-heading"><span>LIVE / 2026-11-04</span><h2 id="progressTitle">离线 split 已初验，继续走向自适应。</h2><p>已完成固定预算动态 CTD 约简、共享外观优化，以及固定新增预算的离线 split 验证。自适应 split/merge 尚未完成，研究目标与实验事实分开记录。</p></div>
+      <div class="progress-cards">
+        <article><span class="progress-tag">已完成 · E01</span><h3>官方 4DGS 基线</h3><strong>40.73 <small>dB PSNR</small></strong><p>D-NeRF bouncingballs，26936 个高斯，完整 20 个测试视角。标准 LPIPS-Alex：0.010065。</p></article>
+        <article><span class="progress-tag">已完成 · E02 / E04</span><h3>共享分组＋共享外观</h3><strong>37.49 <small>dB PSNR</small></strong><p>固定 10000 个高斯，SH＋opacity 联合微调；逐帧几何对照为 37.05 dB。数值为三个外观训练顺序种子的均值。</p></article>
+        <article><span class="progress-tag">离线初验完成 · E05</span><h3>窗口 CTD split 收益</h3><strong>38.09 <small>dB PSNR</small></strong><p>新增 256 个高斯；同额随机选择为 37.82 dB，不 split 继续微调为 37.69 dB。单场景单种子，训练期自适应尚未实现。</p></article>
+      </div>
+      <div class="progress-table-wrap"><table class="progress-table"><caption>K=10000 · 三个外观训练顺序种子 · 测试 PSNR 均值（dB）</caption><thead><tr><th scope="col">优化参数</th><th scope="col">共享几何</th><th scope="col">逐帧几何对照</th><th scope="col">每组可训练参数</th></tr></thead><tbody><tr><th scope="row">仅 SH</th><td>35.604</td><td>35.381</td><td>480000</td></tr><tr><th scope="row">仅 opacity</th><td>36.705</td><td>36.655</td><td>10000</td></tr><tr><th scope="row">SH＋opacity</th><td><strong>37.493</strong></td><td>37.051</td><td>490000</td></tr></tbody></table></div>
+      <figure class="progress-figure"><img src="assets/appearance-ablation.png" alt="三种外观优化方式的 PSNR、LPIPS 和时序残差对比，共享几何在本次设置下优于逐帧几何对照" loading="lazy" width="1870" height="595"><figcaption>误差棒为三个训练顺序种子的样本标准差。联合优化下，共享组相对对照的时序残差低 52.4%～53.1%。</figcaption></figure>
+<div class="progress-table-wrap"><table class="progress-table"><caption>E05 离线 split 初验 · 各组额外优化 1520 步 · 单种子</caption><thead><tr><th scope="col">候选选择</th><th scope="col">高斯数</th><th scope="col">测试 PSNR（dB）</th><th scope="col">留出 CTD 下降</th></tr></thead><tbody><tr><th scope="row">不 split，继续微调</th><td>10000</td><td>37.690</td><td>0.0%</td></tr><tr><th scope="row">持续窗口 CTD 评分</th><td>10256</td><td>38.087</td><td>24.0%</td></tr><tr><th scope="row">全局平均 CTD 评分</th><td>10256</td><td>38.045</td><td>25.5%</td></tr><tr><th scope="row">首帧 CTD 评分</th><td>10256</td><td>37.977</td><td>20.4%</td></tr><tr><th scope="row">随机选择</th><td>10256</td><td>37.823</td><td>3.0%</td></tr></tbody></table></div><figure class="progress-figure"><img src="assets/split-comparison.png" alt="离线 split 对照：窗口 CTD 评分在本次试验中比随机选择获得更好的测试画质和时序残差" loading="lazy" width="1920" height="608"><figcaption>窗口组比不 split 继续微调提高 0.398 dB，时序残差低 9.1%；相同新增预算下比随机选择高 0.264 dB。全局评分 CTD 下降更大，但画质略逊于窗口组，分布代价不能代替渲染评估。</figcaption></figure><p class="progress-details">离线原型边界：先在原父分组内用 76 个拟合时刻学习共享二分身份，再按五个时间窗口的最小平均收益评分；不是在线滑动窗口优化。首帧评分也使用同一套跨时间子分组。下一步需要验证更多种子与预算、加入实际渲染收益，再实现训练期 split/merge。</p>
+      <div class="note-strip"><strong>结果适用范围</strong><span>单场景、固定底模与 CTD 分组；76 个时间用于约简／外观拟合，74 个时间仅用于留出评估，底模见过全部 150 个时间。逐帧对照是 GHAP CTD 核心适配＋共享槽位外观增量，并非官方完整 GHAP。时序残差比较约简与完整模型的相邻 RGB 帧差，不等于真实速度误差。</span></div>
+      <details class="progress-details"><summary>已完成与尚未完成的边界</summary><ul><li>已完成：4DGS 基线；5000／10000／20000 预算的 CTD 对照；全局跨时间固定分组；SH／opacity 微调与分项消融。</li><li>尚未完成：官方 GHAP 完整流程与静态 retention 对照；显式速度项消融；滑动窗口方法；训练期自适应 split/merge；独立压缩 deformation 与推理加速验证。</li><li>当前 CTD 代价为位置平方差＋协方差 Frobenius 平方差；不是高斯 W₂，也未实现连续时间质量输运方程。opacity 不代表物理质量。</li><li>来源：本机 E01／E02／E04 实验；旧服务器结果未导入，未沿用旧实验 46.2% 或 77 个留出时间点。</li></ul><a href="data/experiment-progress.json">查看机器可读实验摘要</a></details>
     </section>
 
     <section id="judgement" class="section-shell section-block">
@@ -131,9 +145,9 @@
     <section id="roadmap" class="section-shell section-block">
       <div class="section-heading"><span>04 / EXECUTION</span><h2>围绕动态主问题推进</h2><p>GHAP 复现只是入口检查；主体实验从一开始就使用动态序列，逐层加入逐帧约简、窗口一致性和轨迹级变阶。</p></div>
       <div class="roadmap">
-        <article class="phase"><div class="phase-head"><span>01</span><small>动态基线</small></div><h3>逐帧 GHAP 接入</h3><ul><li>选定 4DGS / LagrangianSplats 动态骨架</li><li>把官方 GHAP 应用于关键帧或 canonical Gaussians</li><li>建立无约简、逐帧约简与静态 retention 对照</li></ul><div class="exit">退出条件：明确逐帧独立 GMR 的闪烁、漂移与身份断裂</div></article>
-        <article class="phase"><div class="phase-head"><span>02</span><small>核心方法</small></div><h3>窗口一致的动态 CTD</h3><ul><li>代价加入位置、协方差、速度与 deformation</li><li>滑动窗口共享或正则化 assignment</li><li>ADC 提候选，窗口累计收益决定 split / merge</li></ul><div class="exit">退出条件：同预算下时序质量和长时轨迹显著优于逐帧 GHAP</div></article>
-        <article class="phase"><div class="phase-head"><span>03</span><small>完整扩展</small></div><h3>自适应生灭与物理语义</h3><ul><li>自动选择每个区域和时刻的 Gaussian 数量</li><li>区分遮挡、拓扑变化与真正质量源汇</li><li>在有物理密度的数据上测试 continuity / UOT</li></ul><div class="exit">退出条件：质量—画质—时间—规模 Pareto 前沿成立</div></article>
+        <article class="phase"><div class="phase-head"><span>01</span><small>动态基线 · 部分完成</small></div><h3>逐帧 GHAP 接入</h3><ul><li>选定 4DGS / LagrangianSplats 动态骨架</li><li>把官方 GHAP 应用于关键帧或 canonical Gaussians</li><li>建立无约简、逐帧约简与静态 retention 对照</li></ul><div class="exit">退出条件：明确逐帧独立 GMR 的闪烁、漂移与身份断裂</div></article>
+        <article class="phase"><div class="phase-head"><span>02</span><small>核心方法 · 离线 split 初验</small></div><h3>窗口一致的动态 CTD</h3><ul><li>代价加入位置、协方差、速度与 deformation</li><li>滑动窗口共享或正则化 assignment</li><li>ADC 提候选，窗口累计收益决定 split / merge</li></ul><div class="exit">退出条件：同预算下时序质量和长时轨迹显著优于逐帧 GHAP</div></article>
+        <article class="phase"><div class="phase-head"><span>03</span><small>完整扩展 · 尚未开始</small></div><h3>自适应生灭与物理语义</h3><ul><li>自动选择每个区域和时刻的 Gaussian 数量</li><li>区分遮挡、拓扑变化与真正质量源汇</li><li>在有物理密度的数据上测试 continuity / UOT</li></ul><div class="exit">退出条件：质量—画质—时间—规模 Pareto 前沿成立</div></article>
       </div>
       <div class="metric-board">
         <div><span>测度</span><b>D<sub>GMM</sub> · W₂ · split gain</b></div><div><span>视觉</span><b>PSNR · SSIM · LPIPS</b></div><div><span>效率</span><b>#G · time · FPS · VRAM</b></div><div><span>动态</span><b>transport · flicker · rollout</b></div>

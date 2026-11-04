@@ -1,0 +1,320 @@
+{
+  "updated": "2026-11-04",
+  "stage": "offline CTD split prototype validated; training-time adaptive split unfinished",
+  "base_gaussians": 26936,
+  "baseline_PSNR": 40.72878799438477,
+  "budget": 10000,
+  "appearance_ablation": {
+    "verification": "All9 completed; input/source hashes, parameter counts, fixed1520steps, frozen residuals, finite checkpoints and20GTmeans checked",
+    "seed_scope": "Training-view order only; same base model and CTD geometry",
+    "groups": [
+      {
+        "mode": "opacity",
+        "arm": "shared",
+        "n": 3,
+        "metrics": {
+          "PSNR": {
+            "mean": 36.70495154062907,
+            "sample_std": 0.0009886908708380794
+          },
+          "SSIM": {
+            "mean": 0.9896669050057728,
+            "sample_std": 1.0471873415242838e-06
+          },
+          "LPIPS_alex_v01": {
+            "mean": 0.01735806775589784,
+            "sample_std": 3.6466328987174666e-06
+          },
+          "temporal_residual": {
+            "mean": 0.0006770677230713089,
+            "sample_std": 4.274998521518646e-07
+          },
+          "holdout_PSNR_to_full": {
+            "mean": 38.83352714401108,
+            "sample_std": 0.0007302296043006339
+          }
+        }
+      },
+      {
+        "mode": "opacity",
+        "arm": "perframe",
+        "n": 3,
+        "metrics": {
+          "PSNR": {
+            "mean": 36.65456167856852,
+            "sample_std": 0.0010601607402971923
+          },
+          "SSIM": {
+            "mean": 0.9892207423845928,
+            "sample_std": 7.372225574116159e-07
+          },
+          "LPIPS_alex_v01": {
+            "mean": 0.018440708595638473,
+            "sample_std": 5.164363324599815e-06
+          },
+          "temporal_residual": {
+            "mean": 0.0012829934274314193,
+            "sample_std": 1.6321518005822268e-06
+          },
+          "holdout_PSNR_to_full": {
+            "mean": 38.78860497689462,
+            "sample_std": 0.00018317118847797797
+          }
+        }
+      },
+      {
+        "mode": "sh",
+        "arm": "shared",
+        "n": 3,
+        "metrics": {
+          "PSNR": {
+            "mean": 35.60371227264404,
+            "sample_std": 0.0012380921291051258
+          },
+          "SSIM": {
+            "mean": 0.9891493012507757,
+            "sample_std": 7.888913608655238e-07
+          },
+          "LPIPS_alex_v01": {
+            "mean": 0.018203207586581508,
+            "sample_std": 1.1227984982893989e-05
+          },
+          "temporal_residual": {
+            "mean": 0.0007883500469204192,
+            "sample_std": 7.405095086383843e-07
+          },
+          "holdout_PSNR_to_full": {
+            "mean": 37.1313591862584,
+            "sample_std": 0.003079653763072862
+          }
+        }
+      },
+      {
+        "mode": "sh",
+        "arm": "perframe",
+        "n": 3,
+        "metrics": {
+          "PSNR": {
+            "mean": 35.38104464213054,
+            "sample_std": 0.002741970278924488
+          },
+          "SSIM": {
+            "mean": 0.9878244757652282,
+            "sample_std": 5.008475127918199e-07
+          },
+          "LPIPS_alex_v01": {
+            "mean": 0.02039880588029822,
+            "sample_std": 1.1115402577502768e-05
+          },
+          "temporal_residual": {
+            "mean": 0.0012557991757943092,
+            "sample_std": 1.633733086073974e-07
+          },
+          "holdout_PSNR_to_full": {
+            "mean": 36.814954620223865,
+            "sample_std": 0.004769356105402731
+          }
+        }
+      },
+      {
+        "mode": "joint",
+        "arm": "shared",
+        "n": 3,
+        "metrics": {
+          "PSNR": {
+            "mean": 37.493173917134605,
+            "sample_std": 0.001531660099401971
+          },
+          "SSIM": {
+            "mean": 0.9912443151076635,
+            "sample_std": 2.547640740761275e-06
+          },
+          "LPIPS_alex_v01": {
+            "mean": 0.014948217353473106,
+            "sample_std": 1.5641523293994032e-05
+          },
+          "temporal_residual": {
+            "mean": 0.0006178297418621796,
+            "sample_std": 7.855376339501486e-07
+          },
+          "holdout_PSNR_to_full": {
+            "mean": 40.01729191960515,
+            "sample_std": 0.005336331195624169
+          }
+        }
+      },
+      {
+        "mode": "joint",
+        "arm": "perframe",
+        "n": 3,
+        "metrics": {
+          "PSNR": {
+            "mean": 37.050772412618,
+            "sample_std": 0.0044102681963862755
+          },
+          "SSIM": {
+            "mean": 0.9899001042048137,
+            "sample_std": 3.4783719430543554e-06
+          },
+          "LPIPS_alex_v01": {
+            "mean": 0.017224450518066686,
+            "sample_std": 2.1721376108156545e-05
+          },
+          "temporal_residual": {
+            "mean": 0.0013039334886420886,
+            "sample_std": 1.1133878450932635e-05
+          },
+          "holdout_PSNR_to_full": {
+            "mean": 39.42877908655115,
+            "sample_std": 0.002587236029721278
+          }
+        }
+      }
+    ],
+    "paired": [
+      {
+        "mode": "opacity",
+        "seed": 42,
+        "shared_minus_perframe_PSNR": 0.048519134521484375,
+        "shared_temporal_reduction_percent": 47.194179354316255
+      },
+      {
+        "mode": "opacity",
+        "seed": 43,
+        "shared_minus_perframe_PSNR": 0.05172710418700888,
+        "shared_temporal_reduction_percent": 47.193002989882835
+      },
+      {
+        "mode": "opacity",
+        "seed": 44,
+        "shared_minus_perframe_PSNR": 0.05092334747314453,
+        "shared_temporal_reduction_percent": 47.29518418775902
+      },
+      {
+        "mode": "sh",
+        "seed": 42,
+        "shared_minus_perframe_PSNR": 0.22148876190185263,
+        "shared_temporal_reduction_percent": 37.280144095829385
+      },
+      {
+        "mode": "sh",
+        "seed": 43,
+        "shared_minus_perframe_PSNR": 0.22150592803954794,
+        "shared_temporal_reduction_percent": 37.162289286677854
+      },
+      {
+        "mode": "sh",
+        "seed": 44,
+        "shared_minus_perframe_PSNR": 0.22500820159911683,
+        "shared_temporal_reduction_percent": 37.227282500238246
+      },
+      {
+        "mode": "joint",
+        "seed": 42,
+        "shared_minus_perframe_PSNR": 0.43895111083984517,
+        "shared_temporal_reduction_percent": 52.39231898423014
+      },
+      {
+        "mode": "joint",
+        "seed": 43,
+        "shared_minus_perframe_PSNR": 0.44398384094237997,
+        "shared_temporal_reduction_percent": 52.362432915889
+      },
+      {
+        "mode": "joint",
+        "seed": 44,
+        "shared_minus_perframe_PSNR": 0.4442695617675767,
+        "shared_temporal_reduction_percent": 53.09227405608266
+      }
+    ],
+    "limitations": [
+      "3 view-order seeds only, not full-pipeline seeds",
+      "Single scene and budget",
+      "Perframe control has shared slot residuals; not official GHAP fine-tuning",
+      "No adaptive split or standalone compressed deformation"
+    ]
+  },
+  "offline_split_pilot": {
+    "rows": [
+      {
+        "arm": "continue",
+        "gaussians": 10000,
+        "holdout_CTD_reduction_percent": 0,
+        "PSNR_before": 37.49478454589844,
+        "PSNR_after": 37.689711570739746,
+        "LPIPS_after": 0.014587600016966462,
+        "temporal_after": 0.000602892217938882,
+        "holdout_PSNR_to_full": 40.30753548080857,
+        "PSNR_delta_vs_continue": 0.0
+      },
+      {
+        "arm": "window",
+        "gaussians": 10256,
+        "holdout_CTD_reduction_percent": 23.982420102850547,
+        "PSNR_before": 37.83275871276855,
+        "PSNR_after": 38.087264442443846,
+        "LPIPS_after": 0.01399889406748116,
+        "temporal_after": 0.0005479201748881227,
+        "holdout_PSNR_to_full": 41.17692040108346,
+        "PSNR_delta_vs_continue": 0.39755287170410014
+      },
+      {
+        "arm": "global",
+        "gaussians": 10256,
+        "holdout_CTD_reduction_percent": 25.513911585043445,
+        "PSNR_before": 37.79954433441162,
+        "PSNR_after": 38.044725227355954,
+        "LPIPS_after": 0.01401915862224996,
+        "temporal_after": 0.0005574827641092441,
+        "holdout_PSNR_to_full": 40.98307480683198,
+        "PSNR_delta_vs_continue": 0.3550136566162081
+      },
+      {
+        "arm": "first",
+        "gaussians": 10256,
+        "holdout_CTD_reduction_percent": 20.44118841727245,
+        "PSNR_before": 37.74769268035889,
+        "PSNR_after": 37.976562881469725,
+        "LPIPS_after": 0.014134058821946382,
+        "temporal_after": 0.0005607920399579476,
+        "holdout_PSNR_to_full": 40.86909335368389,
+        "PSNR_delta_vs_continue": 0.28685131072997905
+      },
+      {
+        "arm": "random",
+        "gaussians": 10256,
+        "holdout_CTD_reduction_percent": 2.9961262394838517,
+        "PSNR_before": 37.611308860778806,
+        "PSNR_after": 37.822988510131836,
+        "LPIPS_after": 0.014399111224338412,
+        "temporal_after": 0.0005903124159605136,
+        "holdout_PSNR_to_full": 40.550447567089186,
+        "PSNR_delta_vs_continue": 0.13327693939208984
+      }
+    ],
+    "checks": {
+      "window": {
+        "exact_10256_nonempty_clusters": true,
+        "independent_SSE_gain_max_relative_error": 7.210006617191733e-08
+      },
+      "global": {
+        "exact_10256_nonempty_clusters": true,
+        "independent_SSE_gain_max_relative_error": 6.256277802511034e-08
+      },
+      "first": {
+        "exact_10256_nonempty_clusters": true,
+        "independent_SSE_gain_max_relative_error": 3.389837656619075e-08
+      },
+      "random": {
+        "exact_10256_nonempty_clusters": true,
+        "independent_SSE_gain_max_relative_error": 5.6326632991826824e-08
+      }
+    },
+    "input_hashes_unchanged": true,
+    "source_hash_verified": true,
+    "finite_checkpoints": true,
+    "fixed1520steps_each": true,
+    "20view_means_verified": true,
+    "scope": "Offline fixed+256 split; not training-time adaptive densification. Single scene/seed; scoring-only windows; first-frame score still uses fit76 shared child partition."
+  }
+}

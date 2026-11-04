@@ -1,0 +1,123 @@
+{
+  "completed": true,
+  "run": "/data3/store1/yhy-b26/outputs/ot/e04-appearance-20261103T095355Z",
+  "summary": {
+    "protocol": {
+      "version": "E04-appearance-v1",
+      "status": "predeclared fixed-final-step pilot",
+      "budget": 10000,
+      "epochs": 20,
+      "updates_per_arm": 1520,
+      "training_size": 400,
+      "seed": 42,
+      "geometry": "Immutable E02 refined K10000 shared and perframe CTD states",
+      "appearance": "Zero initialized time-shared residuals: SH DC, SH rest, opacity logits; 49*K parameters per arm",
+      "control": "Perframe oracle geometry plus shared slot appearance residuals, not independent frame appearance fitting or official GHAP fine-tuning",
+      "learning_rates": {
+        "dc": 0.0025,
+        "rest": 0.000125,
+        "opacity": 0.01
+      },
+      "optimizer": "Adam eps=1e-8; identical seeded orders across arms",
+      "loss": "0.8 L1 + 0.2 (1-SSIM) to frozen full-model teacher renders",
+      "split": "76 fitting views/times from reduction-ctd-v2; 74 held out from appearance training. Base model saw all times.",
+      "evaluation": "Fixed final weights: official20GT at800px saved-equivalent8bit PSNR/SSIM/standardLPIPS normalize=True; 150 teacher-view fidelity at400px split76/74; fixedcamera256px temporal delta residual",
+      "limitations": [
+        "Single scene and seed",
+        "No adaptive split",
+        "No independent compressed deformation",
+        "Matched appearance parameter counts and steps, not total storage",
+        "No GT/holdout/test training or checkpoint selection"
+      ]
+    },
+    "official_20_view_gt": {
+      "shared_before": {
+        "PSNR": 33.61519069671631,
+        "SSIM": 0.9858217477798462,
+        "LPIPS_alex_v01": 0.026018098834902047
+      },
+      "shared_after": {
+        "PSNR": 37.49478454589844,
+        "SSIM": 0.9912462711334229,
+        "LPIPS_alex_v01": 0.014930469496175647
+      },
+      "perframe_before": {
+        "PSNR": 33.82763042449951,
+        "SSIM": 0.9859614461660385,
+        "LPIPS_alex_v01": 0.02556164301931858
+      },
+      "perframe_after": {
+        "PSNR": 37.055833435058595,
+        "SSIM": 0.9899038940668106,
+        "LPIPS_alex_v01": 0.017202729312703013
+      }
+    },
+    "fidelity_to_full_400": {
+      "shared_before": {
+        "fit": {
+          "PSNR_to_full": 34.207998175370065,
+          "L1_to_full": 0.0053469461578826765
+        },
+        "holdout": {
+          "PSNR_to_full": 34.175556595261035,
+          "L1_to_full": 0.005086448197756466
+        }
+      },
+      "shared_after": {
+        "fit": {
+          "PSNR_to_full": 40.655191923442636,
+          "L1_to_full": 0.0014785102562439676
+        },
+        "holdout": {
+          "PSNR_to_full": 40.01318900649612,
+          "L1_to_full": 0.0017096391309530951
+        }
+      },
+      "perframe_before": {
+        "fit": {
+          "PSNR_to_full": 34.44087093754818,
+          "L1_to_full": 0.005315881868897888
+        },
+        "holdout": {
+          "PSNR_to_full": 34.421589928704336,
+          "L1_to_full": 0.005059402505237912
+        }
+      },
+      "perframe_after": {
+        "fit": {
+          "PSNR_to_full": 40.380206660220495,
+          "L1_to_full": 0.001820216776411
+        },
+        "holdout": {
+          "PSNR_to_full": 39.427263105237806,
+          "L1_to_full": 0.0024157204583438265
+        }
+      }
+    },
+    "fixed_camera_temporal_delta_residual_256": {
+      "shared_before": 0.0008574867609930506,
+      "shared_after": 0.0006171560063200297,
+      "perframe_before": 0.0012372100691392318,
+      "perframe_after": 0.0012963370471995874
+    }
+  },
+  "verification": {
+    "input_hashes_unchanged": true,
+    "source_hash_verified": true,
+    "finite_checkpoints": true,
+    "trainable_parameters_each": 490000,
+    "steps_each": 1520,
+    "test_views_each": 20,
+    "video_frames": 150,
+    "shared_vs_perframe_after_PSNR_dB": 0.43895111083984517,
+    "shared_vs_perframe_after_temporal_reduction_percent": 52.39231898423014,
+    "shared_own_temporal_reduction_percent": 28.027342882203243,
+    "perframe_own_temporal_increase_percent": 4.77905729473187
+  },
+  "adaptive_split_completed": false,
+  "limitations": [
+    "Single scene and seed",
+    "Matched shared-slot residual control, not official GHAP appearance fine-tuning",
+    "Still depends on full model geometry trajectory"
+  ]
+}

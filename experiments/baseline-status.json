@@ -1,0 +1,39 @@
+{
+  "run_id": "baseline-numpy1235-20261030T174401Z",
+  "validated_utc": "2026-10-30T17:55:03.445309+00:00",
+  "training_exit_code": 0,
+  "upstream_commit": "843d5ac636c37e4b611242287754f3d4ed150144",
+  "source_path": "/data3/store1/yhy-b26/datasets/bouncingballs",
+  "output_path": "/data3/store1/yhy-b26/outputs/dnerf/bouncingballs/baseline-numpy1235-20261030T174401Z",
+  "coarse_iterations": 3000,
+  "fine_iterations": 20000,
+  "gaussian_count": 26936,
+  "checkpoint_reload_render": "passed",
+  "test_image_count": 20,
+  "metric_protocol": "Mean of per-image metrics on saved 8-bit RGB PNG render/GT pairs, upstream PSNR/SSIM functions; CPU; official test view split, not unseen-time evaluation",
+  "PSNR": 40.72878799438477,
+  "SSIM": 0.9943556308746337,
+  "LPIPS": null,
+  "LPIPS_status": "not evaluated; pretrained weights have not been downloaded",
+  "training_report_sampled_test": {
+    "count": 17,
+    "PSNR": 40.300657384535846
+  },
+  "environment": {
+    "python": "3.10.22",
+    "torch": "1.13.1+cu117",
+    "numpy": "1.23.5",
+    "cuda_toolkit": "11.7.99",
+    "gpu": "NVIDIA A40"
+  },
+  "validation_report": "/data3/store1/yhy-b26/outputs/dnerf/bouncingballs/baseline-numpy1235-20261030T174401Z/baseline-validation.json",
+  "preview_video": "/data3/store1/yhy-b26/outputs/dnerf/bouncingballs/baseline-numpy1235-20261030T174401Z/test/ours_20000/video_rgb.mp4",
+  "previous_failed_run": "/data3/store1/yhy-b26/outputs/dnerf/bouncingballs/baseline-setup-job-gkmrvjmq",
+  "previous_failure": "PyTorch 1.13 TensorBoard histogram incompatible with NumPy 1.24; retained original failed output, pinned NumPy 1.23.5 and added regression check before fresh training",
+  "remaining": [
+    "LPIPS evaluation",
+    "separate temporal holdout protocol",
+    "GHAP/shared-trajectory experiments",
+    "adaptive split not implemented"
+  ]
+}

@@ -1,3 +1,7 @@
 .DS_Store
 *.tgz
 *.tar.gz
+
+# Python caches stay outside version control.
+__pycache__/
+*.py[cod]

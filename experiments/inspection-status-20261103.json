@@ -1,0 +1,32 @@
+{
+  "completed_utc": "2026-11-03T07:55:11.908544+00:00",
+  "base_model": "baseline-numpy1235-20261030T174401Z",
+  "model_path": "/data3/store1/yhy-b26/outputs/dnerf/bouncingballs/baseline-numpy1235-20261030T174401Z",
+  "PSNR": 40.72878799438477,
+  "SSIM": 0.9943556308746337,
+  "LPIPS_alex_v01": 0.010064913285896182,
+  "test_views": 20,
+  "metric_protocol": {
+    "PSNR_SSIM": "Mean of per-image metrics on saved 8-bit RGB PNG render/GT pairs, upstream PSNR/SSIM functions; CPU; official test view split, not unseen-time evaluation",
+    "LPIPS": "lpips package 0.1.4; AlexNet; LPIPS v0.1; saved 8-bit RGB PNG pairs; [0,1] inputs with normalize=True mapping to [-1,1]; mean over views"
+  },
+  "checkpoint_files_unchanged": true,
+  "input_png_hashes": "/data3/store1/yhy-b26/outputs/inspection/baseline-numpy1235-20261030T174401Z/evaluation-20261103T075511Z/metric-input-sha256.json",
+  "LPIPS_report": "/data3/store1/yhy-b26/outputs/inspection/baseline-numpy1235-20261030T174401Z/evaluation-20261103T075511Z/lpips-alex.json",
+  "verification": "/data3/store1/yhy-b26/outputs/inspection/baseline-numpy1235-20261030T174401Z/evaluation-20261103T075511Z/verification.json",
+  "evaluation_source_sha256": "e4a9a98b5c9679aacb983332b08d407c7c9634a9319c97d17a3680e77c751255",
+  "research_commit": "718da3af48f2f2171a405daf603b59f6f48d5481",
+  "reduction_protocol": {
+    "file": "reduction-holdout-v1.json",
+    "fit_times": 76,
+    "held_out_from_reduction_fit": 74,
+    "budgets": [
+      20000,
+      10000,
+      5000
+    ],
+    "base_model_unseen_times": false
+  },
+  "evaluation_bundle": "/data3/store1/yhy-b26/outputs/inspection/baseline-numpy1235-20261030T174401Z/evaluation-20261103T075511Z",
+  "research_stage": "Baseline inspection and metrics complete. No GHAP reduction, shared trajectory optimization or adaptive split implemented in this step."
+}

@@ -53,3 +53,7 @@ GHAP 已经完成并验证的是：把训练后冗余的静态 3DGS 视为高阶
 ## 主要资料
 
 页面中的外部链接均指向论文主页、出版社页面或作者官方代码仓库。关键入口包括原始 3DGS、3DGS-MCMC、SteepGS、GHAP、MMGS、Gaussian-mixture Wasserstein 距离、Benamou–Brenier 动态 OT、JKO 梯度流、unbalanced OT、LagrangianSplats 与保守粒子 split/merge。
+
+## 新服务器实验入口
+
+实验准备与执行说明见 [experiments/README.md](experiments/README.md)。环境、数据、缓存和输出均限定在 `/data3/store1/<用户名>/`；已完成新服务器基线、固定预算 CTD 对照、K=10000 的共享外观微调试验及固定新增预算的离线 split 原型；详情见实验记录。旧服务器结果未导入或验证，自适应 split 尚未实现。

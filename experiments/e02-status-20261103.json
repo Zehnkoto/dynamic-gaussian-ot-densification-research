@@ -1,0 +1,93 @@
+{
+  "completed_utc": "2026-11-03T08:41:39.940429+00:00",
+  "run": "/data3/store1/yhy-b26/outputs/ot/e02-ctd-refined-20261103T082856Z",
+  "pilot": "/data3/store1/yhy-b26/outputs/ot/e02-ctd-20261103T082303Z",
+  "method": "GHAP CTD core adaptation and shared trajectory grouping",
+  "seed": 42,
+  "shared_fit_times": 76,
+  "shared_holdout_times": 74,
+  "perframe_is_evaluation_time_oracle": true,
+  "max_iterations": 50,
+  "results": [
+    {
+      "budget": 5000,
+      "perframe_PSNR": 29.011594104766846,
+      "shared_PSNR": 28.762908267974854,
+      "perframe_LPIPS": 0.05003709718585014,
+      "shared_LPIPS": 0.05060466881841421,
+      "shared_temporal_residual_reduction_percent": 42.48210319841601,
+      "shared_converged": true,
+      "perframe_converged": 150
+    },
+    {
+      "budget": 10000,
+      "perframe_PSNR": 33.82763042449951,
+      "shared_PSNR": 33.61519069671631,
+      "perframe_LPIPS": 0.02556164301931858,
+      "shared_LPIPS": 0.026018098834902047,
+      "shared_temporal_residual_reduction_percent": 30.691902500467638,
+      "shared_converged": true,
+      "perframe_converged": 150
+    },
+    {
+      "budget": 20000,
+      "perframe_PSNR": 39.349351501464845,
+      "shared_PSNR": 39.233012199401855,
+      "perframe_LPIPS": 0.01246034272480756,
+      "shared_LPIPS": 0.012750167050398886,
+      "shared_temporal_residual_reduction_percent": 21.88533719130178,
+      "shared_converged": true,
+      "perframe_converged": 150
+    }
+  ],
+  "verification": {
+    "5000": {
+      "exact_counts_all_150_times": true,
+      "shared_mass_conserved": true,
+      "finite_states": true,
+      "barycenters_recomputed_3_times_both_methods": true,
+      "time_order_matches": true,
+      "GT_means_match_per_view": true,
+      "shared_converged": true,
+      "perframe_converged": 150,
+      "perframe_total": 150
+    },
+    "10000": {
+      "exact_counts_all_150_times": true,
+      "shared_mass_conserved": true,
+      "finite_states": true,
+      "barycenters_recomputed_3_times_both_methods": true,
+      "time_order_matches": true,
+      "GT_means_match_per_view": true,
+      "shared_converged": true,
+      "perframe_converged": 150,
+      "perframe_total": 150
+    },
+    "20000": {
+      "exact_counts_all_150_times": true,
+      "shared_mass_conserved": true,
+      "finite_states": true,
+      "barycenters_recomputed_3_times_both_methods": true,
+      "time_order_matches": true,
+      "GT_means_match_per_view": true,
+      "shared_converged": true,
+      "perframe_converged": 150,
+      "perframe_total": 150
+    }
+  },
+  "limitations": [
+    "Single seed and scene; exploratory results, not statistical evidence.",
+    "GHAP CTD core adaptation with global tiled assignment and exact-K repair, not the official full GHAP pipeline.",
+    "Per-frame oracle refits at every evaluation time; shared grouping is fitted at 76 times.",
+    "Temporal metric compares RGB time differences against full baseline; it can trade off with image fidelity.",
+    "Timing is reduction fitting only on a shared GPU, not standalone compressed-model inference speed.",
+    "No appearance fine-tuning, velocity term or adaptive split."
+  ],
+  "report": "/data3/store1/yhy-b26/outputs/ot/e02-ctd-refined-20261103T082856Z/analysis/report.json",
+  "figure": "/data3/store1/yhy-b26/outputs/ot/e02-ctd-refined-20261103T082856Z/analysis/budget-tradeoff.png",
+  "CSV": "/data3/store1/yhy-b26/outputs/ot/e02-ctd-refined-20261103T082856Z/analysis/comparison.csv",
+  "source_hash": "6ef2e479229104820827ff4abb31857eadcf0dced1551a5fbf5e1f3243b2d5d1",
+  "analysis_source_hash": "c6bf4d8ec730be986293ff00b5b8cd7a2623f5a9ef31b76f5c4c4a4c59d66a49",
+  "next_experiment": "Hold geometry/grouping fixed and fine-tune time-shared SH/opacity on the 76 fitting times; evaluate fit/holdout and original GT views separately.",
+  "adaptive_split_completed": false
+}
