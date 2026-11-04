@@ -1,0 +1,77 @@
+{
+  "run": "/data3/store1/yhy-b26/outputs/ot/e06-training-event-20261104T113535Z",
+  "report": {
+    "rows": [
+      {
+        "arm": "continue",
+        "gaussians": 10000,
+        "committed_batches": 0,
+        "gate_passed_batches": 0,
+        "PSNR": 37.687824440002444,
+        "LPIPS": 0.014618008816614746,
+        "temporal_residual": 0.0006034711123664469,
+        "holdout_PSNR_to_full": 40.314958417737806,
+        "probe_updates": 0
+      },
+      {
+        "arm": "forced_window",
+        "gaussians": 10256,
+        "committed_batches": 16,
+        "gate_passed_batches": 14,
+        "PSNR": 38.09071979522705,
+        "LPIPS": 0.014012099895626306,
+        "temporal_residual": 0.0005489312209604596,
+        "holdout_PSNR_to_full": 41.18570637058567,
+        "probe_updates": 640
+      },
+      {
+        "arm": "gated_window",
+        "gaussians": 10224,
+        "committed_batches": 14,
+        "gate_passed_batches": 14,
+        "PSNR": 38.068226432800294,
+        "LPIPS": 0.014053428126499058,
+        "temporal_residual": 0.0005529150182198445,
+        "holdout_PSNR_to_full": 41.129215343578444,
+        "probe_updates": 640
+      },
+      {
+        "arm": "forced_random",
+        "gaussians": 10256,
+        "committed_batches": 16,
+        "gate_passed_batches": 6,
+        "PSNR": 37.8200138092041,
+        "LPIPS": 0.014438932202756405,
+        "temporal_residual": 0.0005905338936686928,
+        "holdout_PSNR_to_full": 40.55842708896946,
+        "probe_updates": 640
+      },
+      {
+        "arm": "gated_random",
+        "gaussians": 10112,
+        "committed_batches": 7,
+        "gate_passed_batches": 7,
+        "PSNR": 37.760066223144534,
+        "LPIPS": 0.014548675715923309,
+        "temporal_residual": 0.0005948763989590283,
+        "holdout_PSNR_to_full": 40.45240845551362,
+        "probe_updates": 640
+      }
+    ],
+    "verification": {
+      "input_hashes_unchanged": true,
+      "source_hash_verified": true,
+      "warmup_state_digest_verified": true,
+      "main_Adam_steps_each": 1520,
+      "all64_gate_scores_recomputed": true,
+      "probe_live_state_and_rejection_rollback_verified": true,
+      "accepted_geometry_reconstructed": true,
+      "finite_parameters_and_moments": true,
+      "20GTmeans_verified": true,
+      "fit_only_decisions": true
+    },
+    "probe_updates_total": 2560,
+    "scope": "Single event in fixed-geometry reduced-model appearance optimization. Teacher/child geometry precomputed; not full4DGS adaptive densification. Variable finalcount and unequal compute vs continue; no blanket equal-budget comparison."
+  },
+  "full4DGS_training_densification_implemented": false
+}

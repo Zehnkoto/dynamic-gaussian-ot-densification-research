@@ -48,7 +48,7 @@ def evaluate(out,base,inp,protocol,times,fit,full,sh,opacity,cfg,scene,cameras,m
     draw.text((j*256+4,4),key,fill='black');draw.text((j*256+4,20),f't={t:.3f}',fill='black');panel.paste(Image.fromarray((imgs[key].permute(1,2,0).cpu().numpy()*255).round().astype(np.uint8)),(j*256,40))
    video.append_data(np.asarray(panel));previous=imgs
  dump(out/'temporal-per-pair.json',temporal)
- summary={'protocol':protocol,'official_20_view_gt':{},'fidelity_to_full_400':{},'fixed_camera_temporal_delta_residual_256':{key:float(np.mean(v)) for key,v in residual.items()},'split_proposals':json.loads((inp/'proposal-summary.json').read_text())}
+ summary={'protocol':protocol,'official_20_view_gt':{},'fidelity_to_full_400':{},'fixed_camera_temporal_delta_residual_256':{key:float(np.mean(v)) for key,v in residual.items()},('candidate_pool' if protocol.get('event_step') else 'split_proposals'):json.loads((inp/'proposal-summary.json').read_text()),'active_gaussian_counts':{name:len(model.dc) for name,model in models.items()}}
  for name in models:
   for phase in ['before','after']:
    key=name+'_'+phase;selected=[r for r in gtrows if r['arm']==name and r['phase']==phase]

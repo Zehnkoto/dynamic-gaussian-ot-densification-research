@@ -1,0 +1,10 @@
+{
+ "version":"E06-matched-count-followup-v1","status":"declared exploratory followup after event pilot",
+ "event_step":760,"base_budget":10000,"post_epochs":10,"main_updates_per_arm":1520,"training_size":400,
+ "counts":"Use number of accepted parents from E06 fit-only gated_window and gated_random decisions, not test metrics. Fixed-prefix controls take that many original window/rand candidates.",
+ "initialization":"Reload exact E06 shared760step model and Adam checkpoint. Split original candidate prefix, preserving untouched optimizer state; same E06 post-event view order and760updates.",
+ "evaluated_arms":["continue","gated_window","prefix_window","gated_random","prefix_random"],
+ "original_arms":"Reload E06 final continue/gated checkpoints for evaluation parity; train only two matched-prefix controls. No gate probes for prefix controls; compute differs, finalcounts match paired gated arms.",
+ "purpose":"Determine whether render-gated selection improves over fixed-prefix selection at identical finalcounts; not tune gate thresholds on test.",
+ "limitations":["Single scene/seed/event","Exploratory followup, not pre-registered with initial pilot","All geometry/teacher fixed","No threshold retuning or test-driven selection","No full4DGS adaptive densification"]
+}

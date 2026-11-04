@@ -1,0 +1,39 @@
+{
+  "run": "/data3/store1/yhy-b26/outputs/ot/e06-matched-count-20261104T114247Z",
+  "report": {
+    "rows": [
+      {
+        "kind": "window",
+        "gaussians": 10224,
+        "gated_PSNR": 38.068226432800294,
+        "prefix_PSNR": 38.04669723510742,
+        "gated_minus_prefix_PSNR": 0.021529197692871094,
+        "gated_LPIPS": 0.014053428126499058,
+        "prefix_LPIPS": 0.014101014519110323,
+        "gated_temporal": 0.0005529150182198445,
+        "prefix_temporal": 0.0005558804584856164
+      },
+      {
+        "kind": "random",
+        "gaussians": 10112,
+        "gated_PSNR": 37.760066223144534,
+        "prefix_PSNR": 37.748558807373044,
+        "gated_minus_prefix_PSNR": 0.01150741577149006,
+        "gated_LPIPS": 0.014548675715923309,
+        "prefix_LPIPS": 0.014542458578944206,
+        "gated_temporal": 0.0005948763989590283,
+        "prefix_temporal": 0.000598216971094195
+      }
+    ],
+    "verification": {
+      "input_hashes_unchanged": true,
+      "warmup_and_post_order_matched": true,
+      "same_finalcounts_each_pair": true,
+      "main_Adam_steps_each": 1520,
+      "original_metric_parity": true,
+      "finite_prefix_checkpoints": true,
+      "20GTmeans_verified": true
+    },
+    "scope": "Exploratory matched-count followup. Prefix counts derived from fit-only gate decisions; no thresholds tuned. Different probe overhead, same live-model main schedule."
+  }
+}
