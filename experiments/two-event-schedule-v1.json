@@ -1,0 +1,103 @@
+{
+  "version": "E08-two-event-schedule-v1",
+  "status": "predeclared before runs",
+  "seed": 42,
+  "base_budget": 10000,
+  "max_splits": 256,
+  "batch_size": 16,
+  "warmup_epochs": 10,
+  "post_epochs": 10,
+  "epochs": 20,
+  "event_step": 760,
+  "main_updates_per_arm": 1520,
+  "training_size": 400,
+  "probe_steps": 20,
+  "complexity_price_per_gaussian": 1e-07,
+  "max_window_relative_worsening": 0.01,
+  "scope": "One or two predetermined capacity events inside fixed-geometry reduced-model appearance distillation; frozen full4DGS teacher. Not full4DGS canonical/deformation training or physical-time N(t).",
+  "arms": [
+    "late_forced",
+    "twice_forced",
+    "twice_immediate",
+    "twice_probe20"
+  ],
+  "proposal": "Reuse E05 fit76 local child trajectories and window/rand top256 candidate lists. Process16parent batches in ranked or random list order. CTD gain must be positive.",
+  "supervision": "Frozen full-model renders; same76fit times and cameras only. Main loss0.8L1+0.2(1-SSIM), Adam DC.0025/rest.000125/opacity.01. No74holdout or test metric consulted by gate.",
+  "decision_views": "20fit views: four evenly spaced fit indices within each of5equal-duration windows. Other56fit views supply matched short probe updates. Main warmup/post epochs use all76.",
+  "gate": "Fit-only render gate price1e-7, max window worsening1%; 0 or20 counterfactual updates. All probes discarded. Rejected proposals not retried; no child recursively split; candidates not recomputed.",
+  "optimizer_migration": "Unchanged rows preserve parameters and Adam moments; split parent/new child rows reset moments, inherit current effective SH and optical-depth partition. Shared scalar Adam step retained; not per-child step0.",
+  "controls": "late_forced and twice_forced use zero probes and accept all256, compare to reused once_forced at760. twice_immediate vs once_immediate; twice_probe20 vs once_probe20. All logicalmain1520 incl shared760 warm.",
+  "evaluation": "Freeze all four runs before evaluating74holdout/20GT/150temporal. No test-selected schedule or threshold. Report finalcounts, main-update Gaussian-count integral, and discarded probe updates separately.",
+  "limitations": [
+    "Single scene/seed, two predetermined event times",
+    "Teacher and child geometry fixed, appearance-only updates",
+    "Identical candidate budget does not imply equal active-count exposure or totalcompute",
+    "Gate decisions use fit views, not independent validation",
+    "No child re-split, new candidate search, merge or full4DGS geometry/deformation training"
+  ],
+  "policies": {
+    "late_forced": {
+      "schedule": [
+        [
+          1140,
+          0,
+          16
+        ]
+      ],
+      "forced": true,
+      "probe_steps": 0
+    },
+    "twice_forced": {
+      "schedule": [
+        [
+          760,
+          0,
+          8
+        ],
+        [
+          1140,
+          8,
+          16
+        ]
+      ],
+      "forced": true,
+      "probe_steps": 0
+    },
+    "twice_immediate": {
+      "schedule": [
+        [
+          760,
+          0,
+          8
+        ],
+        [
+          1140,
+          8,
+          16
+        ]
+      ],
+      "forced": false,
+      "probe_steps": 0
+    },
+    "twice_probe20": {
+      "schedule": [
+        [
+          760,
+          0,
+          8
+        ],
+        [
+          1140,
+          8,
+          16
+        ]
+      ],
+      "forced": false,
+      "probe_steps": 20
+    }
+  },
+  "design": "Same ordered256 distinct original-parent candidates, once at760 / once at1140 / first128 at760 plus remaining128 at1140. Forced controls isolate timing at identical finalcount; gated policies may differ in finalcount.",
+  "reuse": "Exact E06 warmup and remaining760 main updates. Reuse E06 continue/forced_window/gated_window and E07 price1e7_probe0 controls.",
+  "probe_stream": "Use same E06 block-indexed20-view probe orders even when event time changes. Main orders remain exact E06.",
+  "metadata_note": "Scope wording corrected after completed run; original archived protocol inherited E06 single-event text. Numerical settings, design, schedules and policies unchanged."
+}

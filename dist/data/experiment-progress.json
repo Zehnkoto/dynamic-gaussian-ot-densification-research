@@ -1,6 +1,6 @@
 {
   "updated": "2026-11-04",
-  "stage": "One fit-only split event inside fixed-geometry reduced-model appearance training; full4DGS adaptive densification unfinished",
+  "stage": "One/two predetermined split events in fixed-geometry reduced-model appearance training compared; fixed-candidate scheduling showed no quality gain; full4DGS adaptive densification unfinished",
   "base_gaussians": 26936,
   "baseline_PSNR": 40.72878799438477,
   "budget": 10000,
@@ -728,5 +728,167 @@
       3
     ],
     "same_parents_zero_price20_and_standard80": true
+  },
+  "two_event_schedule": {
+    "rows": [
+      {
+        "arm": "late_forced",
+        "reused": false,
+        "gaussians": 10256,
+        "accepted_batches": 16,
+        "main_gaussian_updates": 15297280,
+        "discarded_probe_updates": 0,
+        "PSNR": 38.085416603088376,
+        "SSIM": 0.9918681025505066,
+        "LPIPS_alex_v01": 0.014025509124621749,
+        "holdout_PSNR_to_full": 41.174668183197845,
+        "temporal_residual": 0.0005505097844995771
+      },
+      {
+        "arm": "twice_forced",
+        "reused": false,
+        "gaussians": 10256,
+        "accepted_batches": 16,
+        "main_gaussian_updates": 15345920,
+        "discarded_probe_updates": 0,
+        "PSNR": 38.08713283538818,
+        "SSIM": 0.9918709337711334,
+        "LPIPS_alex_v01": 0.01401422405615449,
+        "holdout_PSNR_to_full": 41.17996927209803,
+        "temporal_residual": 0.0005496152629372633
+      },
+      {
+        "arm": "twice_immediate",
+        "reused": false,
+        "gaussians": 10256,
+        "accepted_batches": 16,
+        "main_gaussian_updates": 15345920,
+        "discarded_probe_updates": 0,
+        "PSNR": 38.08753280639648,
+        "SSIM": 0.9918703258037567,
+        "LPIPS_alex_v01": 0.014016821887344122,
+        "holdout_PSNR_to_full": 41.179786939878724,
+        "temporal_residual": 0.0005495670488285488
+      },
+      {
+        "arm": "twice_probe20",
+        "reused": false,
+        "gaussians": 10224,
+        "accepted_batches": 14,
+        "main_gaussian_updates": 15321600,
+        "discarded_probe_updates": 640,
+        "PSNR": 38.066184997558594,
+        "SSIM": 0.9918439000844955,
+        "LPIPS_alex_v01": 0.014059855416417123,
+        "holdout_PSNR_to_full": 41.12204206312025,
+        "temporal_residual": 0.000553619273881203
+      },
+      {
+        "arm": "once_forced",
+        "reused": true,
+        "gaussians": 10256,
+        "accepted_batches": 16,
+        "main_gaussian_updates": 15394560,
+        "discarded_probe_updates": 640,
+        "PSNR": 38.09071979522705,
+        "SSIM": 0.9918744891881943,
+        "LPIPS_alex_v01": 0.014012099895626306,
+        "holdout_PSNR_to_full": 41.18570637058567,
+        "temporal_residual": 0.0005489312209604596
+      },
+      {
+        "arm": "once_immediate",
+        "reused": true,
+        "gaussians": 10256,
+        "accepted_batches": 16,
+        "main_gaussian_updates": 15394560,
+        "discarded_probe_updates": 0,
+        "PSNR": 38.09059219360351,
+        "SSIM": 0.991874235868454,
+        "LPIPS_alex_v01": 0.014012061338871718,
+        "holdout_PSNR_to_full": 41.18545356956688,
+        "temporal_residual": 0.0005488985773033756
+      },
+      {
+        "arm": "once_probe20",
+        "reused": true,
+        "gaussians": 10224,
+        "accepted_batches": 14,
+        "main_gaussian_updates": 15370240,
+        "discarded_probe_updates": 640,
+        "PSNR": 38.068226432800294,
+        "SSIM": 0.9918468683958054,
+        "LPIPS_alex_v01": 0.014053428126499058,
+        "holdout_PSNR_to_full": 41.129215343578444,
+        "temporal_residual": 0.0005529150182198445
+      },
+      {
+        "arm": "continue",
+        "reused": true,
+        "gaussians": 10000,
+        "accepted_batches": 0,
+        "main_gaussian_updates": 15200000,
+        "discarded_probe_updates": 0,
+        "PSNR": 37.687824440002444,
+        "SSIM": 0.9914539217948913,
+        "LPIPS_alex_v01": 0.014618008816614746,
+        "holdout_PSNR_to_full": 40.314958417737806,
+        "temporal_residual": 0.0006034711123664469
+      }
+    ],
+    "pairs": [
+      {
+        "a": "twice_forced",
+        "b": "once_forced",
+        "PSNR_a_minus_b": -0.0035869598388700297,
+        "count_a_minus_b": 0
+      },
+      {
+        "a": "twice_forced",
+        "b": "late_forced",
+        "PSNR_a_minus_b": 0.0017162322998061086,
+        "count_a_minus_b": 0
+      },
+      {
+        "a": "twice_immediate",
+        "b": "once_immediate",
+        "PSNR_a_minus_b": -0.00305938720703125,
+        "count_a_minus_b": 0
+      },
+      {
+        "a": "twice_probe20",
+        "b": "once_probe20",
+        "PSNR_a_minus_b": -0.00204143524170064,
+        "count_a_minus_b": 0
+      }
+    ],
+    "verification": {
+      "input_hashes": true,
+      "warm_digest": true,
+      "same_main_and_probe_orders": true,
+      "all64_new_event_gates_and_schedules_recomputed": true,
+      "accepted_geometry": true,
+      "Adam_step1520_and_finite": true,
+      "main_count_integral": true,
+      "all20GT_means": true,
+      "all4_reused_control_metric_parity": true
+    },
+    "limitations": [
+      "Single scene/seed, two predetermined event times",
+      "Teacher and child geometry fixed, appearance-only updates",
+      "Identical candidate budget does not imply equal active-count exposure or totalcompute",
+      "Gate decisions use fit views, not independent validation",
+      "No child re-split, new candidate search, merge or full4DGS geometry/deformation training"
+    ],
+    "scope": "One/two predetermined capacity events in fixed-geometry appearance optimization. Original protocol scope sentence inherited single-event wording; policies/design define the two-event experiment. No numerical protocol change."
+  },
+  "two_event_video_verification": {
+    "decoded_frames": 150,
+    "frame_shape": [
+      296,
+      2304,
+      3
+    ],
+    "once_twice_probe20_same_accepted_parents": true
   }
 }
