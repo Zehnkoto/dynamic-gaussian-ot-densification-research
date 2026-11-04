@@ -1,0 +1,60 @@
+{
+  "version": "E07-gate-sensitivity-v1",
+  "status": "predeclared before new runs",
+  "seed": 42,
+  "base_budget": 10000,
+  "max_splits": 256,
+  "batch_size": 16,
+  "warmup_epochs": 10,
+  "post_epochs": 10,
+  "epochs": 20,
+  "event_step": 760,
+  "main_updates_per_arm": 1520,
+  "training_size": 400,
+  "probe_steps": 20,
+  "complexity_price_per_gaussian": 1e-07,
+  "max_window_relative_worsening": 0.01,
+  "scope": "Single capacity-change event inside fixed-geometry reduced-model appearance distillation; frozen full4DGS teacher. Not full4DGS canonical/deformation training or time-varying N(t).",
+  "arms": [
+    "price0_probe20",
+    "price5e7_probe20",
+    "price1e7_probe0",
+    "price1e7_probe80"
+  ],
+  "proposal": "Reuse E05 fit76 local child trajectories and window/rand top256 candidate lists. Process16parent batches in ranked or random list order. CTD gain must be positive.",
+  "supervision": "Frozen full-model renders; same76fit times and cameras only. Main loss0.8L1+0.2(1-SSIM), Adam DC.0025/rest.000125/opacity.01. No74holdout or test metric consulted by gate.",
+  "decision_views": "20fit views: four evenly spaced fit indices within each of5equal-duration windows. Other56fit views supply matched short probe updates. Main warmup/post epochs use all76.",
+  "gate": "Same E06 fit-only gate with per-policy price/probe_steps overrides; all probes discarded. Batch acceptance requires mean render gain>16*price and worst window worsening<=1%.",
+  "optimizer_migration": "Unchanged rows preserve parameters and Adam moments; split parent/new child rows reset moments, inherit current effective SH and optical-depth partition. Shared scalar Adam step retained; not per-child step0.",
+  "controls": "Four new window policies reuse exact E06 warmup; continue and central gated_window are evaluation controls reused unchanged. Main updates matched, probe compute differs.",
+  "evaluation": "All four policies trained and decisions frozen before any holdout or GT evaluation. Report all five cells; no test-based selection. Main1520logical updates incl760reused warm; extra probe updates32*probe_steps per new policy.",
+  "limitations": [
+    "Single scene/seed/event",
+    "Precomputed fixed teacher/child geometry; no learned motion or geometry updates",
+    "Batch-level16 acceptance, variable finalcount but bounded max+256",
+    "Decision views belong to fit set, not independent validation",
+    "Unequal finalcounts across gated/forced arms; compare cost/quality jointly",
+    "No merge, repeated events or full4DGS adaptive densification"
+  ],
+  "policies": {
+    "price0_probe20": {
+      "price": 0.0,
+      "probe_steps": 20
+    },
+    "price5e7_probe20": {
+      "price": 5e-07,
+      "probe_steps": 20
+    },
+    "price1e7_probe0": {
+      "price": 1e-07,
+      "probe_steps": 0
+    },
+    "price1e7_probe80": {
+      "price": 1e-07,
+      "probe_steps": 80
+    }
+  },
+  "design": "One factor at a time around E06 window gate price1e-7/probe20; four new cells plus reused central cell. Not a full factorial or multi-seed study.",
+  "reuse": "Exact E06 warmup and post orders; central gated_window and continue checkpoints reused unchanged.",
+  "probe_stream": "Per block RNG SeedSequence([42,2718,b]); concatenate shuffled56-view permutations until80. First20 exactly equal E06. Zero-step compares immediate split."
+}

@@ -1,0 +1,100 @@
+{
+  "run": "/data3/store1/yhy-b26/outputs/ot/e07-gate-sensitivity-20261104T121416Z",
+  "report": {
+    "rows": [
+      {
+        "arm": "price0_probe20",
+        "price": 0.0,
+        "probe_steps": 20,
+        "reused_E06": false,
+        "gaussians": 10240,
+        "accepted_batches": 15,
+        "probe_updates": 640,
+        "PSNR": 38.083017349243164,
+        "SSIM": 0.991861617565155,
+        "LPIPS_alex_v01": 0.014040108770132065,
+        "holdout_PSNR_to_full": 41.17386292122506,
+        "temporal_residual": 0.000550488152442775
+      },
+      {
+        "arm": "price5e7_probe20",
+        "price": 5e-07,
+        "probe_steps": 20,
+        "reused_E06": false,
+        "gaussians": 10128,
+        "accepted_batches": 8,
+        "probe_updates": 640,
+        "PSNR": 37.92707443237305,
+        "SSIM": 0.9916985988616943,
+        "LPIPS_alex_v01": 0.014298120979219675,
+        "holdout_PSNR_to_full": 40.862292779458535,
+        "temporal_residual": 0.000575361590837941
+      },
+      {
+        "arm": "price1e7_probe0",
+        "price": 1e-07,
+        "probe_steps": 0,
+        "reused_E06": false,
+        "gaussians": 10256,
+        "accepted_batches": 16,
+        "probe_updates": 0,
+        "PSNR": 38.09059219360351,
+        "SSIM": 0.991874235868454,
+        "LPIPS_alex_v01": 0.014012061338871718,
+        "holdout_PSNR_to_full": 41.18545356956688,
+        "temporal_residual": 0.0005488985773033756
+      },
+      {
+        "arm": "price1e7_probe80",
+        "price": 1e-07,
+        "probe_steps": 80,
+        "reused_E06": false,
+        "gaussians": 10240,
+        "accepted_batches": 15,
+        "probe_updates": 2560,
+        "PSNR": 38.08278350830078,
+        "SSIM": 0.9918609648942948,
+        "LPIPS_alex_v01": 0.014041310735046863,
+        "holdout_PSNR_to_full": 41.17374791325749,
+        "temporal_residual": 0.0005505073794293461
+      },
+      {
+        "arm": "price1e7_probe20",
+        "price": 1e-07,
+        "probe_steps": 20,
+        "reused_E06": true,
+        "gaussians": 10224,
+        "accepted_batches": 14,
+        "probe_updates": 640,
+        "PSNR": 38.068226432800294,
+        "SSIM": 0.9918468683958054,
+        "LPIPS_alex_v01": 0.014053428126499058,
+        "holdout_PSNR_to_full": 41.129215343578444,
+        "temporal_residual": 0.0005529150182198445
+      }
+    ],
+    "continue": {
+      "PSNR": 37.687824440002444,
+      "SSIM": 0.9914539217948913,
+      "LPIPS_alex_v01": 0.014618008816614746
+    },
+    "verification": {
+      "input_hashes": true,
+      "warm_digest": true,
+      "nested_probe_orders": true,
+      "all80_gate_decisions_recomputed": true,
+      "accepted_geometry": true,
+      "Adam_step1520_and_finite": true,
+      "all20GT_means": true,
+      "reused_control_metric_parity": true
+    },
+    "limitations": [
+      "One factor at a time; no price/length interaction tested",
+      "Single scene/seed/event; no test-selected winner",
+      "Fixed teacher/child geometry, appearance-only training",
+      "Decision views belong to fit; unequal final counts and probe compute",
+      "Reused central cell is not a new independent repeat"
+    ]
+  },
+  "full4DGS_training_densification_implemented": false
+}

@@ -43,7 +43,7 @@ def evaluate(out,base,inp,protocol,times,fit,full,sh,opacity,cfg,scene,cameras,m
     for key in residual:
      v=float(((imgs[key]-previous[key])-(imgs['full']-previous['full'])).abs().mean());residual[key].append(v);row[key]=v
     temporal.append(row)
-   panel=Image.new('RGB',(1536,296),'white');draw=ImageDraw.Draw(panel);keys=['full']+[name+'_after' for name in models]
+   panel=Image.new('RGB',(256*(len(models)+1),296),'white');draw=ImageDraw.Draw(panel);keys=['full']+[name+'_after' for name in models]
    for j,key in enumerate(keys):
     draw.text((j*256+4,4),key,fill='black');draw.text((j*256+4,20),f't={t:.3f}',fill='black');panel.paste(Image.fromarray((imgs[key].permute(1,2,0).cpu().numpy()*255).round().astype(np.uint8)),(j*256,40))
    video.append_data(np.asarray(panel));previous=imgs
