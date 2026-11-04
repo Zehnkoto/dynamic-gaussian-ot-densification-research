@@ -5,9 +5,12 @@ import numpy as np
 from scipy.stats import spearmanr
 from split_proposal_core import bipartitions,child_trajectories,selections
 from run_ctd_comparison import digest,dump
-ap=argparse.ArgumentParser();ap.add_argument('--output',type=pathlib.Path,required=True);args=ap.parse_args();root=pathlib.Path(os.environ['RESEARCH_ROOT']).resolve();out=args.output.resolve();repo=root/'projects/dynamic-gaussian-ot-densification-research'
+ap=argparse.ArgumentParser();ap.add_argument('--output',type=pathlib.Path,required=True);ap.add_argument('--protocol',default='split-proposal-v1.json');ap.add_argument('--splits',type=int);ap.add_argument('--seed',type=int);args=ap.parse_args();root=pathlib.Path(os.environ['RESEARCH_ROOT']).resolve();out=args.output.resolve();repo=root/'projects/dynamic-gaussian-ot-densification-research'
 if not out.is_relative_to(root) or out.exists():raise ValueError('Unsafe or existing output')
-protocol=json.loads((repo/'experiments/split-proposal-v1.json').read_text());cache=root/'outputs/ot/e02-ctd-20261103T082303Z/trajectory-cache';prior=root/'outputs/ot/e02-ctd-refined-20261103T082856Z/budget-10000';appearance=root/'outputs/ot/e04-appearance-20261103T095355Z'
+protocol=json.loads((repo/'experiments'/args.protocol).read_text());cache=root/'outputs/ot/e02-ctd-20261103T082303Z/trajectory-cache';prior=root/'outputs/ot/e02-ctd-refined-20261103T082856Z/budget-10000';appearance=root/'outputs/ot/e04-appearance-20261103T095355Z'
+if args.splits is not None:protocol['splits']=args.splits;protocol['final_budget']=protocol['base_budget']+args.splits
+if args.seed is not None:protocol['seed']=args.seed
+assert 0<protocol['splits']<=protocol['base_budget']
 meta=json.loads((cache/'manifest.json').read_text());inputs={cache/n:r['sha256'] for n,r in meta['files'].items()}
 base=root/'outputs/dnerf/bouncingballs/baseline-numpy1235-20261030T174401Z'
 for name,record in meta['baseline_model_hashes'].items():inputs[base/name]=record['sha256']
@@ -44,5 +47,5 @@ np.savez(out/'scores.npz',**scores,window_means=windows)
 dump(out/'proposal-summary.json',summary)
 with zipfile.ZipFile(out/'source.zip','x',compression=zipfile.ZIP_DEFLATED) as z:
  for name in ['split_proposal_core.py','test_split_proposal_core.py','prepare_split_proposals.py','run_split_validation.py','evaluate_split_validation.py','appearance_model.py','reduction_scene.py','run_ctd_comparison.py','reduction_core.py','inspect_baseline.py','common.sh']:z.write(repo/'scripts'/name,'scripts/'+name)
- z.write(repo/'experiments/split-proposal-v1.json','experiments/split-proposal-v1.json')
-dump(out/'completion.json',{'status':'completed','source_sha256':digest(out/'source.zip'),'artifacts':{p.name:digest(p) for p in out.glob('*.npy')}});print('PROPOSALS COMPLETE',flush=True)
+ z.write(repo/'experiments'/args.protocol,'experiments/'+args.protocol)
+dump(out/'completion.json',{'status':'completed','source_sha256':digest(out/'source.zip'),'artifacts':{p.name:digest(p) for p in list(out.glob('*.npy'))+list(out.glob('*.npz'))+[out/'proposal-summary.json']}});print('PROPOSALS COMPLETE',flush=True)

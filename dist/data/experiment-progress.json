@@ -316,5 +316,203 @@
     "fixed1520steps_each": true,
     "20view_means_verified": true,
     "scope": "Offline fixed+256 split; not training-time adaptive densification. Single scene/seed; scoring-only windows; first-frame score still uses fit76 shared child partition."
+  },
+  "offline_split_robustness": {
+    "budget_seed42": [
+      {
+        "splits": 128,
+        "window": 37.86267147064209,
+        "global": 37.835472869873044,
+        "first": 37.782501792907716,
+        "random": 37.73392162322998
+      },
+      {
+        "splits": 256,
+        "window": 38.087264442443846,
+        "global": 38.044725227355954,
+        "first": 37.976562881469725,
+        "random": 37.822988510131836
+      },
+      {
+        "splits": 512,
+        "window": 38.415591621398924,
+        "global": 38.35022449493408,
+        "first": 38.295986557006835,
+        "random": 37.918745803833005
+      }
+    ],
+    "paired": [
+      {
+        "splits": 128,
+        "seed": 42,
+        "window_minus_random_PSNR": 0.12874984741210938,
+        "window_minus_global_PSNR": 0.027198600769047232,
+        "global_minus_random_PSNR": 0.10155124664306214,
+        "window_minus_continue_PSNR": 0.17230072021484233,
+        "window_temporal_reduction_vs_random_percent": 2.179620373376978
+      },
+      {
+        "splits": 256,
+        "seed": 42,
+        "window_minus_random_PSNR": 0.2642759323120103,
+        "window_minus_global_PSNR": 0.042539215087892046,
+        "global_minus_random_PSNR": 0.22173671722411825,
+        "window_minus_continue_PSNR": 0.39755287170410014,
+        "window_temporal_reduction_vs_random_percent": 7.181322961573377
+      },
+      {
+        "splits": 512,
+        "seed": 42,
+        "window_minus_random_PSNR": 0.4968458175659194,
+        "window_minus_global_PSNR": 0.06536712646484233,
+        "global_minus_random_PSNR": 0.43147869110107706,
+        "window_minus_continue_PSNR": 0.7254024505615249,
+        "window_temporal_reduction_vs_random_percent": 11.630097031052022
+      },
+      {
+        "splits": 256,
+        "seed": 43,
+        "window_minus_random_PSNR": 0.28366947174072266,
+        "window_minus_global_PSNR": 0.042087173461915484,
+        "global_minus_random_PSNR": 0.24158229827880717,
+        "window_minus_continue_PSNR": 0.39629821777343466,
+        "window_temporal_reduction_vs_random_percent": 7.180600629397505
+      },
+      {
+        "splits": 256,
+        "seed": 44,
+        "window_minus_random_PSNR": 0.29506664276123473,
+        "window_minus_global_PSNR": 0.04326286315918537,
+        "global_minus_random_PSNR": 0.25180377960204936,
+        "window_minus_continue_PSNR": 0.39693641662597656,
+        "window_temporal_reduction_vs_random_percent": 7.330229297075563
+      }
+    ],
+    "budget256_order_seed_summary": [
+      {
+        "arm": "continue",
+        "n": 3,
+        "metrics": {
+          "PSNR_after": {
+            "mean": 37.690144793192545,
+            "sample_std": 0.0005909842817479843
+          },
+          "LPIPS_after": {
+            "mean": 0.014593263451630872,
+            "sample_std": 1.2699905196933174e-05
+          },
+          "temporal_after": {
+            "mean": 0.0006031153775164045,
+            "sample_std": 4.217960242842792e-07
+          },
+          "PSNR_delta_vs_continue": {
+            "mean": 0.0,
+            "sample_std": 0.0
+          }
+        }
+      },
+      {
+        "arm": "window",
+        "n": 3,
+        "metrics": {
+          "PSNR_after": {
+            "mean": 38.087073961893715,
+            "sample_std": 0.0007930646974841757
+          },
+          "LPIPS_after": {
+            "mean": 0.01400467158916096,
+            "sample_std": 1.0633557429452321e-05
+          },
+          "temporal_after": {
+            "mean": 0.0005479689386490445,
+            "sample_std": 2.615423101937233e-07
+          },
+          "PSNR_delta_vs_continue": {
+            "mean": 0.39692916870117045,
+            "sample_std": 0.000627358367079043
+          }
+        }
+      },
+      {
+        "arm": "global",
+        "n": 3,
+        "metrics": {
+          "PSNR_after": {
+            "mean": 38.044444211324056,
+            "sample_std": 0.00030744769883699085
+          },
+          "LPIPS_after": {
+            "mean": 0.014020841009914875,
+            "sample_std": 6.519241508442184e-06
+          },
+          "temporal_after": {
+            "mean": 0.0005576633923125539,
+            "sample_std": 3.055183741822886e-07
+          },
+          "PSNR_delta_vs_continue": {
+            "mean": 0.35429941813150617,
+            "sample_std": 0.0006744083049708055
+          }
+        }
+      },
+      {
+        "arm": "first",
+        "n": 3,
+        "metrics": {
+          "PSNR_after": {
+            "mean": 37.97759265899658,
+            "sample_std": 0.0016926169740942138
+          },
+          "LPIPS_after": {
+            "mean": 0.01413224625090758,
+            "sample_std": 4.688192862979912e-06
+          },
+          "temporal_after": {
+            "mean": 0.0005607316662428247,
+            "sample_std": 2.5076876992620644e-07
+          },
+          "PSNR_delta_vs_continue": {
+            "mean": 0.28744786580403553,
+            "sample_std": 0.0011096077732808184
+          }
+        }
+      },
+      {
+        "arm": "random",
+        "n": 3,
+        "metrics": {
+          "PSNR_after": {
+            "mean": 37.806069946289064,
+            "sample_std": 0.015456809813692905
+          },
+          "LPIPS_after": {
+            "mean": 0.01443154316705962,
+            "sample_std": 3.4496396621649514e-05
+          },
+          "temporal_after": {
+            "mean": 0.0005906797939053605,
+            "sample_std": 8.19238126738127e-07
+          },
+          "PSNR_delta_vs_continue": {
+            "mean": 0.11592515309651456,
+            "sample_std": 0.015960959753826675
+          }
+        }
+      }
+    ],
+    "verification": {
+      "all5conditions_complete": true,
+      "geometry_identical_across_order_seeds": true,
+      "ranked_budget_sets_nested": true,
+      "seed42_training_orders_identical": true,
+      "seed42_unsplit_PSNR_repeat_range_dB": 0.0006591796875028422,
+      "same1520updates_each": true,
+      "shared_epoch_permutations_across_seeds": {
+        "42-43": 0,
+        "42-44": 0,
+        "43-44": 0
+      }
+    },
+    "scope": "Base/CTD/local child partitions fixed. Seed changes training order and random proposal sampling only. Budget128/512 seed42 only. Offline fixed extra count, not training-time adaptive split."
   }
 }

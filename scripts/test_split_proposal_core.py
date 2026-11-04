@@ -1,5 +1,5 @@
 import numpy as np
-from split_proposal_core import bipartitions,child_trajectories
+from split_proposal_core import bipartitions,child_trajectories,selections
 
 def main():
     # Independently compare weighted source SSE against Ward's predicted decrease.
@@ -12,5 +12,10 @@ def main():
             ids=np.flatnonzero(parents==p);mean=np.average(s[t,ids],axis=0,weights=w[ids]);before=(w[ids,None]*(s[t,ids]-mean)**2).sum();after=(w[ids,None]*(s[t,ids]-c[t,p*2+child[ids]])**2).sum()
             assert np.isclose(before-after,g[t,p],rtol=1e-6,atol=1e-8)
             reconstructed=(c[t,p*2]*m[p*2]+c[t,p*2+1]*m[p*2+1])/(m[p*2]+m[p*2+1]);assert np.allclose(mean,reconstructed,atol=1e-6)
+    gains=np.array([[10.,2.],[10.,2.],[0.,2.],[10.,2.],[10.,2.]])
+    scores,selected,_=selections(gains,np.array([0,1]),list(range(5)),np.linspace(0,1,5),1,42)
+    assert selected['window'].tolist()==[1] and selected['global'].tolist()==[0] and selected['first'].tolist()==[0]
+    _,larger,_=selections(gains,np.array([0,1]),list(range(5)),np.linspace(0,1,5),2,42)
+    for name in ['window','global','first']:assert larger[name][:1].tolist()==selected[name].tolist()
     print('Local split nonempty children, mass/barycenter consistency, independent SSE gain checks passed')
 if __name__=='__main__':main()

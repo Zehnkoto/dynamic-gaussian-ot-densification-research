@@ -1,0 +1,64 @@
+{
+  "version": "E05-split-robustness-v3-order-amendment",
+  "status": "predeclared amendment: replace only seed43/44 with spawned view-order streams; retain all old results",
+  "base_budget": 10000,
+  "splits": 256,
+  "final_budget": 10256,
+  "seed": 42,
+  "epochs": 20,
+  "updates": 1520,
+  "fit_times": 76,
+  "holdout_times": 74,
+  "training_size": 400,
+  "proposal": "Local weighted 2-means within each original parent, shared assignment learned from all76fit trajectory features; fixed original parent assignment; no global reclustering.",
+  "cost": "Squared position distance plus squared covariance Frobenius distance, averaged across time. Source-opacity-normalized mixture weights; not physical mass or Gaussian W2.",
+  "rankings": {
+    "window": "Minimum mean CTD decrease across 5 equal-duration fit-time windows",
+    "global": "Mean CTD decrease over76fit times",
+    "first": "CTD decrease at first fit time only; shares the same76time-fitted child partition",
+    "random": "Uniform eligible parent sampling without replacement using the resolved per-condition seed"
+  },
+  "gain": "Exact local weighted SSE decrease (m0*m1/(m0+m1))*squared_distance(child_centers), with original parent fixed",
+  "appearance": "Inherit E04 joint42 shared parent SH; split optical depth by child mixture-weight fractions. Coincident-footprint transmittance preserved, actual different child footprints need not preserve rendered appearance. All arms fine-tune shared SH+opacity equally.",
+  "control": "Within each condition split arms have equal base_budget+splits Gaussians. Unsplit control K10000 gets the same1520additionalupdates. Budget comparison only at seed42.",
+  "evaluation": "No holdout/test selection. Report fit/holdout CTD, teacher fidelity,20GT PSNR/SSIM/standardLPIPS,256pxfixed-camera temporal residual, before and after final fixed-step optimization.",
+  "limitations": [
+    "Single seed/scene/budget",
+    "Offline splitting existing reduced clusters, not training-time adaptive densification",
+    "CTD gain is guaranteed algebraically for a fixed split; rendering improvement is not",
+    "All scores share fit76 child partitions; first-frame arm isolates ranking, not a full independent per-frame algorithm",
+    "No explicit velocity loss or physical mass claim"
+  ],
+  "conditions": [
+    {
+      "splits": 128,
+      "seed": 42
+    },
+    {
+      "splits": 256,
+      "seed": 42
+    },
+    {
+      "splits": 512,
+      "seed": 42
+    },
+    {
+      "splits": 256,
+      "seed": 43
+    },
+    {
+      "splits": 256,
+      "seed": 44
+    }
+  ],
+  "seed_scope": "Appearance view order and random parent sampling only; baseline, CTD parent grouping, fit76 shared child partitions and E04 initialization remain fixed.",
+  "reuse": "Reuse complete original splits256 seed42; no selecting conditions or checkpoints on evaluation.",
+  "limits": "Three order/random-selection seeds at budget256; budget128/512 each seed42 only. Not full-pipeline multi-seed validation.",
+  "order_scheme": "spawned",
+  "reuse_runs": {
+    "128:42": "outputs/ot/e05-robustness-20261104T110338Z/splits128-seed42",
+    "512:42": "outputs/ot/e05-robustness-20261104T110338Z/splits512-seed42"
+  },
+  "amendment_reason": "Legacy seed+epoch yields overlapping epoch permutations across adjacent seeds. New43/44 use SeedSequence(seed).spawn(epochs); reused42 retains original order. No changes to child partitions, ranking, optimizer rates, step counts or evaluation.",
+  "excluded_results": "Legacy43/44 outputs preserved in e05-robustness-20261104T110338Z and excluded from amended3order summary; replacement is methodological, not selected by metric outcomes."
+}

@@ -34,7 +34,10 @@ frames=json.loads((root/'datasets/bouncingballs/transforms_train.json').read_tex
 for j,r in enumerate(frames):
  i=int(np.argmin(abs(times-r['time'])));cam=train[j];assert abs(float(cam.time)-r['time'])<1e-7;cameras[i]=small_camera(cam,protocol['training_size'])
 fit=manifest['fit'];held=manifest['holdout'];assert len(cameras)==150 and not set(fit)&set(held)
-orders=[np.random.default_rng(protocol['seed']+e).permutation(fit).tolist() for e in range(protocol['epochs'])]
+if protocol.get('order_scheme')=='spawned':
+ orders=[np.random.default_rng(sequence).permutation(fit).tolist() for sequence in np.random.SeedSequence(protocol['seed']).spawn(protocol['epochs'])]
+else:
+ orders=[np.random.default_rng(protocol['seed']+e).permutation(fit).tolist() for e in range(protocol['epochs'])]
 out.mkdir();dump(out/'manifest.json',{'protocol':protocol,'input_source_sha256':completion['source_sha256'],'orders':orders,'fit':fit,'holdout':held,'GPU':os.environ.get('CUDA_VISIBLE_DEVICES'),'optical_depth_sum_max_error':optical_checks,'counts':{n:len(m.dc) for n,m in models.items()},'trainable_parameters':{n:sum(p.numel() for p in m.parameters()) for n,m in models.items()}})
 from utils.loss_utils import ssim
 teacher={}
