@@ -1,6 +1,6 @@
 {
   "updated": "2026-11-04",
-  "stage": "One/two predetermined split events in fixed-geometry reduced-model appearance training compared; fixed-candidate scheduling showed no quality gain; full4DGS adaptive densification unfinished",
+  "stage": "Current-state reranking at second preset event tested with shared1140-step state and equal K10256; metric tradeoffs, no overall advantage over fixed CTD established; full4DGS adaptive densification unfinished",
   "base_gaussians": 26936,
   "baseline_PSNR": 40.72878799438477,
   "budget": 10000,
@@ -890,5 +890,129 @@
       3
     ],
     "once_twice_probe20_same_accepted_parents": true
+  },
+  "current_state_reranking": {
+    "rows": [
+      {
+        "arm": "fixed_ctd",
+        "gaussians": 10256,
+        "second_selected_batches": 8,
+        "main_gaussian_updates": 15345920,
+        "PSNR": 38.08754348754883,
+        "SSIM": 0.9918707281351089,
+        "LPIPS_alex_v01": 0.014016607124358416,
+        "holdout_PSNR_to_full": 41.17989962809795,
+        "temporal_residual": 0.0005496051207406684,
+        "new_parents_vs_fixed_ctd": 0
+      },
+      {
+        "arm": "current_render",
+        "gaussians": 10256,
+        "second_selected_batches": 8,
+        "main_gaussian_updates": 15345920,
+        "PSNR": 38.06551303863525,
+        "SSIM": 0.9918497294187546,
+        "LPIPS_alex_v01": 0.013968839077278972,
+        "holdout_PSNR_to_full": 41.2299480953732,
+        "temporal_residual": 0.0005539793921783004,
+        "new_parents_vs_fixed_ctd": 80
+      },
+      {
+        "arm": "stale_render",
+        "gaussians": 10256,
+        "second_selected_batches": 8,
+        "main_gaussian_updates": 15345920,
+        "PSNR": 38.05735969543457,
+        "SSIM": 0.9918608605861664,
+        "LPIPS_alex_v01": 0.013956604339182378,
+        "holdout_PSNR_to_full": 41.214855297191725,
+        "temporal_residual": 0.0005544511417330136,
+        "new_parents_vs_fixed_ctd": 80
+      },
+      {
+        "arm": "random",
+        "gaussians": 10256,
+        "second_selected_batches": 8,
+        "main_gaussian_updates": 15345920,
+        "PSNR": 38.0718656539917,
+        "SSIM": 0.9918839037418365,
+        "LPIPS_alex_v01": 0.013977301260456442,
+        "holdout_PSNR_to_full": 41.18842300208839,
+        "temporal_residual": 0.0005534443062426985,
+        "new_parents_vs_fixed_ctd": 112
+      }
+    ],
+    "pairs": [
+      {
+        "arm": "fixed_ctd",
+        "minus_fixed_ctd_PSNR": 0.0,
+        "minus_stale_render_PSNR": 0.030183792114257812
+      },
+      {
+        "arm": "current_render",
+        "minus_fixed_ctd_PSNR": -0.02203044891357564,
+        "minus_stale_render_PSNR": 0.008153343200682173
+      },
+      {
+        "arm": "stale_render",
+        "minus_fixed_ctd_PSNR": -0.030183792114257812,
+        "minus_stale_render_PSNR": 0.0
+      },
+      {
+        "arm": "random",
+        "minus_fixed_ctd_PSNR": -0.015677833557127485,
+        "minus_stale_render_PSNR": 0.014505958557130327
+      }
+    ],
+    "scoring_cost": {
+      "stale": {
+        "seconds": 5.779846716672182,
+        "reference_renders": 20,
+        "proposal_renders": 480,
+        "main_step": 760
+      },
+      "current": {
+        "seconds": 3.670305997133255,
+        "reference_renders": 20,
+        "proposal_renders": 480,
+        "main_step": 1140
+      }
+    },
+    "current_vs_stale_score_spearman": 0.9530434782608694,
+    "current_stale_selected_parent_overlap": 112,
+    "fixed_ctd_E08_repeat_delta": {
+      "PSNR": 0.00041065216064595234,
+      "SSIM": -2.0563602454171104e-07,
+      "LPIPS_alex_v01": 2.3830682039267803e-06
+    },
+    "verification": {
+      "input_and_source_hashes": true,
+      "shared760_and1140_digests": true,
+      "pool_reconstructed_fit_only": true,
+      "all48_candidate_batch_scores_recomputed": true,
+      "all4_rankings_reconstructed": true,
+      "shared_main_orders_and_exact10256_finalcounts": true,
+      "equal_main_gaussian_update_integral": true,
+      "accepted_geometry": true,
+      "finite_Adam_step1520": true,
+      "all20GT_means": true,
+      "continue_metric_parity": true,
+      "fixed_ctd_same_parents_as_E08": true
+    },
+    "limitations": [
+      "Single scene/seed, fixed teacher/child geometry and two preset event times",
+      "Render ranking is batch-level16 and conditional on CTD top512 pool",
+      "Decision20 views belong to fit set, not independent validation",
+      "No probe optimization, acceptance threshold, child re-split, merge or full4DGS adaptive densification",
+      "Fixed parent/child trajectories, not a standalone compressed deformation model"
+    ]
+  },
+  "current_state_reranking_video_verification": {
+    "decoded_frames": 150,
+    "frame_shape": [
+      296,
+      1536,
+      3
+    ]
   }
 }

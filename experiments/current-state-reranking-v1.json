@@ -1,0 +1,48 @@
+{
+  "version": "E09-current-state-reranking-v1",
+  "status": "predeclared before runs",
+  "seed": 42,
+  "base_budget": 10000,
+  "max_splits": 256,
+  "batch_size": 16,
+  "event_step": 760,
+  "second_event_step": 1140,
+  "warmup_epochs": 10,
+  "post_epochs": 10,
+  "epochs": 20,
+  "main_updates_per_arm": 1520,
+  "training_size": 400,
+  "arms": [
+    "fixed_ctd",
+    "current_render",
+    "stale_render",
+    "random"
+  ],
+  "pool_size": 512,
+  "first_splits": 128,
+  "second_splits": 128,
+  "select_batches": 8,
+  "random_seed_sequence": [
+    42,
+    909
+  ],
+  "design": "Common first128 CTD-ranked parents split at760; share next380 updates and exact model/Adam checkpoint at1140; four branches select128 more distinct original parents from remaining384 among fixed fit-only CTD top512, grouped into24 contiguous batches16.",
+  "rankings": {
+    "fixed_ctd": "First8 candidate batches in original CTD order, matching E08 twice_forced parent list.",
+    "current_render": "Top8 batches by mean immediate fit-render loss decrease at shared live step1140.",
+    "stale_render": "Top8 batches by same score measured just after first128 splits at step760. Isolates scoring time from merely using render loss.",
+    "random": "Uniform8 of24 batches without replacement using SeedSequence([42,909])."
+  },
+  "scoring": "Frozen20 balanced fit views inherited E06; .8L1+.2(1-SSIM),400px. Each proposed16-parent batch evaluated separately against identical unsplit state; no optimizer updates. Finite scores, stable descending sort ties by original batch index. No holdout/test selection.",
+  "commit": "All selected128 committed regardless score sign to match exact finalcount10256. Apply batches in ascending original batch index. Candidate batches scored independently, no greedy rescoring or guarantee of additive render gains.",
+  "geometry": "Fit76 local CTD child partitions and trajectories reused E05; source-opacity normalized weights. No new geometry/partition/deformation learning or physical-mass transport.",
+  "controls": "CTD, current-render, stale-render and random share exact first-event and step1140 optimizer state, main orders, finalcount and main-update Gaussian integral. Continue checkpoint reused E06 only as context. Ranking requires extra renders: report shared cost separately, no equal total-compute claim.",
+  "evaluation": "All four selection lists and training frozen before74holdout,20GT and150-frame evaluation. Recompute fixed_ctd arm; compare parent list and numerical metrics to E08 twice_forced as a repeat, not exact CUDA metric equality.",
+  "limitations": [
+    "Single scene/seed, fixed teacher/child geometry and two preset event times",
+    "Render ranking is batch-level16 and conditional on CTD top512 pool",
+    "Decision20 views belong to fit set, not independent validation",
+    "No probe optimization, acceptance threshold, child re-split, merge or full4DGS adaptive densification",
+    "Fixed parent/child trajectories, not a standalone compressed deformation model"
+  ]
+}
