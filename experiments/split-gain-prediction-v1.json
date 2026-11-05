@@ -1,0 +1,49 @@
+{
+  "version": "E10-split-gain-prediction-v1",
+  "status": "predeclared before runs",
+  "seed": 42,
+  "base_budget": 10000,
+  "max_splits": 256,
+  "batch_size": 16,
+  "event_step": 1140,
+  "warmup_epochs": 10,
+  "post_epochs": 10,
+  "epochs": 20,
+  "main_updates_per_arm": 1520,
+  "training_size": 400,
+  "horizons": [
+    0,
+    20,
+    76,
+    380
+  ],
+  "candidate_batches": 24,
+  "reference_count": 10128,
+  "candidate_count": 10144,
+  "design": "Reuse exact E09 before-second.pt at1140 (first128 already split). Independently add each of all24 E09 remaining16-parent batches, plus matched no-second-split reference. Each run gets same380 future main updates, no rankings/thresholds changed.",
+  "monitor": "At offsets0/20/76/380 measure .8L1+.2(1-SSIM) at400px on inherited20 fit decision views and74 reduction holdout views. Train380 using exact E06 last5 epoch orders over76 fit views. Monitor cannot change training or select candidates.",
+  "predictors": [
+    "immediate_fit_loss_gain",
+    "fit_loss_gain_after20_updates",
+    "fit_loss_gain_after76_updates",
+    "window_CTD_gain",
+    "mean_CTD_gain"
+  ],
+  "outcomes": [
+    "fit_loss_gain_after380_updates",
+    "holdout_loss_gain_after380_updates",
+    "GT_PSNR_gain_after380_updates",
+    "GT_LPIPS_decrease_after380_updates"
+  ],
+  "gain_definition": "Matched horizon loss(reference)-loss(single-batch proposal). For GT finalmetrics: PSNRproposal-PSNRreference and LPIPSreference-LPIPSproposal. Compare after equal updates, not before-vs-after within one model.",
+  "CTD": "Sum of per-parent min5window mean gains is window predictor, matching original per-parent ranking; mean predictor sums gains averaged76fit times. Frozen E05 source weights/child geometry.",
+  "evaluation": "All25 final checkpoints saved and hashed in training-complete.json before any20-view GT evaluation. Evaluate all, no test-based selection, oracle policy, threshold tuning or best-checkpoint choice. Spearman correlations exploratory, no significance claim.",
+  "scope": "Counterfactual single-batch diagnostic at fixed shared appearance state. Geometry and teacher remain frozen; no new split policy or full4DGS training.",
+  "limitations": [
+    "Single scene/order,24 related candidate batches conditional on CTD top512 pool",
+    "Independent16-parent effects need not add up for joint128-parent selection",
+    "Decision views belong to fit and future training; holdout relative to reduction, not unseen by base teacher",
+    "Unequal counts vs no-split reference intentionally measure marginal capacity benefit, not equal-count policy superiority",
+    "Small effects can be affected by CUDA numerical variation; no independent repeat or inference-speed claim"
+  ]
+}

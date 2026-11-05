@@ -1,0 +1,59 @@
+{
+  "version": "E14-uniform-position-anchor-v1",
+  "date_client": "2026-11-05",
+  "status": "predeclared before training",
+  "seed": 42,
+  "base_budget": 10000,
+  "max_splits": 256,
+  "event_step": 1140,
+  "warmup_epochs": 10,
+  "post_epochs": 10,
+  "epochs": 20,
+  "main_updates_per_arm": 1520,
+  "updates": 380,
+  "training_size": 400,
+  "order_seeds": [
+    42,
+    43,
+    44
+  ],
+  "conditions": {
+    "l2_0p001": {
+      "move": true,
+      "ctd_weight": 0.001
+    },
+    "l2_0p01": {
+      "move": true,
+      "ctd_weight": 0.01
+    },
+    "l2_0p1": {
+      "move": true,
+      "ctd_weight": 0.1
+    }
+  },
+  "capacities": {
+    "ctd128": 10256
+  },
+  "design": "9 new uniform L2 arms; reuse all15 frozen E13 arms as historical paired controls, not independent repeats.",
+  "primary": "Compare source-mass CTD and uniform-support L2 at each same predefined lambda. Report all weights and tradeoffs; no test-based selection.",
+  "secondary": "Report true fixed-plan fit/heldout CTD, displacement norms and bound saturation, plus standard GT/temporal metrics. Not a new adaptive split policy.",
+  "orders": "Reuse exact E12 future orders42/43/44; no shared epoch permutations between orders. Single base/grouping/child geometry, not fullpipeline seeds.",
+  "loss": "Frozen teacher and student both native400. SH/opacity same RATES; appearance Adam1140->1520. Moving fields fresh Adam0->380; appearance_only raw offset frozen0. No GT training.",
+  "render": "Native400 for all training; native800 GT evaluation, fixed native256 temporal reference. Teacher and support covariance/deformation fixed, only shared translations added.",
+  "evaluation": "All9 new checkpoints frozen before evaluation; reuse15 E13 controls by immutable hashes and audit report. New arms evaluated by identical E13 evaluator.",
+  "limits": [
+    "380update warm-start pilot; one scene,3 future-order perturbations",
+    "Shared translation preserves teacher trajectory shape/world velocity, no new deformation or time-dependent geometry",
+    "Covariance/assignment/support count fixed; added CTD is exact fixed-plan objective, not joint OT-plan learning",
+    "Position-render already bounded .01; position-only effects not unbounded geometry optimization",
+    "All three CTD weights reported; no test-selected lambda or statistical-significance claim",
+    "No merge, new split candidates, independently compressed motion network or full4DGS adaptive densification",
+    "Same-lambda comparison tests source-mass weighting under one shared global scale, not optimal tuning for either regularizer; E13 controls reused, not new repeats."
+  ],
+  "position_radius": 0.01,
+  "position_raw_lr": 0.01,
+  "position": "Per-support shared world translation delta=r*u/sqrt(1+||u||^2),r=.01. New rawu Adam lr.01 eps1e-8 starts at0; appearance Adam/RATES and step1140 retained. Same delta at all150 times: covariance/trajectory shape/world velocity remain fixed.",
+  "CTD": "Frozen source-opacity-normalized weights and source-to-support hard assignment reconstructed from E02 parents+E05 child labels+fixed256 split parents. Cost squared xyz plus covariance Frobenius squared. Keep learned render opacity separate from CTD weights.",
+  "regularizer": "Uniform R=mean_k ||delta_k||^2 / D_fit(0). Both uniform and CTD quadratic weights sum1 and share exact E13 denominator. Uniform has no float32 barycenter residual linear term. Source CTD is still measured with original masses.",
+  "reuse_run": "outputs/ot/e13-shared-position-ctd-20261104T165313Z"
+}

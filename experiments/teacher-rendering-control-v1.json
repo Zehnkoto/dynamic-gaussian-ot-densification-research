@@ -1,0 +1,52 @@
+{
+  "version": "E12-teacher-rendering-control-v1",
+  "date_client": "2026-11-05",
+  "status": "predeclared before training",
+  "seed": 42,
+  "base_budget": 10000,
+  "max_splits": 256,
+  "event_step": 1140,
+  "warmup_epochs": 10,
+  "post_epochs": 10,
+  "epochs": 20,
+  "main_updates_per_arm": 1520,
+  "updates": 380,
+  "training_size": 400,
+  "order_seeds": [
+    42,
+    43,
+    44
+  ],
+  "conditions": {
+    "native400": {
+      "student": "native400",
+      "target": "native400"
+    },
+    "teacher800_area": {
+      "student": "native400",
+      "target": "area800"
+    },
+    "both800_area": {
+      "student": "area800",
+      "target": "area800"
+    }
+  },
+  "capacities": {
+    "no_second": 10128,
+    "ctd128": 10256
+  },
+  "design": "Reuse E09 shared model/Adam at1140, first128 already split. Freeze E09 fixedCTD second128 selection; paired2 capacities x3 predefined rendering conditions x3 future-order seeds =18 runs. Every run380updates, finalAdam1520.",
+  "primary": "native400 vs teacher800_area: student native400, only teacher target changes. Within a capacity/seed identical initial parameters/Adam, views/order/loss/updatecount.",
+  "secondary": "both800_area uses student native800 rasterization then differentiable area downsample400; same area800 teacher. Isolates matching student image generation after changing teacher. Higher rendering cost; no equalcompute claim.",
+  "orders": "Seed42 reuses E06 last5 epochs exactly;43/44 use SeedSequence(seed).spawn(5). All use same76fit views. Assert no shared epoch permutations between seeds. These are order perturbations from same warm checkpoint, not fullpipeline seeds.",
+  "loss": "Frozen teacher only, .8L1+.2(1-SSIM) on400pixel images; AdamDC.0025/rest.000125/opacity.01. No GT training or teacher/deformation/geometry updates.",
+  "render": "All area800 images use torch.interpolate(mode=area,size400) after native rasterizer clamp0to1. For both800_area gradients pass through native800 and area downsample; teacher always detached.",
+  "evaluation": "All18 checkpoints frozen/hash-recorded before GT or heldout evaluation.20GT native800 rounded8bit PSNR/SSIM/LPIPSalexv01normalizeTrue;fit/74holdout native400 andarea800 teacher fidelity plusGT400diagnostic;fixedcamera150frame temporalRGBdeltaresidual256 vs nativefullteacher. Fixed380updates, no testselected checkpoint.",
+  "limits": [
+    "Short380update target-switch pilot from native400-adapted warm state",
+    "Three future-order perturbations, same baseline/grouping/childgeometry; single scene",
+    "Different counts across capacities; target comparisons paired within samecount",
+    "both800_area changes student renderer and costs more; compare separately from target-only primary",
+    "Fixed teacher/child geometry and appearance-only training; no new split policy/full4DGS adaptive densification"
+  ]
+}

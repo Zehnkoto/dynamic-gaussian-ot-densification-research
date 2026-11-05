@@ -1,0 +1,712 @@
+{
+  "run": "/data3/store1/yhy-b26/outputs/ot/e12-teacher-rendering-control-20261104T163644Z",
+  "report": {
+    "rows": [
+      {
+        "arm": "native400__no_second__seed42",
+        "seed": 42,
+        "capacity": "no_second",
+        "condition": "native400",
+        "gaussians": 10128,
+        "PSNR": 37.86240825653076,
+        "SSIM": 0.9916636407375335,
+        "LPIPS_alex_v01": 0.01429900391958654,
+        "temporal_residual256": 0.000582070011257244,
+        "held_native400_mse": 8.990756307596441e-05,
+        "held_area800_mse": 0.00010503679589640563,
+        "held_GT400_mse": 0.00013492019049433134,
+        "train_seconds": 2.6383814588189125
+      },
+      {
+        "arm": "teacher800_area__no_second__seed42",
+        "seed": 42,
+        "capacity": "no_second",
+        "condition": "teacher800_area",
+        "gaussians": 10128,
+        "PSNR": 37.15415210723877,
+        "SSIM": 0.9907566785812378,
+        "LPIPS_alex_v01": 0.017043389705941082,
+        "temporal_residual256": 0.0006081240469255428,
+        "held_native400_mse": 0.0001420901218709234,
+        "held_area800_mse": 5.3296350366459545e-05,
+        "held_GT400_mse": 8.190045328110746e-05,
+        "train_seconds": 2.659332100301981
+      },
+      {
+        "arm": "both800_area__no_second__seed42",
+        "seed": 42,
+        "capacity": "no_second",
+        "condition": "both800_area",
+        "gaussians": 10128,
+        "PSNR": 37.880456352233885,
+        "SSIM": 0.9916991889476776,
+        "LPIPS_alex_v01": 0.01416556453332305,
+        "temporal_residual256": 0.0005856153560878909,
+        "held_native400_mse": 9.06016626882971e-05,
+        "held_area800_mse": 0.00010077372821428612,
+        "held_GT400_mse": 0.0001303317352033667,
+        "train_seconds": 4.156836338341236
+      },
+      {
+        "arm": "native400__ctd128__seed42",
+        "seed": 42,
+        "capacity": "ctd128",
+        "condition": "native400",
+        "gaussians": 10256,
+        "PSNR": 38.08754749298096,
+        "SSIM": 0.9918709844350815,
+        "LPIPS_alex_v01": 0.014017433347180485,
+        "temporal_residual256": 0.0005496052063918742,
+        "held_native400_mse": 8.055557279746879e-05,
+        "held_area800_mse": 0.00010237468686190786,
+        "held_GT400_mse": 0.00013242881490244858,
+        "train_seconds": 2.6745081171393394
+      },
+      {
+        "arm": "teacher800_area__ctd128__seed42",
+        "seed": 42,
+        "capacity": "ctd128",
+        "condition": "teacher800_area",
+        "gaussians": 10256,
+        "PSNR": 37.30383987426758,
+        "SSIM": 0.9909313738346099,
+        "LPIPS_alex_v01": 0.016863727802410723,
+        "temporal_residual256": 0.000582441860155965,
+        "held_native400_mse": 0.00013415052544095906,
+        "held_area800_mse": 5.006962330937952e-05,
+        "held_GT400_mse": 7.875747576543142e-05,
+        "train_seconds": 2.672153878957033
+      },
+      {
+        "arm": "both800_area__ctd128__seed42",
+        "seed": 42,
+        "capacity": "ctd128",
+        "condition": "both800_area",
+        "gaussians": 10256,
+        "PSNR": 38.10337314605713,
+        "SSIM": 0.9919054597616196,
+        "LPIPS_alex_v01": 0.013889423478394747,
+        "temporal_residual256": 0.0005532320439010771,
+        "held_native400_mse": 8.125508975354023e-05,
+        "held_area800_mse": 9.810425020790521e-05,
+        "held_GT400_mse": 0.0001278309276106459,
+        "train_seconds": 4.211471654474735
+      },
+      {
+        "arm": "native400__no_second__seed43",
+        "seed": 43,
+        "capacity": "no_second",
+        "condition": "native400",
+        "gaussians": 10128,
+        "PSNR": 37.86463966369629,
+        "SSIM": 0.9916681587696076,
+        "LPIPS_alex_v01": 0.014266302017495036,
+        "temporal_residual256": 0.0005818585320821206,
+        "held_native400_mse": 8.987468695645598e-05,
+        "held_area800_mse": 0.00010507419775987384,
+        "held_GT400_mse": 0.00013487905788359648,
+        "train_seconds": 2.671483166515827
+      },
+      {
+        "arm": "teacher800_area__no_second__seed43",
+        "seed": 43,
+        "capacity": "no_second",
+        "condition": "teacher800_area",
+        "gaussians": 10128,
+        "PSNR": 37.15590229034424,
+        "SSIM": 0.9907572835683822,
+        "LPIPS_alex_v01": 0.01710723894648254,
+        "temporal_residual256": 0.0006078931614530004,
+        "held_native400_mse": 0.0001420186326376515,
+        "held_area800_mse": 5.319288123467453e-05,
+        "held_GT400_mse": 8.176686065240033e-05,
+        "train_seconds": 2.691726505756378
+      },
+      {
+        "arm": "both800_area__no_second__seed43",
+        "seed": 43,
+        "capacity": "no_second",
+        "condition": "both800_area",
+        "gaussians": 10128,
+        "PSNR": 37.879486656188966,
+        "SSIM": 0.991700091958046,
+        "LPIPS_alex_v01": 0.014143377728760242,
+        "temporal_residual256": 0.0005855734405168739,
+        "held_native400_mse": 9.061639723989395e-05,
+        "held_area800_mse": 0.00010093620477237965,
+        "held_GT400_mse": 0.00013040765814956694,
+        "train_seconds": 4.164837799966335
+      },
+      {
+        "arm": "native400__ctd128__seed43",
+        "seed": 43,
+        "capacity": "ctd128",
+        "condition": "native400",
+        "gaussians": 10256,
+        "PSNR": 38.09008598327637,
+        "SSIM": 0.9918770998716354,
+        "LPIPS_alex_v01": 0.013981253048405052,
+        "temporal_residual256": 0.0005496320452997399,
+        "held_native400_mse": 8.049403343623428e-05,
+        "held_area800_mse": 0.00010242666084613538,
+        "held_GT400_mse": 0.000132396622673794,
+        "train_seconds": 2.788426488637924
+      },
+      {
+        "arm": "teacher800_area__ctd128__seed43",
+        "seed": 43,
+        "capacity": "ctd128",
+        "condition": "teacher800_area",
+        "gaussians": 10256,
+        "PSNR": 37.30673542022705,
+        "SSIM": 0.9909331113100052,
+        "LPIPS_alex_v01": 0.016928781988099217,
+        "temporal_residual256": 0.0005821730560059003,
+        "held_native400_mse": 0.0001340534066469912,
+        "held_area800_mse": 4.997181246368642e-05,
+        "held_GT400_mse": 7.86267102887143e-05,
+        "train_seconds": 2.7493480145931244
+      },
+      {
+        "arm": "both800_area__ctd128__seed43",
+        "seed": 43,
+        "capacity": "ctd128",
+        "condition": "both800_area",
+        "gaussians": 10256,
+        "PSNR": 38.103037452697755,
+        "SSIM": 0.9919079869985581,
+        "LPIPS_alex_v01": 0.013867301819846033,
+        "temporal_residual256": 0.000553219962686194,
+        "held_native400_mse": 8.120902910721614e-05,
+        "held_area800_mse": 9.82830230920651e-05,
+        "held_GT400_mse": 0.00012793808943840573,
+        "train_seconds": 4.322628326714039
+      },
+      {
+        "arm": "native400__no_second__seed44",
+        "seed": 44,
+        "capacity": "no_second",
+        "condition": "native400",
+        "gaussians": 10128,
+        "PSNR": 37.86547088623047,
+        "SSIM": 0.9916681349277496,
+        "LPIPS_alex_v01": 0.014272321155294776,
+        "temporal_residual256": 0.0005819111924357525,
+        "held_native400_mse": 8.999352350066467e-05,
+        "held_area800_mse": 0.00010525132495024229,
+        "held_GT400_mse": 0.00013505510941212305,
+        "train_seconds": 2.9878515787422657
+      },
+      {
+        "arm": "teacher800_area__no_second__seed44",
+        "seed": 44,
+        "capacity": "no_second",
+        "condition": "teacher800_area",
+        "gaussians": 10128,
+        "PSNR": 37.16357288360596,
+        "SSIM": 0.9907576769590378,
+        "LPIPS_alex_v01": 0.017150189308449627,
+        "temporal_residual256": 0.0006078780418177504,
+        "held_native400_mse": 0.00014187119027278764,
+        "held_area800_mse": 5.335365789800857e-05,
+        "held_GT400_mse": 8.18286865782087e-05,
+        "train_seconds": 2.7250576950609684
+      },
+      {
+        "arm": "both800_area__no_second__seed44",
+        "seed": 44,
+        "capacity": "no_second",
+        "condition": "both800_area",
+        "gaussians": 10128,
+        "PSNR": 37.881503677368165,
+        "SSIM": 0.9917020201683044,
+        "LPIPS_alex_v01": 0.014178177574649453,
+        "temporal_residual256": 0.0005855530137297754,
+        "held_native400_mse": 9.072197172900888e-05,
+        "held_area800_mse": 0.00010119682878752969,
+        "held_GT400_mse": 0.00013063691162765404,
+        "train_seconds": 4.054026048630476
+      },
+      {
+        "arm": "native400__ctd128__seed44",
+        "seed": 44,
+        "capacity": "ctd128",
+        "condition": "native400",
+        "gaussians": 10256,
+        "PSNR": 38.090881538391116,
+        "SSIM": 0.9918760985136033,
+        "LPIPS_alex_v01": 0.014000337710604072,
+        "temporal_residual256": 0.0005495443228388443,
+        "held_native400_mse": 8.06159754378117e-05,
+        "held_area800_mse": 0.00010262774181634036,
+        "held_GT400_mse": 0.00013259786425584712,
+        "train_seconds": 2.6211634650826454
+      },
+      {
+        "arm": "teacher800_area__ctd128__seed44",
+        "seed": 44,
+        "capacity": "ctd128",
+        "condition": "teacher800_area",
+        "gaussians": 10256,
+        "PSNR": 37.31343536376953,
+        "SSIM": 0.990933221578598,
+        "LPIPS_alex_v01": 0.016978523693978786,
+        "temporal_residual256": 0.000582091429625519,
+        "held_native400_mse": 0.0001338995834639472,
+        "held_area800_mse": 5.013047708367545e-05,
+        "held_GT400_mse": 7.870088754586775e-05,
+        "train_seconds": 2.626279581338167
+      },
+      {
+        "arm": "both800_area__ctd128__seed44",
+        "seed": 44,
+        "capacity": "ctd128",
+        "condition": "both800_area",
+        "gaussians": 10256,
+        "PSNR": 38.10530662536621,
+        "SSIM": 0.9919080257415771,
+        "LPIPS_alex_v01": 0.01391188008710742,
+        "temporal_residual256": 0.0005532333784777321,
+        "held_native400_mse": 8.133923482681574e-05,
+        "held_area800_mse": 9.855483462947509e-05,
+        "held_GT400_mse": 0.0001281613084928894,
+        "train_seconds": 4.076254695653915
+      }
+    ],
+    "aggregates": [
+      {
+        "capacity": "no_second",
+        "condition": "native400",
+        "gaussians": 10128,
+        "n_order_seeds": 3,
+        "metrics": {
+          "PSNR": {
+            "mean": 37.86417293548584,
+            "sample_std": 0.001583761846427856
+          },
+          "SSIM": {
+            "mean": 0.9916666448116302,
+            "sample_std": 2.6016317941637867e-06
+          },
+          "LPIPS_alex_v01": {
+            "mean": 0.014279209030792118,
+            "sample_std": 1.7405048743129846e-05
+          },
+          "temporal_residual256": {
+            "mean": 0.0005819465785917058,
+            "sample_std": 1.1009085067604001e-07
+          },
+          "held_GT400_mse": {
+            "mean": 0.00013495145259668364,
+            "sample_std": 9.209519236501324e-08
+          }
+        }
+      },
+      {
+        "capacity": "no_second",
+        "condition": "teacher800_area",
+        "gaussians": 10128,
+        "n_order_seeds": 3,
+        "metrics": {
+          "PSNR": {
+            "mean": 37.157875760396315,
+            "sample_std": 0.005010857698537476
+          },
+          "SSIM": {
+            "mean": 0.9907572130362192,
+            "sample_std": 5.029121666675757e-07
+          },
+          "LPIPS_alex_v01": {
+            "mean": 0.017100272653624415,
+            "sample_std": 5.373951712785117e-05
+          },
+          "temporal_residual256": {
+            "mean": 0.0006079650833987646,
+            "sample_std": 1.3787386618524327e-07
+          },
+          "held_GT400_mse": {
+            "mean": 8.183200017057216e-05,
+            "sample_std": 6.68579279665736e-08
+          }
+        }
+      },
+      {
+        "capacity": "no_second",
+        "condition": "both800_area",
+        "gaussians": 10128,
+        "n_order_seeds": 3,
+        "metrics": {
+          "PSNR": {
+            "mean": 37.880482228597,
+            "sample_std": 0.0010087595347558333
+          },
+          "SSIM": {
+            "mean": 0.9917004336913426,
+            "sample_std": 1.446215334589625e-06
+          },
+          "LPIPS_alex_v01": {
+            "mean": 0.014162373278910914,
+            "sample_std": 1.7618041804367524e-05
+          },
+          "temporal_residual256": {
+            "mean": 0.0005855806034448468,
+            "sample_std": 3.1782433146441854e-08
+          },
+          "held_GT400_mse": {
+            "mean": 0.00013045876832686257,
+            "sample_std": 1.5887841311076482e-07
+          }
+        }
+      },
+      {
+        "capacity": "ctd128",
+        "condition": "native400",
+        "gaussians": 10256,
+        "n_order_seeds": 3,
+        "metrics": {
+          "PSNR": {
+            "mean": 38.08950500488282,
+            "sample_std": 0.0017412973955006586
+          },
+          "SSIM": {
+            "mean": 0.9918747276067735,
+            "sample_std": 3.280118932818564e-06
+          },
+          "LPIPS_alex_v01": {
+            "mean": 0.013999674702063203,
+            "sample_std": 1.8099259380257992e-05
+          },
+          "temporal_residual256": {
+            "mean": 0.0005495938581768195,
+            "sample_std": 4.4948793366325396e-08
+          },
+          "held_GT400_mse": {
+            "mean": 0.00013247443394402993,
+            "sample_std": 1.08098872810544e-07
+          }
+        }
+      },
+      {
+        "capacity": "ctd128",
+        "condition": "teacher800_area",
+        "gaussians": 10256,
+        "n_order_seeds": 3,
+        "metrics": {
+          "PSNR": {
+            "mean": 37.30800355275472,
+            "sample_std": 0.004921836524743313
+          },
+          "SSIM": {
+            "mean": 0.9909325689077377,
+            "sample_std": 1.0364311970169395e-06
+          },
+          "LPIPS_alex_v01": {
+            "mean": 0.016923677828162908,
+            "sample_std": 5.756790352894744e-05
+          },
+          "temporal_residual256": {
+            "mean": 0.0005822354485957947,
+            "sample_std": 1.833576167560429e-07
+          },
+          "held_GT400_mse": {
+            "mean": 7.869502453333782e-05,
+            "sample_std": 6.55795979113096e-08
+          }
+        }
+      },
+      {
+        "capacity": "ctd128",
+        "condition": "both800_area",
+        "gaussians": 10256,
+        "n_order_seeds": 3,
+        "metrics": {
+          "PSNR": {
+            "mean": 38.1039057413737,
+            "sample_std": 0.0012247569057733635
+          },
+          "SSIM": {
+            "mean": 0.991907157500585,
+            "sample_std": 1.4704126805763487e-06
+          },
+          "LPIPS_alex_v01": {
+            "mean": 0.0138895351284494,
+            "sample_std": 2.2289343357486584e-05
+          },
+          "temporal_residual256": {
+            "mean": 0.0005532284616883344,
+            "sample_std": 7.3905379877934725e-09
+          },
+          "held_GT400_mse": {
+            "mean": 0.000127976775180647,
+            "sample_std": 1.6855361707054914e-07
+          }
+        }
+      }
+    ],
+    "paired_effects": [
+      {
+        "capacity": "no_second",
+        "seed": 42,
+        "a": "teacher800_area",
+        "b": "native400",
+        "PSNR_a_minus_b": -0.7082561492919908,
+        "SSIM_a_minus_b": -0.0009069621562957098,
+        "LPIPS_alex_v01_a_minus_b": 0.0027443857863545425,
+        "temporal_residual256_a_minus_b": 2.605403566829879e-05
+      },
+      {
+        "capacity": "no_second",
+        "seed": 42,
+        "a": "both800_area",
+        "b": "native400",
+        "PSNR_a_minus_b": 0.018048095703122158,
+        "SSIM_a_minus_b": 3.554821014406517e-05,
+        "LPIPS_alex_v01_a_minus_b": -0.00013343938626349076,
+        "temporal_residual256_a_minus_b": 3.545344830646873e-06
+      },
+      {
+        "capacity": "no_second",
+        "seed": 42,
+        "a": "both800_area",
+        "b": "teacher800_area",
+        "PSNR_a_minus_b": 0.7263042449951129,
+        "SSIM_a_minus_b": 0.0009425103664397749,
+        "LPIPS_alex_v01_a_minus_b": -0.0028778251726180332,
+        "temporal_residual256_a_minus_b": -2.2508690837651918e-05
+      },
+      {
+        "capacity": "no_second",
+        "seed": 43,
+        "a": "teacher800_area",
+        "b": "native400",
+        "PSNR_a_minus_b": -0.7087373733520508,
+        "SSIM_a_minus_b": -0.0009108752012253474,
+        "LPIPS_alex_v01_a_minus_b": 0.002840936928987502,
+        "temporal_residual256_a_minus_b": 2.6034629370879714e-05
+      },
+      {
+        "capacity": "no_second",
+        "seed": 43,
+        "a": "both800_area",
+        "b": "native400",
+        "PSNR_a_minus_b": 0.014846992492678623,
+        "SSIM_a_minus_b": 3.193318843841553e-05,
+        "LPIPS_alex_v01_a_minus_b": -0.0001229242887347947,
+        "temporal_residual256_a_minus_b": 3.7149084347532424e-06
+      },
+      {
+        "capacity": "no_second",
+        "seed": 43,
+        "a": "both800_area",
+        "b": "teacher800_area",
+        "PSNR_a_minus_b": 0.7235843658447294,
+        "SSIM_a_minus_b": 0.0009428083896637629,
+        "LPIPS_alex_v01_a_minus_b": -0.0029638612177222967,
+        "temporal_residual256_a_minus_b": -2.2319720936126472e-05
+      },
+      {
+        "capacity": "no_second",
+        "seed": 44,
+        "a": "teacher800_area",
+        "b": "native400",
+        "PSNR_a_minus_b": -0.7018980026245103,
+        "SSIM_a_minus_b": -0.0009104579687118086,
+        "LPIPS_alex_v01_a_minus_b": 0.0028778681531548504,
+        "temporal_residual256_a_minus_b": 2.5966849381997884e-05
+      },
+      {
+        "capacity": "no_second",
+        "seed": 44,
+        "a": "both800_area",
+        "b": "native400",
+        "PSNR_a_minus_b": 0.016032791137696734,
+        "SSIM_a_minus_b": 3.388524055480957e-05,
+        "LPIPS_alex_v01_a_minus_b": -9.414358064532315e-05,
+        "temporal_residual256_a_minus_b": 3.64182129402289e-06
+      },
+      {
+        "capacity": "no_second",
+        "seed": 44,
+        "a": "both800_area",
+        "b": "teacher800_area",
+        "PSNR_a_minus_b": 0.717930793762207,
+        "SSIM_a_minus_b": 0.0009443432092666182,
+        "LPIPS_alex_v01_a_minus_b": -0.0029720117338001735,
+        "temporal_residual256_a_minus_b": -2.2325028087974994e-05
+      },
+      {
+        "capacity": "ctd128",
+        "seed": 42,
+        "a": "teacher800_area",
+        "b": "native400",
+        "PSNR_a_minus_b": -0.7837076187133789,
+        "SSIM_a_minus_b": -0.000939610600471541,
+        "LPIPS_alex_v01_a_minus_b": 0.002846294455230238,
+        "temporal_residual256_a_minus_b": 3.283665376409078e-05
+      },
+      {
+        "capacity": "ctd128",
+        "seed": 42,
+        "a": "both800_area",
+        "b": "native400",
+        "PSNR_a_minus_b": 0.015825653076170454,
+        "SSIM_a_minus_b": 3.447532653810814e-05,
+        "LPIPS_alex_v01_a_minus_b": -0.0001280098687857379,
+        "temporal_residual256_a_minus_b": 3.626837509202894e-06
+      },
+      {
+        "capacity": "ctd128",
+        "seed": 42,
+        "a": "both800_area",
+        "b": "teacher800_area",
+        "PSNR_a_minus_b": 0.7995332717895494,
+        "SSIM_a_minus_b": 0.0009740859270096491,
+        "LPIPS_alex_v01_a_minus_b": -0.002974304324015976,
+        "temporal_residual256_a_minus_b": -2.9209816254887884e-05
+      },
+      {
+        "capacity": "ctd128",
+        "seed": 43,
+        "a": "teacher800_area",
+        "b": "native400",
+        "PSNR_a_minus_b": -0.7833505630493178,
+        "SSIM_a_minus_b": -0.000943988561630249,
+        "LPIPS_alex_v01_a_minus_b": 0.002947528939694166,
+        "temporal_residual256_a_minus_b": 3.254101070616043e-05
+      },
+      {
+        "capacity": "ctd128",
+        "seed": 43,
+        "a": "both800_area",
+        "b": "native400",
+        "PSNR_a_minus_b": 0.01295146942138814,
+        "SSIM_a_minus_b": 3.0887126922674035e-05,
+        "LPIPS_alex_v01_a_minus_b": -0.00011395122855901822,
+        "temporal_residual256_a_minus_b": 3.58791738645412e-06
+      },
+      {
+        "capacity": "ctd128",
+        "seed": 43,
+        "a": "both800_area",
+        "b": "teacher800_area",
+        "PSNR_a_minus_b": 0.796302032470706,
+        "SSIM_a_minus_b": 0.0009748756885529231,
+        "LPIPS_alex_v01_a_minus_b": -0.003061480168253184,
+        "temporal_residual256_a_minus_b": -2.895309331970631e-05
+      },
+      {
+        "capacity": "ctd128",
+        "seed": 44,
+        "a": "teacher800_area",
+        "b": "native400",
+        "PSNR_a_minus_b": -0.7774461746215877,
+        "SSIM_a_minus_b": -0.0009428769350052768,
+        "LPIPS_alex_v01_a_minus_b": 0.0029781859833747145,
+        "temporal_residual256_a_minus_b": 3.254710678667473e-05
+      },
+      {
+        "capacity": "ctd128",
+        "seed": 44,
+        "a": "both800_area",
+        "b": "native400",
+        "PSNR_a_minus_b": 0.014425086975094814,
+        "SSIM_a_minus_b": 3.192722797384917e-05,
+        "LPIPS_alex_v01_a_minus_b": -8.8457623496652e-05,
+        "temporal_residual256_a_minus_b": 3.689055638887782e-06
+      },
+      {
+        "capacity": "ctd128",
+        "seed": 44,
+        "a": "both800_area",
+        "b": "teacher800_area",
+        "PSNR_a_minus_b": 0.7918712615966825,
+        "SSIM_a_minus_b": 0.000974804162979126,
+        "LPIPS_alex_v01_a_minus_b": -0.0030666436068713665,
+        "temporal_residual256_a_minus_b": -2.8858051147786948e-05
+      }
+    ],
+    "split_effects": [
+      {
+        "condition": "native400",
+        "seed": 42,
+        "PSNR_ctd128_minus_no_second": 0.22513923645019673,
+        "LPIPS_ctd128_minus_no_second": -0.00028157057240605493
+      },
+      {
+        "condition": "native400",
+        "seed": 43,
+        "PSNR_ctd128_minus_no_second": 0.22544631958007955,
+        "LPIPS_ctd128_minus_no_second": -0.0002850489690899849
+      },
+      {
+        "condition": "native400",
+        "seed": 44,
+        "PSNR_ctd128_minus_no_second": 0.22541065216064737,
+        "LPIPS_ctd128_minus_no_second": -0.00027198344469070435
+      },
+      {
+        "condition": "teacher800_area",
+        "seed": 42,
+        "PSNR_ctd128_minus_no_second": 0.1496877670288086,
+        "LPIPS_ctd128_minus_no_second": -0.00017966190353035927
+      },
+      {
+        "condition": "teacher800_area",
+        "seed": 43,
+        "PSNR_ctd128_minus_no_second": 0.1508331298828125,
+        "LPIPS_ctd128_minus_no_second": -0.00017845695838332107
+      },
+      {
+        "condition": "teacher800_area",
+        "seed": 44,
+        "PSNR_ctd128_minus_no_second": 0.14986248016356996,
+        "LPIPS_ctd128_minus_no_second": -0.0001716656144708402
+      },
+      {
+        "condition": "both800_area",
+        "seed": 42,
+        "PSNR_ctd128_minus_no_second": 0.22291679382324503,
+        "LPIPS_ctd128_minus_no_second": -0.00027614105492830207
+      },
+      {
+        "condition": "both800_area",
+        "seed": 43,
+        "PSNR_ctd128_minus_no_second": 0.22355079650878906,
+        "LPIPS_ctd128_minus_no_second": -0.0002760759089142084
+      },
+      {
+        "condition": "both800_area",
+        "seed": 44,
+        "PSNR_ctd128_minus_no_second": 0.22380294799804545,
+        "LPIPS_ctd128_minus_no_second": -0.0002662974875420332
+      }
+    ],
+    "native400_seed42_E09_repeat_delta": {
+      "PSNR": 4.005432131748421e-06,
+      "SSIM": 2.562999725785886e-07,
+      "LPIPS_alex_v01": 8.26222822068734e-07
+    },
+    "verification": {
+      "input_and_source_hashes": true,
+      "shared1140_state_digest": true,
+      "paired_identical_initial_digests": true,
+      "all15_epoch_orders_distinct_across_seeds": true,
+      "both_geometry_arrays_reconstructed": true,
+      "all18_frozen_before_evaluation": true,
+      "all18_finite_parameters_moments_Adam_step1520": true,
+      "all90_epochs_and360_GT_rows": true,
+      "all_fidelity_and_temporal_means": true
+    },
+    "scope": "Primary target-only contrast and secondary student-renderer control, fixedCTD geometry/choices. All380update target-switch pilots from native400-warmed state.",
+    "limits": [
+      "Short380update target-switch pilot from native400-adapted warm state",
+      "Three future-order perturbations, same baseline/grouping/childgeometry; single scene",
+      "Different counts across capacities; target comparisons paired within samecount",
+      "both800_area changes student renderer and costs more; compare separately from target-only primary",
+      "Fixed teacher/child geometry and appearance-only training; no new split policy/full4DGS adaptive densification"
+    ],
+    "compute": "18x380=6840new gradient updates; both800_area rasterizes4x pixels per step. GPU shared, walltimes not inference or speed benchmarks."
+  },
+  "remote_publish_requested": false,
+  "full4DGS_training_densification_implemented": false
+}

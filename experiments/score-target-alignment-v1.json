@@ -1,0 +1,13 @@
+{
+ "version":"E11-score-target-alignment-v1","status":"fixed before evaluation; read-only diagnostic","phases":[0,380],"candidate_batches":24,"training_updates":0,
+ "sources":"E09 shared1140 state; E10 frozen reference and24 single-batch final1520 states. Original CTD child trajectories unchanged.",
+ "conditions":{"fit400":"Original20 E09 fit decision views,400px","train400":"Training cameras matching all20 test times,400px","test400":"Same20 times, test cameras,400px","train800":"Same20 paired training cameras,800px","test800":"Same20 paired test cameras,800px"},
+ "targets":"Frozen teacher float render and canonical white-composited real GT.800px GT from upstream Scene loader;400px by torch area downsample. Test800 GT checked against baseline PNG and uses saved PNG floats for E10 parity.",
+ "metrics":["teacher_mix","gt_mix","teacher_mse","gt_mse","teacher_gt_mse","cross_term","gt_mse_u8","gt_psnr_u8"],
+ "mix":"0.8L1+0.2(1-SSIM). Floating RGB[0,1];8bit prediction round(pred*255)/255 only for u8 metrics. Mean PSNR computed per view then averaged, not PSNR of mean MSE.",
+ "identity":"MSE(student,GT)=MSE(student,teacher)+MSE(teacher,GT)+2mean((student-teacher)*(teacher-GT)). Gain uses reference minus proposal at same phase; teacher-GT term cancels.",
+ "primary":"Correlate four phase0 fit400 scores (teacher/GT x mixed/MSE) with phase380 same-fit400 GT MSE gain, paired train/test400/800 GT MSE gains and E10 official GT PSNR gain. Every24 candidate retained; no best-policy selection.",
+ "secondary":"Phase380 gain-rank transfer train400 vs test400,train800 vs test800,test400 vs test800;floatMSE vs quantizedMSE vs mean per-view PSNR;teacher-MSE gain vs GT-MSE gain and cross-term contribution.",
+ "guards":"All input/model hashes unchanged, shared1140 digest, same geometry recipes asE10,fit400 teacher mixed loss parity withE10 at phases0/380,test800 quantizedGT PSNR/MSE parity withE10 per-view records. No new training or optimizer steps.",
+ "limitations":["Exploratory24 related batches from CTD top512, one scene/order","Paired train/test views share times but differ cameras; paired times may be outside reduction fit","Training GT and teacher scores are diagnostics, not implemented/retrained supervision policies","Test-view scores are explanatory only, unavailable for future candidate selection","Teacher bias and metric/camera/resolution effects measured here do not establish one exclusive cause or statistical significance","Fixed teacher and child geometry; full4DGS adaptive densification remains unfinished"]
+}

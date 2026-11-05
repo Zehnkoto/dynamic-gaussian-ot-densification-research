@@ -1,0 +1,313 @@
+{
+  "run": "/data3/store1/yhy-b26/outputs/ot/e11-score-target-alignment-20261104T155538Z",
+  "report": {
+    "training_updates": 0,
+    "candidate_batches": 24,
+    "phases": [
+      0,
+      380
+    ],
+    "primary_correlations": [
+      {
+        "predictor": "teacher_mix",
+        "outcome": "final_fit400_gt_mse",
+        "spearman": 0.35826086956521735
+      },
+      {
+        "predictor": "teacher_mix",
+        "outcome": "final_train400_gt_mse",
+        "spearman": 0.17478260869565218
+      },
+      {
+        "predictor": "teacher_mix",
+        "outcome": "final_test400_gt_mse",
+        "spearman": 0.2582608695652174
+      },
+      {
+        "predictor": "teacher_mix",
+        "outcome": "final_train800_gt_mse",
+        "spearman": 0.6878260869565217
+      },
+      {
+        "predictor": "teacher_mix",
+        "outcome": "final_test800_gt_mse",
+        "spearman": 0.36347826086956525
+      },
+      {
+        "predictor": "teacher_mix",
+        "outcome": "final_official_GT_PSNR",
+        "spearman": 0.2817391304347826
+      },
+      {
+        "predictor": "teacher_mse",
+        "outcome": "final_fit400_gt_mse",
+        "spearman": 0.4669565217391304
+      },
+      {
+        "predictor": "teacher_mse",
+        "outcome": "final_train400_gt_mse",
+        "spearman": 0.37304347826086953
+      },
+      {
+        "predictor": "teacher_mse",
+        "outcome": "final_test400_gt_mse",
+        "spearman": 0.29739130434782607
+      },
+      {
+        "predictor": "teacher_mse",
+        "outcome": "final_train800_gt_mse",
+        "spearman": 0.8026086956521737
+      },
+      {
+        "predictor": "teacher_mse",
+        "outcome": "final_test800_gt_mse",
+        "spearman": 0.4321739130434783
+      },
+      {
+        "predictor": "teacher_mse",
+        "outcome": "final_official_GT_PSNR",
+        "spearman": 0.4356521739130434
+      },
+      {
+        "predictor": "gt_mix",
+        "outcome": "final_fit400_gt_mse",
+        "spearman": 0.6513043478260869
+      },
+      {
+        "predictor": "gt_mix",
+        "outcome": "final_train400_gt_mse",
+        "spearman": 0.46173913043478254
+      },
+      {
+        "predictor": "gt_mix",
+        "outcome": "final_test400_gt_mse",
+        "spearman": 0.4260869565217391
+      },
+      {
+        "predictor": "gt_mix",
+        "outcome": "final_train800_gt_mse",
+        "spearman": 0.43304347826086953
+      },
+      {
+        "predictor": "gt_mix",
+        "outcome": "final_test800_gt_mse",
+        "spearman": 0.4356521739130434
+      },
+      {
+        "predictor": "gt_mix",
+        "outcome": "final_official_GT_PSNR",
+        "spearman": 0.537391304347826
+      },
+      {
+        "predictor": "gt_mse",
+        "outcome": "final_fit400_gt_mse",
+        "spearman": 0.8652173913043478
+      },
+      {
+        "predictor": "gt_mse",
+        "outcome": "final_train400_gt_mse",
+        "spearman": 0.7260869565217389
+      },
+      {
+        "predictor": "gt_mse",
+        "outcome": "final_test400_gt_mse",
+        "spearman": 0.497391304347826
+      },
+      {
+        "predictor": "gt_mse",
+        "outcome": "final_train800_gt_mse",
+        "spearman": 0.5660869565217391
+      },
+      {
+        "predictor": "gt_mse",
+        "outcome": "final_test800_gt_mse",
+        "spearman": 0.29478260869565215
+      },
+      {
+        "predictor": "gt_mse",
+        "outcome": "final_official_GT_PSNR",
+        "spearman": 0.3930434782608695
+      }
+    ],
+    "rank_transfer": [
+      {
+        "a": "train400",
+        "b": "test400",
+        "metric": "final_gt_mse_gain",
+        "spearman": 0.4878260869565217
+      },
+      {
+        "a": "train800",
+        "b": "test800",
+        "metric": "final_gt_mse_gain",
+        "spearman": 0.40956521739130425
+      },
+      {
+        "a": "test400",
+        "b": "test800",
+        "metric": "final_gt_mse_gain",
+        "spearman": 0.6443478260869565
+      },
+      {
+        "a": "train400",
+        "b": "train800",
+        "metric": "final_gt_mse_gain",
+        "spearman": 0.5408695652173913
+      },
+      {
+        "a": "fit400",
+        "b": "train400",
+        "metric": "final_gt_mse_gain",
+        "spearman": 0.7095652173913043
+      },
+      {
+        "a": "gt_mse",
+        "b": "gt_mse_u8",
+        "metric": "final_test800_gain",
+        "spearman": 0.9991304347826085
+      },
+      {
+        "a": "gt_mse_u8",
+        "b": "gt_psnr_u8",
+        "metric": "final_test800_gain",
+        "spearman": 0.9565217391304346
+      }
+    ],
+    "mse_decomposition": [
+      {
+        "phase": 0,
+        "condition": "fit400",
+        "teacher_GT_gain_rank_spearman": 0.46434782608695646,
+        "mean_abs_cross_gain_over_mean_abs_teacher_gain": 1.0162565990988146,
+        "positive_teacher_gain_negative_GT_gain": 12,
+        "teacher_GT_MSE": 0.00014788748594583013
+      },
+      {
+        "phase": 0,
+        "condition": "train400",
+        "teacher_GT_gain_rank_spearman": 0.5982608695652173,
+        "mean_abs_cross_gain_over_mean_abs_teacher_gain": 0.9398144765971743,
+        "positive_teacher_gain_negative_GT_gain": 8,
+        "teacher_GT_MSE": 0.00015436990543093998
+      },
+      {
+        "phase": 0,
+        "condition": "test400",
+        "teacher_GT_gain_rank_spearman": 0.4626086956521739,
+        "mean_abs_cross_gain_over_mean_abs_teacher_gain": 0.9235533792071224,
+        "positive_teacher_gain_negative_GT_gain": 12,
+        "teacher_GT_MSE": 0.00020451940727070906
+      },
+      {
+        "phase": 0,
+        "condition": "train800",
+        "teacher_GT_gain_rank_spearman": 0.9852173913043477,
+        "mean_abs_cross_gain_over_mean_abs_teacher_gain": 0.04594671639109934,
+        "positive_teacher_gain_negative_GT_gain": 0,
+        "teacher_GT_MSE": 2.9098528693793922e-05
+      },
+      {
+        "phase": 0,
+        "condition": "test800",
+        "teacher_GT_gain_rank_spearman": 0.8739130434782607,
+        "mean_abs_cross_gain_over_mean_abs_teacher_gain": 0.16381262973606978,
+        "positive_teacher_gain_negative_GT_gain": 1,
+        "teacher_GT_MSE": 9.524280394543894e-05
+      },
+      {
+        "phase": 380,
+        "condition": "fit400",
+        "teacher_GT_gain_rank_spearman": 0.5791304347826086,
+        "mean_abs_cross_gain_over_mean_abs_teacher_gain": 0.8574633592900694,
+        "positive_teacher_gain_negative_GT_gain": 5,
+        "teacher_GT_MSE": 0.00014788748594583013
+      },
+      {
+        "phase": 380,
+        "condition": "train400",
+        "teacher_GT_gain_rank_spearman": 0.4721739130434783,
+        "mean_abs_cross_gain_over_mean_abs_teacher_gain": 0.7916728028427182,
+        "positive_teacher_gain_negative_GT_gain": 3,
+        "teacher_GT_MSE": 0.00015436990543093998
+      },
+      {
+        "phase": 380,
+        "condition": "test400",
+        "teacher_GT_gain_rank_spearman": 0.5026086956521739,
+        "mean_abs_cross_gain_over_mean_abs_teacher_gain": 0.8005552978836796,
+        "positive_teacher_gain_negative_GT_gain": 5,
+        "teacher_GT_MSE": 0.00020451940727070906
+      },
+      {
+        "phase": 380,
+        "condition": "train800",
+        "teacher_GT_gain_rank_spearman": 0.9930434782608695,
+        "mean_abs_cross_gain_over_mean_abs_teacher_gain": 0.04651639074833953,
+        "positive_teacher_gain_negative_GT_gain": 0,
+        "teacher_GT_MSE": 2.9098528693793922e-05
+      },
+      {
+        "phase": 380,
+        "condition": "test800",
+        "teacher_GT_gain_rank_spearman": 0.8217391304347826,
+        "mean_abs_cross_gain_over_mean_abs_teacher_gain": 0.1286373492426299,
+        "positive_teacher_gain_negative_GT_gain": 0,
+        "teacher_GT_MSE": 9.524280394543894e-05
+      }
+    ],
+    "verification": {
+      "all_input_and_source_hashes": true,
+      "all5000_rows_finite_and_indexed": true,
+      "all5000_MSE_identities": true,
+      "paired20_times_for_camera_resolution_conditions": true,
+      "fixed_teacher_GT_targets_across_arms_and_phases": true,
+      "E10_fit_teacher_loss_parity": true,
+      "E10_500_GT_PSNR_parity": true,
+      "shared1140_state_unchanged": true
+    },
+    "max_MSE_identity_error": 7.275957614183426e-11,
+    "max_E10_monitor_error": 0.0,
+    "max_E10_test_PSNR_error": 7.62939453125e-06,
+    "limitations": [
+      "Exploratory24 related batches from CTD top512, one scene/order",
+      "Paired train/test views share times but differ cameras; paired times may be outside reduction fit",
+      "Training GT and teacher scores are diagnostics, not implemented/retrained supervision policies",
+      "Test-view scores are explanatory only, unavailable for future candidate selection",
+      "Teacher bias and metric/camera/resolution effects measured here do not establish one exclusive cause or statistical significance",
+      "Fixed teacher and child geometry; full4DGS adaptive densification remains unfinished"
+    ],
+    "scope": "Read-only controlled diagnostic of frozen states, not a new trained split policy."
+  },
+  "remote_publish_requested": false,
+  "full4DGS_training_densification_implemented": false,
+  "teacher_resolution_bridge_posthoc": {
+    "status": "post-hoc measurement prompted by E11 resolution difference, not primary predeclared analysis",
+    "training_updates": 0,
+    "summary": {
+      "fit400": {
+        "native400_GT400_MSE": 0.00014788748594583013,
+        "areaTeacher800_GT400_MSE": 1.6879011172932224e-05,
+        "native400_areaTeacher800_MSE": 0.0001227904354891507,
+        "native800_GT800_MSE": 2.4100704740703806e-05
+      },
+      "train400": {
+        "native400_GT400_MSE": 0.00015436990543093998,
+        "areaTeacher800_GT400_MSE": 2.08822203148884e-05,
+        "native400_areaTeacher800_MSE": 0.0001273145568120526,
+        "native800_GT800_MSE": 2.9098528693793922e-05
+      },
+      "test400": {
+        "native400_GT400_MSE": 0.00020451940727070906,
+        "areaTeacher800_GT400_MSE": 7.90077699093672e-05,
+        "native400_areaTeacher800_MSE": 0.00011665319798339623,
+        "native800_GT800_MSE": 9.524280394543894e-05
+      }
+    },
+    "input_manifest_sha256": "fa2ad8ef65d046f1c8f705628111676707ba1edeb47287784d29197ac571a14e",
+    "notes": [
+      "All source/model/data hashes unchanged",
+      "Matched camera and white-composited real GT; same area800to400 operator for teacher and GT",
+      "No student targets changed or models retrained; lower teacher-to-GT MSE does not establish student quality improvement"
+    ]
+  }
+}

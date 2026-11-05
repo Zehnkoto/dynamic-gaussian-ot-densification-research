@@ -1,0 +1,8 @@
+a,b,metric,spearman
+train400,test400,final_gt_mse_gain,0.4878260869565217
+train800,test800,final_gt_mse_gain,0.40956521739130425
+test400,test800,final_gt_mse_gain,0.6443478260869565
+train400,train800,final_gt_mse_gain,0.5408695652173913
+fit400,train400,final_gt_mse_gain,0.7095652173913043
+gt_mse,gt_mse_u8,final_test800_gain,0.9991304347826085
+gt_mse_u8,gt_psnr_u8,final_test800_gain,0.9565217391304346

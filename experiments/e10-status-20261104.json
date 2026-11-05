@@ -1,0 +1,336 @@
+{
+  "run": "/data3/store1/yhy-b26/outputs/ot/e10-gain-prediction-20261104T135817Z",
+  "report": {
+    "reference": {
+      "gaussians": 10128,
+      "GT": {
+        "PSNR": 37.86229915618897,
+        "SSIM": 0.9916637003421783,
+        "LPIPS_alex_v01": 0.014297127071768046
+      },
+      "horizon_mean_losses": {
+        "0": {
+          "fit_decision": 0.0017337460769340396,
+          "holdout": 0.0020734677217095284
+        },
+        "20": {
+          "fit_decision": 0.001721032994100824,
+          "holdout": 0.0020653560751344303
+        },
+        "76": {
+          "fit_decision": 0.001722369168419391,
+          "holdout": 0.0020647961630586636
+        },
+        "380": {
+          "fit_decision": 0.001696606120094657,
+          "holdout": 0.002052656109004307
+        }
+      }
+    },
+    "candidate_count": 24,
+    "candidate_gaussians": 10144,
+    "new_gradient_updates": 9500,
+    "correlations": [
+      {
+        "predictor": "fit_loss_gain_0",
+        "outcome": "fit_loss_gain_380",
+        "spearman": 0.6043478260869565
+      },
+      {
+        "predictor": "fit_loss_gain_0",
+        "outcome": "holdout_loss_gain_380",
+        "spearman": 0.5826086956521739
+      },
+      {
+        "predictor": "fit_loss_gain_0",
+        "outcome": "GT_PSNR_gain_380",
+        "spearman": 0.2817391304347826
+      },
+      {
+        "predictor": "fit_loss_gain_0",
+        "outcome": "GT_LPIPS_decrease_380",
+        "spearman": 0.06695652173913043
+      },
+      {
+        "predictor": "fit_loss_gain_20",
+        "outcome": "fit_loss_gain_380",
+        "spearman": 0.7408695652173911
+      },
+      {
+        "predictor": "fit_loss_gain_20",
+        "outcome": "holdout_loss_gain_380",
+        "spearman": 0.7504347826086956
+      },
+      {
+        "predictor": "fit_loss_gain_20",
+        "outcome": "GT_PSNR_gain_380",
+        "spearman": 0.42260869565217385
+      },
+      {
+        "predictor": "fit_loss_gain_20",
+        "outcome": "GT_LPIPS_decrease_380",
+        "spearman": 0.06
+      },
+      {
+        "predictor": "fit_loss_gain_76",
+        "outcome": "fit_loss_gain_380",
+        "spearman": 0.8565217391304346
+      },
+      {
+        "predictor": "fit_loss_gain_76",
+        "outcome": "holdout_loss_gain_380",
+        "spearman": 0.7347826086956522
+      },
+      {
+        "predictor": "fit_loss_gain_76",
+        "outcome": "GT_PSNR_gain_380",
+        "spearman": 0.4504347826086956
+      },
+      {
+        "predictor": "fit_loss_gain_76",
+        "outcome": "GT_LPIPS_decrease_380",
+        "spearman": 0.09043478260869564
+      },
+      {
+        "predictor": "window_CTD_gain",
+        "outcome": "fit_loss_gain_380",
+        "spearman": 0.19478260869565217
+      },
+      {
+        "predictor": "window_CTD_gain",
+        "outcome": "holdout_loss_gain_380",
+        "spearman": 0.05913043478260869
+      },
+      {
+        "predictor": "window_CTD_gain",
+        "outcome": "GT_PSNR_gain_380",
+        "spearman": 0.20434782608695648
+      },
+      {
+        "predictor": "window_CTD_gain",
+        "outcome": "GT_LPIPS_decrease_380",
+        "spearman": -0.04434782608695652
+      },
+      {
+        "predictor": "mean_CTD_gain",
+        "outcome": "fit_loss_gain_380",
+        "spearman": 0.07304347826086956
+      },
+      {
+        "predictor": "mean_CTD_gain",
+        "outcome": "holdout_loss_gain_380",
+        "spearman": -0.08434782608695651
+      },
+      {
+        "predictor": "mean_CTD_gain",
+        "outcome": "GT_PSNR_gain_380",
+        "spearman": 0.06869565217391303
+      },
+      {
+        "predictor": "mean_CTD_gain",
+        "outcome": "GT_LPIPS_decrease_380",
+        "spearman": -0.08695652173913042
+      }
+    ],
+    "max_E09_immediate_score_difference": 1.3044307387716225e-19,
+    "positive_immediate_but_negative_final_fit": 0,
+    "positive_immediate_but_negative_GT_PSNR": 0,
+    "outcome_ranges": {
+      "fit_loss_gain_380": {
+        "min": 4.979397635906848e-06,
+        "max": 1.579046947881575e-05
+      },
+      "holdout_loss_gain_380": {
+        "min": 5.922264520179851e-06,
+        "max": 1.6139930340688252e-05
+      },
+      "GT_PSNR_gain_380": {
+        "min": 0.01329097747802166,
+        "max": 0.04011287689208842
+      },
+      "GT_LPIPS_decrease_380": {
+        "min": 1.0664155706763961e-05,
+        "max": 8.641593158245121e-05
+      }
+    },
+    "verification": {
+      "inputs_and_source_hashes": true,
+      "shared1140_checkpoint_digest": true,
+      "all25_geometry_recipes_reconstructed": true,
+      "all25_finite_parameters_moments_and_Adam_step1520": true,
+      "all100_horizon_records_and125_epochs_checked": true,
+      "all500_GT_rows_averaged": true,
+      "all25_final_model_hashes_frozen_before_GT": true,
+      "same380_future_updates_each": true,
+      "E09_immediate_score_parity_within1e_minus6": true
+    },
+    "scope": "Counterfactual single-batch diagnostic at fixed shared appearance state. Geometry and teacher remain frozen; no new split policy or full4DGS training.",
+    "limitations": [
+      "Single scene/order,24 related candidate batches conditional on CTD top512 pool",
+      "Independent16-parent effects need not add up for joint128-parent selection",
+      "Decision views belong to fit and future training; holdout relative to reduction, not unseen by base teacher",
+      "Unequal counts vs no-split reference intentionally measure marginal capacity benefit, not equal-count policy superiority",
+      "Small effects can be affected by CUDA numerical variation; no independent repeat or inference-speed claim"
+    ],
+    "interpretation": "Exploratory correlations, not a new selected policy or causal guarantee for joint128-parent selection. No p-values or significance claim."
+  },
+  "full4DGS_training_densification_implemented": false,
+  "remote_publish_requested": false,
+  "supplement": {
+    "negative_immediate_but_positive_final_GT": [
+      {
+        "batch": 11,
+        "immediate_fit_loss_gain": -1.622049603611231e-05,
+        "final_fit_loss_gain": 7.298815762624101e-06,
+        "final_GT_PSNR_gain": 0.018661689758296518
+      }
+    ],
+    "joint_additivity_posthoc": {
+      "status": "post-hoc diagnostic, not predeclared E10 primary analysis",
+      "rows": [
+        {
+          "arm": "fixed_ctd",
+          "views": "fit_decision",
+          "selected_batches": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "actual_joint_gain": 9.307700674980883e-05,
+          "sum_of_independent_batch_gains": 9.824872249737313e-05,
+          "joint_minus_sum": -5.171715747564294e-06
+        },
+        {
+          "arm": "fixed_ctd",
+          "views": "holdout",
+          "selected_batches": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "actual_joint_gain": 9.472744627478163e-05,
+          "sum_of_independent_batch_gains": 9.710146145693911e-05,
+          "joint_minus_sum": -2.3740151821574802e-06
+        },
+        {
+          "arm": "current_render",
+          "views": "fit_decision",
+          "selected_batches": [
+            2,
+            5,
+            7,
+            8,
+            9,
+            13,
+            17,
+            22
+          ],
+          "actual_joint_gain": 9.924545302055767e-05,
+          "sum_of_independent_batch_gains": 0.00010347001953050486,
+          "joint_minus_sum": -4.224566509947181e-06
+        },
+        {
+          "arm": "current_render",
+          "views": "holdout",
+          "selected_batches": [
+            2,
+            5,
+            7,
+            8,
+            9,
+            13,
+            17,
+            22
+          ],
+          "actual_joint_gain": 9.984915409035804e-05,
+          "sum_of_independent_batch_gains": 0.00010120220060737348,
+          "joint_minus_sum": -1.3530465170154445e-06
+        },
+        {
+          "arm": "stale_render",
+          "views": "fit_decision",
+          "selected_batches": [
+            2,
+            5,
+            7,
+            8,
+            9,
+            13,
+            22,
+            23
+          ],
+          "actual_joint_gain": 0.00010192923364229492,
+          "sum_of_independent_batch_gains": 0.0001063956238795071,
+          "joint_minus_sum": -4.466390237212181e-06
+        },
+        {
+          "arm": "stale_render",
+          "views": "holdout",
+          "selected_batches": [
+            2,
+            5,
+            7,
+            8,
+            9,
+            13,
+            22,
+            23
+          ],
+          "actual_joint_gain": 0.00010453835066810669,
+          "sum_of_independent_batch_gains": 0.00010340958770767425,
+          "joint_minus_sum": 1.128762960432442e-06
+        },
+        {
+          "arm": "random",
+          "views": "fit_decision",
+          "selected_batches": [
+            0,
+            9,
+            10,
+            11,
+            13,
+            16,
+            17,
+            23
+          ],
+          "actual_joint_gain": 8.411486633121959e-05,
+          "sum_of_independent_batch_gains": 8.423679391853498e-05,
+          "joint_minus_sum": -1.219275873153968e-07
+        },
+        {
+          "arm": "random",
+          "views": "holdout",
+          "selected_batches": [
+            0,
+            9,
+            10,
+            11,
+            13,
+            16,
+            17,
+            23
+          ],
+          "actual_joint_gain": 9.66469697478052e-05,
+          "sum_of_independent_batch_gains": 9.876173430097392e-05,
+          "joint_minus_sum": -2.114764553168714e-06
+        }
+      ],
+      "notes": [
+        "No training, new selections or thresholds; E09 selected sets remain frozen",
+        "Uses exactly same shared1140 state and380-update orders as E10",
+        "Loss is nonlinear and rendering has occlusion interactions; deviation includes these effects and numerical training variation",
+        "No additive assumption for logarithmic GT PSNR; only teacher render loss checked"
+      ]
+    }
+  }
+}
