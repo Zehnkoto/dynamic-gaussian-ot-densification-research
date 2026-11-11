@@ -1,0 +1,75 @@
+{
+  "run": "/data3/store1/yhy-b26/outputs/ot/e17-perceptual-diagnostic-20261110-v1",
+  "teacher_alignment_run": "/data3/store1/yhy-b26/outputs/ot/e17b-perceptual-teacher-alignment-20261110-v1",
+  "regional_audit": {
+    "verification": {
+      "all_E16_and_E17_inputs_hash_matched": true,
+      "all20_views_and_masks_recomputed": true,
+      "E16_metric_max_difference": 3.814697265625e-05,
+      "spatial_map_mean_vs_scalar_LPIPS_max_difference": 6.277114152908325e-07,
+      "region_contributions_match_global_delta": true
+    },
+    "spatial_LPIPS_delta_contributions": {
+      "edge": {
+        "pixels": 779821,
+        "pixel_fraction": 0.060923515625,
+        "mean_spatial_LPIPS_delta": 0.013031276834452085,
+        "contribution_to_global_delta": 0.0007939111978374422,
+        "worse_views": 20,
+        "pixel_MSE_better_views": 20
+      },
+      "other_foreground": {
+        "pixels": 3119320,
+        "pixel_fraction": 0.243696875,
+        "mean_spatial_LPIPS_delta": 0.008102924799004024,
+        "contribution_to_global_delta": 0.0019746574518772837,
+        "worse_views": 20,
+        "pixel_MSE_better_views": 8
+      },
+      "background": {
+        "pixels": 8900859,
+        "pixel_fraction": 0.695379609375,
+        "mean_spatial_LPIPS_delta": 0.001720365213228688,
+        "contribution_to_global_delta": 0.0011963068899573034,
+        "worse_views": 20,
+        "pixel_MSE_better_views": 0
+      }
+    },
+    "global_spatial_LPIPS_delta": 0.003964875539672029,
+    "edge_gradient_moment_vs_mean_ratio": 0.9366543606538363,
+    "edge_MSE_moment_vs_mean_ratio": 0.713870243423173,
+    "source_covariance_expansion": {
+      "fraction_trace_more_than_doubled_time_mean": 0.01949533333333333,
+      "fraction_trace_more_than_doubled_range": [
+        0.0135,
+        0.046
+      ],
+      "ninetieth_percentile_extra_over_base_trace_time_mean": 0.3019365636516167
+    },
+    "interpretation": "Worse LPIPS spans edge, non-edge foreground and background. Lower edge gradient and larger covariance are consistent with smoothing; map is observational, not a causal attribution of every pixel."
+  },
+  "teacher_alignment_audit": {
+    "verification": {
+      "all_input_and_source_hashes_match": true,
+      "forty_rows_and_twenty_pairs_recomputed": true,
+      "GT_LPIPS_reproduces_E17_max_abs_error": 0.0,
+      "no_training": true
+    },
+    "paired_mean_deltas": {
+      "LPIPS_to_GT": 0.003964899899438023,
+      "LPIPS_to_teacher": 0.002137384726665914,
+      "MSE_to_teacher": -4.604045388987288e-05,
+      "L1_to_teacher": -0.0001355037500616163
+    },
+    "positive_delta_views": {
+      "LPIPS_to_GT": 20,
+      "LPIPS_to_teacher": 20,
+      "MSE_to_teacher": 0,
+      "L1_to_teacher": 1
+    },
+    "interpretation": "On the same20 views, moment matching decreases pixel MSE to teacher in every view but increases LPIPS to teacher in every view. Teacher-vs-GT bias alone cannot explain the LPIPS tradeoff; teacher-directed pixel loss and perceptual similarity are misaligned here."
+  },
+  "decision": "retain E16 as diagnostic branch; no integration; next control uses fit-only objectives and needs a second scene for validation",
+  "remote_publish_requested": false,
+  "full4DGS_training_densification_implemented": false
+}

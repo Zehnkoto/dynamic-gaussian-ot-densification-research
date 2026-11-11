@@ -1,0 +1,18 @@
+{
+  "run": "/data3/store1/yhy-b26/outputs/ot/e22-official-training-split-20261110-v1c",
+  "protocol": "experiments/official-training-split-pilot-v1.json",
+  "status": "completed; independent checkpoint/metric audit passed",
+  "invalid_attempts": {
+    "v1": "stopped after shared warmup, before split: restored deformation module remained on CPU",
+    "v1b": "completed but invalid for geometry/deformation question: PLY restore left spatial_lr_scale=0, so xyz/deformation/grid rates were zero",
+    "v1c": "restored deformation module to CUDA and spatial_lr_scale to scene extent; positive-rate assertions and checkpoint audit passed"
+  },
+  "gaussians": {"no_split": 24985, "gradient_top64": 25049, "temporal_w2_top64": 25049},
+  "updates": {"common_warmup": 128, "post_each": 152},
+  "GT_test_20_view_means": {
+    "no_split": {"PSNR": 35.228518676757815, "SSIM": 0.9853052049875259, "LPIPS": 0.01613669212674722},
+    "gradient_top64": {"PSNR": 35.1293984413147, "SSIM": 0.9851544559001922, "LPIPS": 0.016442848055157812},
+    "temporal_w2_top64": {"PSNR": 35.22588672637939, "SSIM": 0.9852705508470535, "LPIPS": 0.016188991907984018}
+  },
+  "scope": "One late-stage 4DGS continuation with fresh optimizer, same warm state and official split operator. Temporal score is W2 distortion to compressed representative, not GHAP CTD split gain. Neither split beats no split; no method claim."
+}

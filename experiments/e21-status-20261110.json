@@ -1,0 +1,13 @@
+{
+  "run": "/data3/store1/yhy-b26/outputs/ot/e21-gaussian-w2-scale-20261110-v1",
+  "protocol": "experiments/gaussian-w2-scale-audit-v1.json",
+  "status": "completed; independent comparison with E20 passed",
+  "scope": "101 fit times x 3 frozen arms x 24985 assigned source Gaussians; no GT or training",
+  "old_covariance_share_fixed": 0.0006436508910531791,
+  "bures_covariance_share_fixed": 0.2108121757785832,
+  "window_full_position_reduction_percent": 27.085774636260606,
+  "window_full_bures_increase_percent": 4.861557112679704,
+  "window_full_gaussian_w2_reduction_percent": 20.350888119946276,
+  "max_E20_cost_crosscheck_error": 2.102743435102028e-13,
+  "interpretation": "The old covariance Frobenius squared term is dimensionally mismatched and effectively absent at this scene's scale. Bures has material weight, but this assigned-pair audit does not establish better reassignment or rendering, and is not the GHAP CTD objective."
+}

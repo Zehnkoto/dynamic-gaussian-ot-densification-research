@@ -1,0 +1,220 @@
+{
+  "run": "/data3/store1/yhy-b26/outputs/ot/e20-windowed-reassignment-20261110-v1",
+  "protocol": "experiments/windowed-reassignment-v1.json",
+  "rows": [
+    {
+      "arm": "fixed_E19_mean_beta0",
+      "PSNR": 32.536329078674314,
+      "SSIM": 0.9772830307483673,
+      "LPIPS_alex_v01": 0.022671534144319595,
+      "temporal_residual256": 0.0019447546494403977,
+      "fit": {
+        "PSNR_to_teacher": 35.52641422913806,
+        "L1_to_teacher": 0.002432972042922779,
+        "mixed_loss_to_teacher": 0.0038638780041053743
+      },
+      "holdout": {
+        "PSNR_to_teacher": 35.28160268610174,
+        "L1_to_teacher": 0.0026228474329620826,
+        "mixed_loss_to_teacher": 0.004301184775411255
+      },
+      "distribution": {
+        "fit": {
+          "full12_weighted_cost": 0.0001669820339409017,
+          "position_weighted_cost": 0.0001668745558056646
+        },
+        "holdout": {
+          "full12_weighted_cost": 0.00016569581177074927,
+          "position_weighted_cost": 0.00016558808435506654
+        }
+      }
+    },
+    {
+      "arm": "window_full_geometry",
+      "PSNR": 32.58185939788818,
+      "SSIM": 0.9773212850093842,
+      "LPIPS_alex_v01": 0.022554369154386224,
+      "temporal_residual256": 0.0019391418822828081,
+      "fit": {
+        "PSNR_to_teacher": 35.6799790788405,
+        "L1_to_teacher": 0.002406675498794285,
+        "mixed_loss_to_teacher": 0.0037993411764059917
+      },
+      "holdout": {
+        "PSNR_to_teacher": 35.433306029348664,
+        "L1_to_teacher": 0.00259764298309826,
+        "mixed_loss_to_teacher": 0.00423184363524232
+      },
+      "distribution": {
+        "fit": {
+          "full12_weighted_cost": 0.00012178588036159154,
+          "position_weighted_cost": 0.00012167528973693242
+        },
+        "holdout": {
+          "full12_weighted_cost": 0.00012086098379059215,
+          "position_weighted_cost": 0.00012075013613263005
+        }
+      },
+      "switches_total": 20000,
+      "mean_disagreement_with_fixed": 0.056879127476485894
+    },
+    {
+      "arm": "window_position_only",
+      "PSNR": 32.58411645889282,
+      "SSIM": 0.9773267775774002,
+      "LPIPS_alex_v01": 0.022543192538432778,
+      "temporal_residual256": 0.0019389907501862575,
+      "fit": {
+        "PSNR_to_teacher": 35.67934057027987,
+        "L1_to_teacher": 0.0024067687094303787,
+        "mixed_loss_to_teacher": 0.0037997042204686764
+      },
+      "holdout": {
+        "PSNR_to_teacher": 35.43378972525549,
+        "L1_to_teacher": 0.0025973309347678843,
+        "mixed_loss_to_teacher": 0.004231184967934634
+      },
+      "distribution": {
+        "fit": {
+          "full12_weighted_cost": 0.00012174468998159155,
+          "position_weighted_cost": 0.00012163356939073778
+        },
+        "holdout": {
+          "full12_weighted_cost": 0.00012082134299314638,
+          "position_weighted_cost": 0.00012070994806106143
+        }
+      },
+      "switches_total": 20000,
+      "mean_disagreement_with_fixed": 0.056873123874324596
+    }
+  ],
+  "paired_new_minus_fixed": {
+    "window_full_geometry": {
+      "PSNR": 0.04553031921386719,
+      "SSIM": 3.825426101689011e-05,
+      "LPIPS_alex_v01": -0.00011716498993337085,
+      "temporal_residual256": -5.6127671575895155e-06
+    },
+    "window_position_only": {
+      "PSNR": 0.0477873802185087,
+      "SSIM": 4.374682903285354e-05,
+      "LPIPS_alex_v01": -0.00012834160588681698,
+      "temporal_residual256": -5.763899254140111e-06
+    }
+  },
+  "switch_summary": {
+    "window_full_geometry": {
+      "total": 20000,
+      "mean_per_window": 500.0,
+      "max_per_window": 500,
+      "mean_disagreement_with_fixed": 0.056879127476485894
+    },
+    "window_position_only": {
+      "total": 20000,
+      "mean_per_window": 500.0,
+      "max_per_window": 500,
+      "mean_disagreement_with_fixed": 0.056873123874324596
+    }
+  },
+  "audit": {
+    "status": "passed",
+    "input_hashes": 37,
+    "new_checkpoints": 2,
+    "training_rows": 40,
+    "GT_rows": 60,
+    "teacher_fidelity_rows": 600,
+    "temporal_rows": 597,
+    "distribution_rows": 600,
+    "switches": {
+      "window_full_geometry": 20000,
+      "window_position_only": 20000
+    },
+    "mean_disagreement_with_fixed": {
+      "window_full_geometry": 0.056879127476485894,
+      "window_position_only": 0.056873123874324596
+    },
+    "cross_method_label_disagreement": 0.0005223133880328197,
+    "baseline_covariance_fraction_of_full12_fit_cost": 0.0006436508928566584,
+    "max_geometry_error": 1.1899487661892749e-07,
+    "max_cost_error": 2.1255073439155336e-13,
+    "paired_new_minus_fixed": {
+      "window_full_geometry": {
+        "PSNR": 0.04553031921386719,
+        "SSIM": 3.825426101689011e-05,
+        "LPIPS_alex_v01": -0.00011716498993337085,
+        "temporal_residual256": -5.6127671575895155e-06
+      },
+      "window_position_only": {
+        "PSNR": 0.0477873802185087,
+        "SSIM": 4.374682903285354e-05,
+        "LPIPS_alex_v01": -0.00012834160588681698,
+        "temporal_residual256": -5.763899254140111e-06
+      }
+    }
+  },
+  "posthoc_boundary_analysis": {
+    "label": "posthoc diagnostic after E20 training and GT evaluation; no arm or parameter selection",
+    "window_boundary_definition": "adjacent time pair i-1 -> i with i divisible by 5",
+    "boundary_pairs": 39,
+    "within_pairs": 160,
+    "arms": {
+      "window_full_geometry": {
+        "boundary": {
+          "fixed_residual": 0.0019141190762942035,
+          "new_residual": 0.0019539942582830405,
+          "delta": 3.987518198883696e-05,
+          "relative_delta_percent": 2.083213238020521,
+          "pairs": 39
+        },
+        "within": {
+          "fixed_residual": 0.0019522220703947824,
+          "new_residual": 0.0019355216156327515,
+          "delta": -1.6700454762030902e-05,
+          "relative_delta_percent": -0.8554587623657846,
+          "pairs": 160
+        },
+        "GT_beneficial_views": {
+          "PSNR": 17,
+          "SSIM": 11,
+          "LPIPS_alex_v01": 13
+        },
+        "full12_cost_reduction_percent": {
+          "fit": 27.066476861400538,
+          "holdout": 27.05851614535011
+        },
+        "switches_total": 20000
+      },
+      "window_position_only": {
+        "boundary": {
+          "fixed_residual": 0.0019141190762942035,
+          "new_residual": 0.0019537157555206274,
+          "delta": 3.9596679226423835e-05,
+          "relative_delta_percent": 2.0686633196866877,
+          "pairs": 39
+        },
+        "within": {
+          "fixed_residual": 0.0019522220703947824,
+          "new_residual": 0.001935401530136005,
+          "delta": -1.6820540258777458e-05,
+          "relative_delta_percent": -0.8616099835084834,
+          "pairs": 160
+        },
+        "GT_beneficial_views": {
+          "PSNR": 17,
+          "SSIM": 13,
+          "LPIPS_alex_v01": 14
+        },
+        "full12_cost_reduction_percent": {
+          "fit": 27.091144413368777,
+          "holdout": 27.08243998326861
+        },
+        "switches_total": 20000
+      }
+    }
+  },
+  "source_hashes": {
+    "audit_windowed_reassignment-source.py": "cd4857836e3a8fff8df247103f2ccbe7eee6f30df3655c76685914bf23c72c1e",
+    "summarize_windowed_reassignment-source.py": "79fa1c0bfacb37f71228b803577213afd5fe15c716e9f6c78061cab7bfbf97b7"
+  },
+  "interpretation": "Fit-only five-time-window membership updates slightly improve GT and global temporal residual at fixed K, but window-boundary residual worsens. Full xyz+covFrob assignment is not better than position-only: covariance contributes only 0.064% of baseline full12 fit cost and label plans differ by 0.052% of sources. Single explored jumpingjacks scene; no new OT coupling, adaptive K, online inference or motion model."
+}

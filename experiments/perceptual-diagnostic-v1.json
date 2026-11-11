@@ -1,0 +1,14 @@
+{
+  "version": "E17-perceptual-diagnostic-v1",
+  "status": "fixed before new rendering/analysis",
+  "question": "Why does E16 moment covariance improve PSNR yet worsen LPIPS?",
+  "input": "E16 frozen seed42 mean/moment appearance models and exact E02 K10000 states, E16 float32 center scatter, official20 test cameras/GT. No training.",
+  "views": "All20 official test views at original800 pixels; no frame or checkpoint selection.",
+  "image_metrics": "Reproduce original E16 GT PSNR, SSIM, scalar LPIPS Alex0.1 normalize=True for every view.",
+  "spatial": "LPIPS Alex spatial=True with same normalize=True. Spatial maps approximate attribution, not an exact additive decomposition of scalar LPIPS; report map/scalar consistency.",
+  "regions": "GT foreground is any channel under0.985. Grayscale gradient = absolute nearest-neighbor x plus y differences; edge=top20% gradient among foreground pixels per view. Report edge, other foreground, background separately. These fixed masks are diagnostic, not training.",
+  "gradient": "Compare mean grayscale gradient magnitude on GT-edge mask for GT, teacher, mean-covariance, moment-covariance images; a lower moment ratio is consistent with softer edges but not proof of causal blur.",
+  "summary": "All20 views pooled by pixels for spatial metrics, plus per-view paired deltas; report every view. Full-resolution crops saved only for fixed views0,10,19.",
+  "boundaries": "Single repeatedly explored scene and seed42 for spatial diagnosis. GT consulted only after all E16 models froze. No claim of independent validation or method improvement.",
+  "next": "Use identified failure mode to design a fit-only intervention, then evaluate with untouched scene/time/view."
+}

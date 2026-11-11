@@ -1,0 +1,18 @@
+{
+  "version": "E21-gaussian-w2-scale-audit-v1",
+  "status": "fixed before any E21 calculation",
+  "scene": "D-NeRF jumpingjacks, frozen E19 and E20 teacher-derived trajectories",
+  "question": "Does a dimensionally consistent Gaussian W2/Bures covariance term have material weight where the current xyz squared plus covariance Frobenius squared proxy does not?",
+  "time_indices": "All 101 E19 fit indices: even ranks 0..198 plus endpoint 199. No holdout or GT images.",
+  "arms": ["fixed_E19_mean_beta0", "window_full_geometry", "window_position_only"],
+  "pairing": "Existing source-to-slot labels for each arm and time, with opacity-normalized source weights; no reassignment or optimization.",
+  "costs": {
+    "position": "squared Euclidean xyz, units length squared",
+    "old_covariance": "squared Frobenius covariance difference, units length to the fourth power",
+    "bures_covariance": "Tr(A+B-2(A^(1/2) B A^(1/2))^(1/2)), units length squared; symmetrize and clamp negative eigenvalues only for numerical PSD tolerance",
+    "gaussian_w2_squared": "position plus Bures covariance"
+  },
+  "report": "Per fit time and arm: opacity-weighted position, old covariance, Bures covariance and W2 total, covariance share, and source fraction for which Bures exceeds position. Compare means across fit times and E20 arms to fixed control. Record numerical clamp diagnostics and source hashes.",
+  "limits": "Read-only assigned-pair scale audit. Does not test nearest-neighbor assignments under W2, GT rendering, new motion models, adaptive splitting, or causal improvement.",
+  "storage": "Only small JSON output under owner's E21 output directory; never overwrite prior experiments."
+}

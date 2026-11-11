@@ -1,0 +1,19 @@
+{
+  "version": "E22-official-4dgs-training-split-pilot-v1",
+  "status": "fixed before E22 scoring, warmup, split or evaluation",
+  "scene": "D-NeRF jumpingjacks, pinned official 4DGS iteration_20000 baseline",
+  "scope": "Small genuine 4DGS fine-stage continuation pilot with trainable canonical Gaussians and deformation. Final PLY has no original Adam state; initialize a fresh optimizer identically, warm it for 128 common updates, then branch. This is not uninterrupted original training or a full densification schedule.",
+  "arms": ["no_split", "gradient_top64", "temporal_w2_top64"],
+  "warmup_updates": 128,
+  "post_updates_each": 152,
+  "split_parents": 64,
+  "training_order_seed": 42,
+  "split_rng_seed": 1234,
+  "gradient_control": "Official accumulated screen-space mean gradient over the common warmup, restricted to parents eligible for official densify_and_split.",
+  "temporal_score": "Opacity-normalized mean over all101 E19 fit times of Gaussian W2 squared from each full teacher source to its E19 frozen assigned representative. Eligible parents only. This is an exploratory distribution distortion heuristic from a compression target, not GHAP CTD gain or a proven split benefit.",
+  "split_operator": "Unmodified official GaussianModel.densify_and_split, N=2, same 64 net new Gaussians in both split arms; identical seed before each event.",
+  "training": "Use official fine-stage renderer and loss L1 plus configured lambda_dssim and deformation regulation; same deterministic camera order, same original rate schedule indices 20001..20280, all Gaussian and deformation parameters trainable. No GT/test metrics consulted before final checkpoint freeze.",
+  "evaluation": "After all three branches freeze, official 20 test cameras PSNR, SSIM, LPIPS-Alex, and per-view records. Compare split arms both to no_split and to each other; report source score construction cost and selected-parent overlap.",
+  "limits": "One already explored scene, one baseline/seed, small fine-stage continuation from reconstructed optimizer, no new scene, no independent temporal inference, no true GHAP CTD candidate gain. A successful pilot would justify a new-scene full-schedule experiment, not a method claim.",
+  "storage": "All artifacts in a new owner outputs/ot directory; no overwrite or /home writes."
+}

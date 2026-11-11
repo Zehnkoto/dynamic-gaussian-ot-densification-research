@@ -1,0 +1,60 @@
+{
+  "version": "E15-fit-calibrated-position-drift-v1",
+  "date_client": "2026-11-05",
+  "status": "predeclared before new training",
+  "seed": 42,
+  "base_budget": 10000,
+  "max_splits": 256,
+  "event_step": 1140,
+  "warmup_epochs": 10,
+  "post_epochs": 10,
+  "epochs": 20,
+  "main_updates_per_arm": 1520,
+  "updates": 380,
+  "training_size": 400,
+  "order_seeds": [
+    42,
+    43,
+    44
+  ],
+  "conditions": {},
+  "capacities": {
+    "ctd128": 10256
+  },
+  "design": "Calibrate lambda for CTD and uniform L2 at1% and4% relative fit CTD excess, using only seed42 and76 fit times. Freeze four lambdas before training orders43/44. Same K10256/1140 initial state/380updates/native400/radius. Report all final12 arms and8 confirmation arms separately.",
+  "primary": "CTD minus uniform L2 at fixed target drift, confirmation orders43/44; target match checked on each order, not assumed. All weights locked before GT/heldout evaluation.",
+  "secondary": "Seed42 calibration arm is development, not independent confirmation; prior scene GT already explored, no confirmatory novel-scene or significance claim.",
+  "orders": "Reuse exact E12 future orders42/43/44; no shared epoch permutations between orders. Single base/grouping/child geometry, not fullpipeline seeds.",
+  "loss": "Frozen teacher and student both native400. SH/opacity same RATES; appearance Adam1140->1520. Moving fields fresh Adam0->380; appearance_only raw offset frozen0. No GT training.",
+  "render": "Native400 for all training; native800 GT evaluation, fixed native256 temporal reference. Teacher and support covariance/deformation fixed, only shared translations added.",
+  "evaluation": "All12 selected models/checkpoints and four selected lambdas frozen+hashed before any new GT/heldout/temporal evaluation. Hash initial E13/E14 checkpoints; retain calibration attempts and their cost, not just chosen arms.",
+  "limits": [
+    "One previously explored scene, fixed teacher/grouping/covariance/deformation/assignment and shared constant translations. No adaptive split or transport-plan learning.",
+    "Seed42 calibration not independent evidence;43/44 are future-order perturbations of the same base, not fullpipeline seeds.",
+    "Budgets chosen from the already explored fit-drift range, not from heldout or GT scores; this remains exploratory.",
+    "Same lambda across confirmation orders may not exactly match budget; report per-arm deviation and3% match flags and avoid equal-drift claim if not matched.",
+    "Calibration computes extra candidate updates; all attempts retained and counted, not equal total training compute.",
+    "No lambda retuning after GT or confirmation-order results; report all budgets."
+  ],
+  "position_radius": 0.01,
+  "position_raw_lr": 0.01,
+  "position": "Per-support shared world translation delta=r*u/sqrt(1+||u||^2),r=.01. New rawu Adam lr.01 eps1e-8 starts at0; appearance Adam/RATES and step1140 retained. Same delta at all150 times: covariance/trajectory shape/world velocity remain fixed.",
+  "CTD": "Frozen source-opacity-normalized weights and source-to-support hard assignment reconstructed from E02 parents+E05 child labels+fixed256 split parents. Cost squared xyz plus covariance Frobenius squared. Keep learned render opacity separate from CTD weights.",
+  "regularizer": "CTD exact fixed-plan relative excess vs mean_k ||delta||^2 / fit_base. Identical global denominator and total quadratic coefficient1.",
+  "drift_budgets": [
+    0.01,
+    0.04
+  ],
+  "calibration_seed": 42,
+  "calibration_relative_tolerance": 0.03,
+  "max_new_candidates_per_recipe": 5,
+  "methods": [
+    "ctd",
+    "l2"
+  ],
+  "reuse_runs": {
+    "ctd": "outputs/ot/e13-shared-position-ctd-20261104T165313Z",
+    "l2": "outputs/ot/e14-uniform-position-anchor-20261104T172012Z"
+  },
+  "calibration": "Read only existing seed42 position checkpoints, fit statistics and their frozen hashes to build per-method lambda brackets. Target budgets .01,.04. Select first existing candidate within3% relative tolerance, else log-log bracket interpolation, fraction clipped[.1,.9], max5 fresh candidates per recipe, each restarts same1140 appearance/Adam and zero positions,380updates. Update brackets using observed fit excess. Stop at first tolerance pass; if no pass choose smallest abs(log(drift/target)), ties lowerlambda; mark calibration unmatched. Freeze all choices then run43/44; never tune to these orders or heldout/GT."
+}

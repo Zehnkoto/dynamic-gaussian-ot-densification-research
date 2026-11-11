@@ -1,0 +1,155 @@
+{
+  "run": "/data3/store1/yhy-b26/outputs/ot/e19-second-scene-jumpingjacks-20261110-v1",
+  "baseline": "/data3/store1/yhy-b26/outputs/dnerf/jumpingjacks/baseline-e19-jumpingjacks-20261110-v1",
+  "protocol": "experiments/second-scene-validation-v1.json",
+  "teacher_metrics": {
+    "PSNR": 35.25097398757934,
+    "SSIM": 0.9853365570306778,
+    "LPIPS_alex_v01": 0.01613642965676263
+  },
+  "teacher_gaussians": 24985,
+  "shared_budget": 9276,
+  "retention": 0.37126275765459277,
+  "rows": [
+    {
+      "arm": "mean_covariance__beta0",
+      "PSNR": 32.536329078674314,
+      "SSIM": 0.9772830307483673,
+      "LPIPS_alex_v01": 0.022671534144319595,
+      "temporal_residual256": 0.0019447546494403977,
+      "fit": {
+        "PSNR_to_teacher": 35.52641422913806,
+        "L1_to_teacher": 0.002432972042922779,
+        "mixed_loss_to_teacher": 0.0038638780041053743
+      },
+      "holdout": {
+        "PSNR_to_teacher": 35.28160268610174,
+        "L1_to_teacher": 0.0026228474329620826,
+        "mixed_loss_to_teacher": 0.004301184775411255
+      }
+    },
+    {
+      "arm": "mean_covariance__beta0.1",
+      "PSNR": 32.5273738861084,
+      "SSIM": 0.9771762251853943,
+      "LPIPS_alex_v01": 0.022382146189920606,
+      "temporal_residual256": 0.0019573762683237636,
+      "fit": {
+        "PSNR_to_teacher": 35.48077823147916,
+        "L1_to_teacher": 0.0024743257568789517,
+        "mixed_loss_to_teacher": 0.003935742250754323
+      },
+      "holdout": {
+        "PSNR_to_teacher": 35.25171391650884,
+        "L1_to_teacher": 0.0026503439888010045,
+        "mixed_loss_to_teacher": 0.0043496915146313386
+      }
+    },
+    {
+      "arm": "moment_covariance__beta0",
+      "PSNR": 33.788334369659424,
+      "SSIM": 0.9801543474197387,
+      "LPIPS_alex_v01": 0.02781934852246195,
+      "temporal_residual256": 0.0014399284230435182,
+      "fit": {
+        "PSNR_to_teacher": 40.05814025425675,
+        "L1_to_teacher": 0.0017046242777147506,
+        "mixed_loss_to_teacher": 0.0024376191172315416
+      },
+      "holdout": {
+        "PSNR_to_teacher": 39.601034838743885,
+        "L1_to_teacher": 0.0018694457113554682,
+        "mixed_loss_to_teacher": 0.0027804634583210855
+      }
+    },
+    {
+      "arm": "moment_covariance__beta0.1",
+      "PSNR": 33.78625898361206,
+      "SSIM": 0.9800255626440049,
+      "LPIPS_alex_v01": 0.026932607125490903,
+      "temporal_residual256": 0.0014569789483317235,
+      "fit": {
+        "PSNR_to_teacher": 40.0021449551724,
+        "L1_to_teacher": 0.001741836811669429,
+        "mixed_loss_to_teacher": 0.002504364922781023
+      },
+      "holdout": {
+        "PSNR_to_teacher": 39.56026416354709,
+        "L1_to_teacher": 0.001899025105457339,
+        "mixed_loss_to_teacher": 0.0028399217843238
+      }
+    }
+  ],
+  "paired_beta": {
+    "mean_covariance": {
+      "PSNR": -0.008955192565913705,
+      "SSIM": -0.00010680556297304467,
+      "LPIPS_alex_v01": -0.000289387954398989,
+      "temporal_residual256": 1.2621618883365982e-05
+    },
+    "moment_covariance": {
+      "PSNR": -0.0020753860473661234,
+      "SSIM": -0.00012878477573385894,
+      "LPIPS_alex_v01": -0.0008867413969710462,
+      "temporal_residual256": 1.7050525288205302e-05
+    }
+  },
+  "paired_moment_minus_mean": {
+    "0.0": {
+      "PSNR": 1.2520052909851103,
+      "SSIM": 0.0028713166713714156,
+      "LPIPS_alex_v01": 0.005147814378142355,
+      "temporal_residual256": -0.0005048262263968794
+    },
+    "0.1": {
+      "PSNR": 1.2588850975036578,
+      "SSIM": 0.0028493374586106013,
+      "LPIPS_alex_v01": 0.0045504609355702975,
+      "temporal_residual256": -0.0005003973199920401
+    }
+  },
+  "audit": {
+    "status": "passed",
+    "input_hashes": 30,
+    "teacher_gaussians": 24985,
+    "budget": 9276,
+    "checkpoints": 4,
+    "training_rows": 80,
+    "GT_rows": 80,
+    "teacher_fidelity_rows": 800,
+    "temporal_rows": 796,
+    "paired_beta": {
+      "mean_covariance": {
+        "PSNR": -0.008955192565913705,
+        "SSIM": -0.00010680556297304467,
+        "LPIPS_alex_v01": -0.000289387954398989,
+        "temporal_residual256": 1.2621618883365982e-05
+      },
+      "moment_covariance": {
+        "PSNR": -0.0020753860473661234,
+        "SSIM": -0.00012878477573385894,
+        "LPIPS_alex_v01": -0.0008867413969710462,
+        "temporal_residual256": 1.7050525288205302e-05
+      }
+    },
+    "paired_shape": {
+      "0.0": {
+        "PSNR": 1.2520052909851103,
+        "SSIM": 0.0028713166713714156,
+        "LPIPS_alex_v01": 0.005147814378142355,
+        "temporal_residual256": -0.0005048262263968794
+      },
+      "0.1": {
+        "PSNR": 1.2588850975036578,
+        "SSIM": 0.0028493374586106013,
+        "LPIPS_alex_v01": 0.0045504609355702975,
+        "temporal_residual256": -0.0005003973199920401
+      }
+    },
+    "source_group_mean_max_abs_error": 1.209870705842775e-07,
+    "source_covariance_max_abs_error": 3.911242640528001e-10,
+    "second_moment_max_abs_error": 1.7004402386167072e-08
+  },
+  "audit_source_sha256": "996fddf1b9632163e42ad3ee82e0839096da555e5e7b210fad0d7cce0405c126",
+  "interpretation": "On independent D-NeRF jumpingjacks scene, moment covariance improves PSNR and temporal residual but worsens GT LPIPS; fixed beta0.1 teacher perceptual fit lowers GT LPIPS in both constructions while slightly lowering PSNR and SSIM and increasing temporal residual and held-out teacher pixel loss. One teacher and one appearance training order; no adaptive split or independent motion compression."
+}

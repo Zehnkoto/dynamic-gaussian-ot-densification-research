@@ -1,0 +1,23 @@
+{
+  "version": "E20-windowed-reassignment-v1",
+  "status": "fixed before new assignment computation, training, or any E20 GT evaluation",
+  "scene": "D-NeRF jumpingjacks, E19 frozen baseline and trajectories",
+  "question": "Can fit-only short-window reassignment reduce distribution distortion or improve held-out render quality at fixed K, and does full covariance distance beat position-only distance?",
+  "inputs": "Reuse E19 teacher N24985 and K9276 fixed assignment, teacher-states200, mean-states200, source SH/opacity and one seed42 view order. Hash-lock all inputs.",
+  "time_split": "E19 even-rank 0..198 plus endpoint199 fit101; odd ranks1..197 holdout99. Each window decision uses only fit indices in that window. Teacher was trained on all200 times.",
+  "window_size": 5,
+  "window_count": 40,
+  "max_switch_fraction_per_window": 0.02,
+  "max_switch_count_rule": "round(0.02*N_source), at most this many source IDs per five-time window; never empty a group. Actual count and transitions reported.",
+  "assignment_method": "Start each window from previous window labels (first window E19 shared labels). Compare source fit-time trajectory to E19 fixed representative centroid trajectory. Candidate target is nearest fixed slot using either full xyz+covFrob squared features or xyz-only squared features. Rank positive per-source cost reduction times fixed normalized source opacity, stable source-index tie break. Greedily accept up to cap while keeping every old group nonempty. Apply chosen labels to all five times; recompute weighted xyz+full-covariance barycenters per time. Slot IDs, representative source IDs, K, SH/opacity parameterization fixed. Single sequential pass, no GT, no iterative per-frame oracle.",
+  "arms": [
+    "fixed_E19_mean_beta0",
+    "window_full_geometry",
+    "window_position_only"
+  ],
+  "appearance": "Reuse E19 frozen fixed mean beta0 checkpoint; two new windowed arms start from identical zero SH/logit residuals and fresh Adam, E19 rates, same 20 sequential seed42 fit101 view permutations, native400 full-teacher pixel loss 0.8L1+0.2(1-SSIM), 2020 updates each. No LPIPS training term.",
+  "evaluation": "Freeze both new checkpoints before any GT read. Evaluate 20 official GT views800, all200 teacher views400, fixed-camera256 temporal residual, fit/holdout full CTD proxy, label switch/churn and group occupancy. Compare with immutable E19 fixed control and check reproduced metrics.",
+  "scope": "Exploratory second-scene offline window assignment diagnostic after E19 GT has been seen. Teacher-derived states also aggregate holdout geometry as in E19; holdout is only for assignment/appearance fitting. No online inference, learned deformation, adaptive K, full OT plan, split/merge or physical mass.",
+  "decision": "No metric-based tuning of window length/cap. Report improvement or failure, especially render/temporal tradeoff and full-cost vs position-only; a new scene is required for any method claim.",
+  "storage": "All files under owner /data3/store1 root; refuse overwrite; >5GiB free guard; no video bulk."
+}

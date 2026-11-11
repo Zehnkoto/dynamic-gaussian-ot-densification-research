@@ -1,0 +1,26 @@
+{
+  "version": "E19-second-scene-independent-validation-v1",
+  "status": "fixed before jumpingjacks extraction, baseline training, or any scene GT evaluation",
+  "scene": "D-NeRF jumpingjacks",
+  "selection": "Distinct articulated motion; chosen without viewing scene baseline or compressed GT results.",
+  "source_archive_sha256": "4e901bd3463e874bed5dd6bbe3236a8b2348f9adb5ef20484f8ba8b6d96876ec",
+  "teacher": {
+    "repo_commit": "843d5ac636c37e4b611242287754f3d4ed150144",
+    "config": "arguments/dnerf/jumpingjacks.py",
+    "coarse_iterations": 3000,
+    "fine_iterations": 20000,
+    "upstream_seed": 6666,
+    "test_views": 20
+  },
+  "reduction": {
+    "time_split": "Sort200 training times; fit even ranks 0..198 plus endpoint199 (101); hold out odd ranks1..197 (99), reduction-only holdout. Teacher sees all200.",
+    "budget_rule": "round(N_teacher*10000/26936), fixed before N is observed; report exact K and retention",
+    "trajectory_feature": "source xyz plus full covariance; Gaussian position squared + covariance Frobenius squared CTD surrogate; fixed source opacity weights",
+    "shared_group_fit": "E02 Lloyd algorithm, seed42, 20 iteration cap, 101 fit times",
+    "appearance": "same E04 zero shared SH/opacity residual, fresh Adam, 20 epochs of fit101, 2020 steps, native400 teacher",
+    "comparison_arms": "mean vs moment covariance × beta0 vs beta0.1 teacher LPIPS fit loss; no weight sweep",
+    "evaluation": "freeze all arms before 20 GT views at native800 and all200 teacher views and fixed256 temporal residual"
+  },
+  "scope": "Independent scene, but same known D-NeRF benchmark family and model architecture. GT time overlaps teacher training. No 4DGS adaptive split or independent motion prediction.",
+  "safety": "All data, models, caches and outputs under owner /data3/store1 root; refuse overwrite; no use of /home."
+}

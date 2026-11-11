@@ -1,6 +1,6 @@
 {
-  "updated": "2026-11-05",
-  "stage": "Uniform L2 vs source-mass fixed-plan CTD: same-lambda quality/temporal vs distribution-drift tradeoff, no CTD superiority established; shared translations and assignment fixed, no full4DGS adaptive densification.",
+  "updated": "2026-11-11",
+  "stage": "E21/E22 conclude the current proxy and split score do not establish dynamic OT densification: old covariance Frobenius term contributes only0.0644% of fixed-group cost; W2/Bures is better scaled but not GHAP CTD; late-stage temporal W2 split loses0.0026dB PSNR to no split and gradient split loses0.0991dB. Current priority: a budget-limited student with independent deformation, then true before/after teacher-student cross-time split gain under matched budget and new-scene evaluation.",
   "base_gaussians": 26936,
   "baseline_PSNR": 40.72878799438477,
   "budget": 10000,
@@ -4221,5 +4221,1181 @@
       "No merge, new split candidates, independently compressed motion network or full4DGS adaptive densification",
       "Same-lambda comparison tests source-mass weighting under one shared global scale, not optimal tuning for either regularizer; E13 controls reused, not new repeats."
     ]
+  },
+  "matched_position_drift": {
+    "rows": [
+      {
+        "arm": "ctd__budget1pct__seed42",
+        "method": "ctd",
+        "condition": "ctd__budget1pct",
+        "seed": 42,
+        "role": "calibration",
+        "budget": 0.01,
+        "lambda": 0.00933987301078566,
+        "fit_CTD_relative_increase": 0.01001113680898415,
+        "held_CTD_relative_increase": 0.010031729203342069,
+        "budget_relative_error": 0.0011136808984151259,
+        "matched": true,
+        "gaussians": 10256,
+        "PSNR": 39.34368000030518,
+        "SSIM": 0.9926744282245636,
+        "LPIPS_alex_v01": 0.013484245911240578,
+        "temporal_residual256": 0.0004303991752981377,
+        "holdout_native400_mix": 0.0015350500738399255,
+        "holdout_native400_mse": 3.0900342681962754e-05,
+        "offset_weighted_RMS": 0.00124612684099697,
+        "offset_uniform_RMS": 0.001250004286189376,
+        "offset_max": 0.007695129312558592
+      },
+      {
+        "arm": "ctd__budget1pct__seed43",
+        "method": "ctd",
+        "condition": "ctd__budget1pct",
+        "seed": 43,
+        "role": "confirmation",
+        "budget": 0.01,
+        "lambda": 0.00933987301078566,
+        "fit_CTD_relative_increase": 0.009593626908683395,
+        "held_CTD_relative_increase": 0.009613360399320082,
+        "budget_relative_error": -0.040637309131660526,
+        "matched": false,
+        "gaussians": 10256,
+        "PSNR": 39.34913997650146,
+        "SSIM": 0.992678216099739,
+        "LPIPS_alex_v01": 0.013424664246849715,
+        "temporal_residual256": 0.00043641494594095587,
+        "holdout_native400_mix": 0.0015300713342652227,
+        "holdout_native400_mse": 3.167014557294425e-05,
+        "offset_weighted_RMS": 0.0012198655453987044,
+        "offset_uniform_RMS": 0.0012352359360542832,
+        "offset_max": 0.007712932187790668
+      },
+      {
+        "arm": "ctd__budget1pct__seed44",
+        "method": "ctd",
+        "condition": "ctd__budget1pct",
+        "seed": 44,
+        "role": "confirmation",
+        "budget": 0.01,
+        "lambda": 0.00933987301078566,
+        "fit_CTD_relative_increase": 0.009961742502261423,
+        "held_CTD_relative_increase": 0.009982233186290577,
+        "budget_relative_error": -0.003825749773857745,
+        "matched": true,
+        "gaussians": 10256,
+        "PSNR": 39.35624237060547,
+        "SSIM": 0.992670688033104,
+        "LPIPS_alex_v01": 0.013443946512416005,
+        "temporal_residual256": 0.0004315326762254406,
+        "holdout_native400_mix": 0.0015341456046617415,
+        "holdout_native400_mse": 3.100894710351477e-05,
+        "offset_weighted_RMS": 0.0012430488891713412,
+        "offset_uniform_RMS": 0.0012436389393540724,
+        "offset_max": 0.00770366637297623
+      },
+      {
+        "arm": "l2__budget1pct__seed42",
+        "method": "l2",
+        "condition": "l2__budget1pct",
+        "seed": 42,
+        "role": "calibration",
+        "budget": 0.01,
+        "lambda": 0.02825421416378877,
+        "fit_CTD_relative_increase": 0.009748065518850811,
+        "held_CTD_relative_increase": 0.009768116861740726,
+        "budget_relative_error": -0.02519344811491886,
+        "matched": true,
+        "gaussians": 10256,
+        "PSNR": 39.29738445281983,
+        "SSIM": 0.9926403909921646,
+        "LPIPS_alex_v01": 0.013459894666448235,
+        "temporal_residual256": 0.0004389875405546178,
+        "holdout_native400_mix": 0.0015617025342795092,
+        "holdout_native400_mse": 3.233709330251677e-05,
+        "offset_weighted_RMS": 0.0012296450707461215,
+        "offset_uniform_RMS": 0.0007415558568296109,
+        "offset_max": 0.005128167024188276
+      },
+      {
+        "arm": "l2__budget1pct__seed43",
+        "method": "l2",
+        "condition": "l2__budget1pct",
+        "seed": 43,
+        "role": "confirmation",
+        "budget": 0.01,
+        "lambda": 0.02825421416378877,
+        "fit_CTD_relative_increase": 0.0092256460439811,
+        "held_CTD_relative_increase": 0.009244622762798435,
+        "budget_relative_error": -0.07743539560188994,
+        "matched": false,
+        "gaussians": 10256,
+        "PSNR": 39.300351524353026,
+        "SSIM": 0.9926380306482315,
+        "LPIPS_alex_v01": 0.013423063443042338,
+        "temporal_residual256": 0.00044433370833410165,
+        "holdout_native400_mix": 0.0015635292637287766,
+        "holdout_native400_mse": 3.332401429607007e-05,
+        "offset_weighted_RMS": 0.0011962417270942076,
+        "offset_uniform_RMS": 0.0007185974327584234,
+        "offset_max": 0.005351861878970681
+      },
+      {
+        "arm": "l2__budget1pct__seed44",
+        "method": "l2",
+        "condition": "l2__budget1pct",
+        "seed": 44,
+        "role": "confirmation",
+        "budget": 0.01,
+        "lambda": 0.02825421416378877,
+        "fit_CTD_relative_increase": 0.009805334120693312,
+        "held_CTD_relative_increase": 0.009825503176723116,
+        "budget_relative_error": -0.0194665879306688,
+        "matched": true,
+        "gaussians": 10256,
+        "PSNR": 39.31117992401123,
+        "SSIM": 0.992642056941986,
+        "LPIPS_alex_v01": 0.013424246874637901,
+        "temporal_residual256": 0.00043777041045414445,
+        "holdout_native400_mix": 0.001565932304082388,
+        "holdout_native400_mse": 3.2236575149196336e-05,
+        "offset_weighted_RMS": 0.0012332517869993198,
+        "offset_uniform_RMS": 0.0007364767329123131,
+        "offset_max": 0.005267023420185879
+      },
+      {
+        "arm": "ctd__budget4pct__seed42",
+        "method": "ctd",
+        "condition": "ctd__budget4pct",
+        "seed": 42,
+        "role": "calibration",
+        "budget": 0.04,
+        "lambda": 0.0011599009578811307,
+        "fit_CTD_relative_increase": 0.04005319298638812,
+        "held_CTD_relative_increase": 0.04013558048798358,
+        "budget_relative_error": 0.0013298246597028829,
+        "matched": true,
+        "gaussians": 10256,
+        "PSNR": 39.54049549102783,
+        "SSIM": 0.9928659051656723,
+        "LPIPS_alex_v01": 0.013559315027669072,
+        "temporal_residual256": 0.0003919122311296004,
+        "holdout_native400_mix": 0.0014311143675365963,
+        "holdout_native400_mse": 2.335025350770888e-05,
+        "offset_weighted_RMS": 0.0024925227388825325,
+        "offset_uniform_RMS": 0.002252938008976908,
+        "offset_max": 0.00806118093742394
+      },
+      {
+        "arm": "ctd__budget4pct__seed43",
+        "method": "ctd",
+        "condition": "ctd__budget4pct",
+        "seed": 43,
+        "role": "confirmation",
+        "budget": 0.04,
+        "lambda": 0.0011599009578811307,
+        "fit_CTD_relative_increase": 0.03951848672783562,
+        "held_CTD_relative_increase": 0.03959977430109518,
+        "budget_relative_error": -0.012037831804109556,
+        "matched": true,
+        "gaussians": 10256,
+        "PSNR": 39.57287082672119,
+        "SSIM": 0.9928840339183808,
+        "LPIPS_alex_v01": 0.013469357741996646,
+        "temporal_residual256": 0.0003933929800151241,
+        "holdout_native400_mix": 0.0014262708191873153,
+        "holdout_native400_mse": 2.3436173263247395e-05,
+        "offset_weighted_RMS": 0.002475829365573411,
+        "offset_uniform_RMS": 0.0022456569662302854,
+        "offset_max": 0.008069534351087888
+      },
+      {
+        "arm": "ctd__budget4pct__seed44",
+        "method": "ctd",
+        "condition": "ctd__budget4pct",
+        "seed": 44,
+        "role": "confirmation",
+        "budget": 0.04,
+        "lambda": 0.0011599009578811307,
+        "fit_CTD_relative_increase": 0.0400092509099815,
+        "held_CTD_relative_increase": 0.040091547941337,
+        "budget_relative_error": 0.00023127274953749222,
+        "matched": true,
+        "gaussians": 10256,
+        "PSNR": 39.57737293243408,
+        "SSIM": 0.9928708434104919,
+        "LPIPS_alex_v01": 0.01346614519134164,
+        "temporal_residual256": 0.0003921989891201495,
+        "holdout_native400_mix": 0.0014320869750745998,
+        "holdout_native400_mse": 2.3352390746515232e-05,
+        "offset_weighted_RMS": 0.002491155094669803,
+        "offset_uniform_RMS": 0.0022523884951159935,
+        "offset_max": 0.008075139159935659
+      },
+      {
+        "arm": "l2__budget4pct__seed42",
+        "method": "l2",
+        "condition": "l2__budget4pct",
+        "seed": 42,
+        "role": "calibration",
+        "budget": 0.04,
+        "lambda": 0.0032453838837133786,
+        "fit_CTD_relative_increase": 0.04023393785402778,
+        "held_CTD_relative_increase": 0.04031669719894802,
+        "budget_relative_error": 0.005848446350694481,
+        "matched": true,
+        "gaussians": 10256,
+        "PSNR": 39.53769302368164,
+        "SSIM": 0.9928572028875351,
+        "LPIPS_alex_v01": 0.013461496261879802,
+        "temporal_residual256": 0.000392053611385136,
+        "holdout_native400_mix": 0.001437212629212268,
+        "holdout_native400_mse": 2.3352479151858336e-05,
+        "offset_weighted_RMS": 0.0024981403139507675,
+        "offset_uniform_RMS": 0.001623806249403803,
+        "offset_max": 0.007340515374886239
+      },
+      {
+        "arm": "l2__budget4pct__seed43",
+        "method": "l2",
+        "condition": "l2__budget4pct",
+        "seed": 43,
+        "role": "confirmation",
+        "budget": 0.04,
+        "lambda": 0.0032453838837133786,
+        "fit_CTD_relative_increase": 0.039816748094712286,
+        "held_CTD_relative_increase": 0.03989864938682156,
+        "budget_relative_error": -0.004581297632192838,
+        "matched": true,
+        "gaussians": 10256,
+        "PSNR": 39.5707202911377,
+        "SSIM": 0.9928755700588227,
+        "LPIPS_alex_v01": 0.01338601738680154,
+        "temporal_residual256": 0.00039458915584598785,
+        "holdout_native400_mix": 0.0014301497006247675,
+        "holdout_native400_mse": 2.3413833983992133e-05,
+        "offset_weighted_RMS": 0.0024851548283784295,
+        "offset_uniform_RMS": 0.0016143649905030885,
+        "offset_max": 0.007292618566967229
+      },
+      {
+        "arm": "l2__budget4pct__seed44",
+        "method": "l2",
+        "condition": "l2__budget4pct",
+        "seed": 44,
+        "role": "confirmation",
+        "budget": 0.04,
+        "lambda": 0.0032453838837133786,
+        "fit_CTD_relative_increase": 0.040244656788228486,
+        "held_CTD_relative_increase": 0.040327438316329636,
+        "budget_relative_error": 0.006116419705712195,
+        "matched": true,
+        "gaussians": 10256,
+        "PSNR": 39.57109260559082,
+        "SSIM": 0.9928601920604706,
+        "LPIPS_alex_v01": 0.013407089188694954,
+        "temporal_residual256": 0.00039242698091016643,
+        "holdout_native400_mix": 0.0014397411684291689,
+        "holdout_native400_mse": 2.333922974365713e-05,
+        "offset_weighted_RMS": 0.0024984730620912503,
+        "offset_uniform_RMS": 0.0016190209028457614,
+        "offset_max": 0.00744515780489191
+      }
+    ],
+    "aggregates": [
+      {
+        "budget": 0.01,
+        "method": "ctd",
+        "scope": "all_orders",
+        "n": 3,
+        "lambda": 0.00933987301078566,
+        "all_matched": false,
+        "metrics": {
+          "PSNR": {
+            "mean": 39.34968744913737,
+            "sample_std": 0.006299054024671553
+          },
+          "SSIM": {
+            "mean": 0.9926744441191356,
+            "sample_std": 3.764058487000155e-06
+          },
+          "LPIPS_alex_v01": {
+            "mean": 0.0134509522235021,
+            "sample_std": 3.0402362963472542e-05
+          },
+          "temporal_residual256": {
+            "mean": 0.0004327822658215114,
+            "sample_std": 3.196635688611468e-06
+          },
+          "fit_CTD_relative_increase": {
+            "mean": 0.009855502073309657,
+            "sample_std": 0.00022813132351822766
+          },
+          "held_CTD_relative_increase": {
+            "mean": 0.009875774262984242,
+            "sample_std": 0.00022860061419067724
+          },
+          "holdout_native400_mix": {
+            "mean": 0.00153308900425563,
+            "sample_std": 2.6522189298442654e-06
+          },
+          "holdout_native400_mse": {
+            "mean": 3.1193145119473924e-05,
+            "sample_std": 4.1664829839246206e-07
+          },
+          "offset_weighted_RMS": {
+            "mean": 0.0012363470918556718,
+            "sample_std": 1.4356165124088866e-05
+          },
+          "offset_uniform_RMS": {
+            "mean": 0.0012429597205325773,
+            "sample_std": 7.407566745145084e-06
+          }
+        }
+      },
+      {
+        "budget": 0.01,
+        "method": "ctd",
+        "scope": "confirmation_orders",
+        "n": 2,
+        "lambda": 0.00933987301078566,
+        "all_matched": false,
+        "metrics": {
+          "PSNR": {
+            "mean": 39.35269117355347,
+            "sample_std": 0.005022151033604535
+          },
+          "SSIM": {
+            "mean": 0.9926744520664215,
+            "sample_std": 5.323146966878814e-06
+          },
+          "LPIPS_alex_v01": {
+            "mean": 0.01343430537963286,
+            "sample_std": 1.3634620738563607e-05
+          },
+          "temporal_residual256": {
+            "mean": 0.00043397381108319826,
+            "sample_std": 3.4522860234225663e-06
+          },
+          "fit_CTD_relative_increase": {
+            "mean": 0.009777684705472408,
+            "sample_std": 0.0002602970324795343
+          },
+          "held_CTD_relative_increase": {
+            "mean": 0.00979779679280533,
+            "sample_std": 0.0002608324490620177
+          },
+          "holdout_native400_mix": {
+            "mean": 0.001532108469463482,
+            "sample_std": 2.8809442257659923e-06
+          },
+          "holdout_native400_mse": {
+            "mean": 3.1339546338229505e-05,
+            "sample_std": 4.6753792144375293e-07
+          },
+          "offset_weighted_RMS": {
+            "mean": 0.001231457217285023,
+            "sample_std": 1.6393099592210432e-05
+          },
+          "offset_uniform_RMS": {
+            "mean": 0.001239437437704178,
+            "sample_std": 5.94182061561387e-06
+          }
+        }
+      },
+      {
+        "budget": 0.01,
+        "method": "l2",
+        "scope": "all_orders",
+        "n": 3,
+        "lambda": 0.02825421416378877,
+        "all_matched": false,
+        "metrics": {
+          "PSNR": {
+            "mean": 39.30297196706136,
+            "sample_std": 0.007261459656221844
+          },
+          "SSIM": {
+            "mean": 0.9926401595274607,
+            "sample_std": 2.0231021430620117e-06
+          },
+          "LPIPS_alex_v01": {
+            "mean": 0.013435734994709491,
+            "sample_std": 2.0931254894970717e-05
+          },
+          "temporal_residual256": {
+            "mean": 0.0004403638864476213,
+            "sample_std": 3.4914131491637314e-06
+          },
+          "fit_CTD_relative_increase": {
+            "mean": 0.00959301522784174,
+            "sample_std": 0.0003194370221609788
+          },
+          "held_CTD_relative_increase": {
+            "mean": 0.00961274760042076,
+            "sample_std": 0.0003200940788934739
+          },
+          "holdout_native400_mix": {
+            "mean": 0.0015637213673635579,
+            "sample_std": 2.121418393718862e-06
+          },
+          "holdout_native400_mse": {
+            "mean": 3.263256091592772e-05,
+            "sample_std": 6.009216317203483e-07
+          },
+          "offset_weighted_RMS": {
+            "mean": 0.0012197128616132163,
+            "sample_std": 2.0406438132114665e-05
+          },
+          "offset_uniform_RMS": {
+            "mean": 0.0007322100075001157,
+            "sample_std": 1.2059271050334632e-05
+          }
+        }
+      },
+      {
+        "budget": 0.01,
+        "method": "l2",
+        "scope": "confirmation_orders",
+        "n": 2,
+        "lambda": 0.02825421416378877,
+        "all_matched": false,
+        "metrics": {
+          "PSNR": {
+            "mean": 39.30576572418212,
+            "sample_std": 0.007656834827712518
+          },
+          "SSIM": {
+            "mean": 0.9926400437951088,
+            "sample_std": 2.847019616863789e-06
+          },
+          "LPIPS_alex_v01": {
+            "mean": 0.01342365515884012,
+            "sample_std": 8.368125062931507e-07
+          },
+          "temporal_residual256": {
+            "mean": 0.000441052059394123,
+            "sample_std": 4.640952437865029e-06
+          },
+          "fit_CTD_relative_increase": {
+            "mean": 0.009515490082337206,
+            "sample_std": 0.00040990137001619217
+          },
+          "held_CTD_relative_increase": {
+            "mean": 0.009535062969760776,
+            "sample_std": 0.000410744479744591
+          },
+          "holdout_native400_mix": {
+            "mean": 0.0015647307839055822,
+            "sample_std": 1.6992061295036166e-06
+          },
+          "holdout_native400_mse": {
+            "mean": 3.27802947226332e-05,
+            "sample_std": 7.689355948821334e-07
+          },
+          "offset_weighted_RMS": {
+            "mean": 0.0012147467570467637,
+            "sample_std": 2.617006433102519e-05
+          },
+          "offset_uniform_RMS": {
+            "mean": 0.0007275370828353682,
+            "sample_std": 1.2642574381685125e-05
+          }
+        }
+      },
+      {
+        "budget": 0.04,
+        "method": "ctd",
+        "scope": "all_orders",
+        "n": 3,
+        "lambda": 0.0011599009578811307,
+        "all_matched": true,
+        "metrics": {
+          "PSNR": {
+            "mean": 39.56357975006103,
+            "sample_std": 0.02011789005578086
+          },
+          "SSIM": {
+            "mean": 0.9928735941648483,
+            "sample_std": 9.372187889605397e-06
+          },
+          "LPIPS_alex_v01": {
+            "mean": 0.01349827265366912,
+            "sample_std": 5.288864422624552e-05
+          },
+          "temporal_residual256": {
+            "mean": 0.0003925014000882914,
+            "sample_std": 7.853302558378251e-07
+          },
+          "fit_CTD_relative_increase": {
+            "mean": 0.03986031020806841,
+            "sample_std": 0.00029684203753608873
+          },
+          "held_CTD_relative_increase": {
+            "mean": 0.03994230091013858,
+            "sample_std": 0.00029745264281583845
+          },
+          "holdout_native400_mix": {
+            "mean": 0.001429824053932837,
+            "sample_std": 3.115381071928908e-06
+          },
+          "holdout_native400_mse": {
+            "mean": 2.3379605839157166e-05,
+            "sample_std": 4.9000480085214224e-08
+          },
+          "offset_weighted_RMS": {
+            "mean": 0.002486502399708582,
+            "sample_std": 9.268379357312058e-06
+          },
+          "offset_uniform_RMS": {
+            "mean": 0.002250327823441062,
+            "sample_std": 4.0544015197602694e-06
+          }
+        }
+      },
+      {
+        "budget": 0.04,
+        "method": "ctd",
+        "scope": "confirmation_orders",
+        "n": 2,
+        "lambda": 0.0011599009578811307,
+        "all_matched": true,
+        "metrics": {
+          "PSNR": {
+            "mean": 39.57512187957764,
+            "sample_std": 0.003183469479201647
+          },
+          "SSIM": {
+            "mean": 0.9928774386644363,
+            "sample_std": 9.327097575492251e-06
+          },
+          "LPIPS_alex_v01": {
+            "mean": 0.013467751466669143,
+            "sample_std": 2.2716163530605e-06
+          },
+          "temporal_residual256": {
+            "mean": 0.0003927959845676368,
+            "sample_std": 8.442790585115397e-07
+          },
+          "fit_CTD_relative_increase": {
+            "mean": 0.03976386881890856,
+            "sample_std": 0.00034702268115882623
+          },
+          "held_CTD_relative_increase": {
+            "mean": 0.03984566112121609,
+            "sample_std": 0.0003477364758237837
+          },
+          "holdout_native400_mix": {
+            "mean": 0.0014291788971309575,
+            "sample_std": 4.112643268336921e-06
+          },
+          "holdout_native400_mse": {
+            "mean": 2.3394282004881313e-05,
+            "sample_std": 5.924318572618787e-08
+          },
+          "offset_weighted_RMS": {
+            "mean": 0.002483492230121607,
+            "sample_std": 1.0836926970686641e-05
+          },
+          "offset_uniform_RMS": {
+            "mean": 0.0022490227306731394,
+            "sample_std": 4.7599097228373e-06
+          }
+        }
+      },
+      {
+        "budget": 0.04,
+        "method": "l2",
+        "scope": "all_orders",
+        "n": 3,
+        "lambda": 0.0032453838837133786,
+        "all_matched": true,
+        "metrics": {
+          "PSNR": {
+            "mean": 39.559835306803386,
+            "sample_std": 0.01917668326107633
+          },
+          "SSIM": {
+            "mean": 0.9928643216689427,
+            "sample_std": 9.855378981894233e-06
+          },
+          "LPIPS_alex_v01": {
+            "mean": 0.013418200945792097,
+            "sample_std": 3.894699609866503e-05
+          },
+          "temporal_residual256": {
+            "mean": 0.0003930232493804301,
+            "sample_std": 1.3689041218113307e-06
+          },
+          "fit_CTD_relative_increase": {
+            "mean": 0.04009844757898952,
+            "sample_std": 0.00024401777285506054
+          },
+          "held_CTD_relative_increase": {
+            "mean": 0.04018092830069974,
+            "sample_std": 0.00024451969617156496
+          },
+          "holdout_native400_mix": {
+            "mean": 0.0014357011660887347,
+            "sample_std": 4.97116226259688e-06
+          },
+          "holdout_native400_mse": {
+            "mean": 2.3368514293169196e-05,
+            "sample_std": 3.980317181626653e-08
+          },
+          "offset_weighted_RMS": {
+            "mean": 0.0024939227348068156,
+            "sample_std": 7.595052184412685e-06
+          },
+          "offset_uniform_RMS": {
+            "mean": 0.0016190640475842177,
+            "sample_std": 4.720777320412639e-06
+          }
+        }
+      },
+      {
+        "budget": 0.04,
+        "method": "l2",
+        "scope": "confirmation_orders",
+        "n": 2,
+        "lambda": 0.0032453838837133786,
+        "all_matched": true,
+        "metrics": {
+          "PSNR": {
+            "mean": 39.570906448364255,
+            "sample_std": 0.0002632660745374436
+          },
+          "SSIM": {
+            "mean": 0.9928678810596466,
+            "sample_std": 1.087388691581066e-05
+          },
+          "LPIPS_alex_v01": {
+            "mean": 0.013396553287748247,
+            "sample_std": 1.4900014010652403e-05
+          },
+          "temporal_residual256": {
+            "mean": 0.00039350806837807717,
+            "sample_std": 1.52888855923091e-06
+          },
+          "fit_CTD_relative_increase": {
+            "mean": 0.04003070244147039,
+            "sample_std": 0.0003025771389139814
+          },
+          "held_CTD_relative_increase": {
+            "mean": 0.0401130438515756,
+            "sample_std": 0.00030319955975287966
+          },
+          "holdout_native400_mix": {
+            "mean": 0.0014349454345269682,
+            "sample_std": 6.782191926024619e-06
+          },
+          "holdout_native400_mse": {
+            "mean": 2.337653186382463e-05,
+            "sample_std": 5.275316424615129e-08
+          },
+          "offset_weighted_RMS": {
+            "mean": 0.00249181394523484,
+            "sample_std": 9.417413371762884e-06
+          },
+          "offset_uniform_RMS": {
+            "mean": 0.001616692946674425,
+            "sample_std": 3.292227190114134e-06
+          }
+        }
+      }
+    ],
+    "paired_effects": [
+      {
+        "budget": 0.01,
+        "seed": 42,
+        "role": "calibration",
+        "both_matched": true,
+        "difference": "CTD minus uniform L2",
+        "PSNR_difference": 0.04629554748535014,
+        "SSIM_difference": 3.4037232399031225e-05,
+        "LPIPS_alex_v01_difference": 2.4351244792343227e-05,
+        "temporal_residual256_difference": -8.588365256480084e-06,
+        "fit_CTD_relative_increase_difference": 0.00026307129013333937,
+        "held_CTD_relative_increase_difference": 0.0002636123416013426,
+        "holdout_native400_mix_difference": -2.6652460439583652e-05,
+        "holdout_native400_mse_difference": -1.4367506205540125e-06,
+        "offset_weighted_RMS_difference": 1.6481770250848394e-05,
+        "offset_uniform_RMS_difference": 0.0005084484293597652
+      },
+      {
+        "budget": 0.01,
+        "seed": 43,
+        "role": "confirmation",
+        "both_matched": false,
+        "difference": "CTD minus uniform L2",
+        "PSNR_difference": 0.04878845214843608,
+        "SSIM_difference": 4.018545150752395e-05,
+        "LPIPS_alex_v01_difference": 1.6008038073774683e-06,
+        "temporal_residual256_difference": -7.918762393145781e-06,
+        "fit_CTD_relative_increase_difference": 0.00036798086470229453,
+        "held_CTD_relative_increase_difference": 0.0003687376365216471,
+        "holdout_native400_mix_difference": -3.345792946355384e-05,
+        "holdout_native400_mse_difference": -1.6538687231258239e-06,
+        "offset_weighted_RMS_difference": 2.3623818304496823e-05,
+        "offset_uniform_RMS_difference": 0.0005166385032958599
+      },
+      {
+        "budget": 0.01,
+        "seed": 44,
+        "role": "confirmation",
+        "both_matched": true,
+        "difference": "CTD minus uniform L2",
+        "PSNR_difference": 0.045062446594243966,
+        "SSIM_difference": 2.8631091117947705e-05,
+        "LPIPS_alex_v01_difference": 1.9699637778104392e-05,
+        "temporal_residual256_difference": -6.237734228703852e-06,
+        "fit_CTD_relative_increase_difference": 0.00015640838156811068,
+        "held_CTD_relative_increase_difference": 0.00015673000956746043,
+        "holdout_native400_mix_difference": -3.178669942064663e-05,
+        "holdout_native400_mse_difference": -1.2276280456815692e-06,
+        "offset_weighted_RMS_difference": 9.797102172021468e-06,
+        "offset_uniform_RMS_difference": 0.0005071622064417593
+      },
+      {
+        "budget": 0.04,
+        "seed": 42,
+        "role": "calibration",
+        "both_matched": true,
+        "difference": "CTD minus uniform L2",
+        "PSNR_difference": 0.0028024673461928273,
+        "SSIM_difference": 8.702278137207031e-06,
+        "LPIPS_alex_v01_difference": 9.781876578927005e-05,
+        "temporal_residual256_difference": -1.4138025553560698e-07,
+        "fit_CTD_relative_increase_difference": -0.00018074486763966502,
+        "held_CTD_relative_increase_difference": -0.0001811167109644421,
+        "holdout_native400_mix_difference": -6.0982616756717536e-06,
+        "holdout_native400_mse_difference": -2.2256441494572846e-09,
+        "offset_weighted_RMS_difference": -5.6175750682350804e-06,
+        "offset_uniform_RMS_difference": 0.0006291317595731052
+      },
+      {
+        "budget": 0.04,
+        "seed": 43,
+        "role": "confirmation",
+        "both_matched": true,
+        "difference": "CTD minus uniform L2",
+        "PSNR_difference": 0.0021505355834960938,
+        "SSIM_difference": 8.463859558105469e-06,
+        "LPIPS_alex_v01_difference": 8.334035519510542e-05,
+        "temporal_residual256_difference": -1.196175830863724e-06,
+        "fit_CTD_relative_increase_difference": -0.000298261366876669,
+        "held_CTD_relative_increase_difference": -0.0002988750857263814,
+        "holdout_native400_mix_difference": -3.878881437452235e-06,
+        "holdout_native400_mse_difference": 2.2339279255261484e-08,
+        "offset_weighted_RMS_difference": -9.325462805018399e-06,
+        "offset_uniform_RMS_difference": 0.0006312919757271969
+      },
+      {
+        "budget": 0.04,
+        "seed": 44,
+        "role": "confirmation",
+        "both_matched": true,
+        "difference": "CTD minus uniform L2",
+        "PSNR_difference": 0.006280326843260298,
+        "SSIM_difference": 1.0651350021317896e-05,
+        "LPIPS_alex_v01_difference": 5.9056002646684994e-05,
+        "temporal_residual256_difference": -2.279917900169172e-07,
+        "fit_CTD_relative_increase_difference": -0.0002354058782469831,
+        "held_CTD_relative_increase_difference": -0.00023589037499263665,
+        "holdout_native400_mix_difference": -7.654193354569069e-06,
+        "holdout_native400_mse_difference": 1.316100285810105e-08,
+        "offset_weighted_RMS_difference": -7.317967421447379e-06,
+        "offset_uniform_RMS_difference": 0.0006333675922702321
+      }
+    ],
+    "calibration": {
+      "ctd__budget1pct": {
+        "method": "ctd",
+        "budget": 0.01,
+        "selected_lambda": 0.00933987301078566,
+        "selected_fit_drift": 0.010011136705899166,
+        "matched": true,
+        "records": [
+          {
+            "lambda": 0.001,
+            "fit_drift": 0.04327841829771503,
+            "sha256": "d262b494fd90bf4fb6302af7d230385d22dbac9aedb9f714aed4d4507958da84",
+            "new": false
+          },
+          {
+            "lambda": 0.01,
+            "fit_drift": 0.009488796402079036,
+            "sha256": "d9d914b14dc874258879a4609f81db7f188755d8497d928c37ac886b85269b6b",
+            "new": false
+          },
+          {
+            "lambda": 0.1,
+            "fit_drift": 0.0010008128927606645,
+            "sha256": "44130c2fb52d7c7da642777117d65fc87d0b31a1e55c1dce67235cd936797dfa",
+            "new": false
+          },
+          {
+            "lambda": 0.007943282347242819,
+            "fit_drift": 0.011325237867943405,
+            "sha256": "5096ab9cfeb7f43ec1427126218c353951961cf32d46e09a46bfefeb433978ac",
+            "new": true
+          },
+          {
+            "lambda": 0.00933987301078566,
+            "fit_drift": 0.010011136705899166,
+            "sha256": "feea8c9446b31e1755a53fe07d6a8222e7b71693c2bbaa55ccc6391681cd874c",
+            "new": true
+          }
+        ]
+      },
+      "l2__budget1pct": {
+        "method": "l2",
+        "budget": 0.01,
+        "selected_lambda": 0.02825421416378877,
+        "selected_fit_drift": 0.00974806549313551,
+        "matched": true,
+        "records": [
+          {
+            "lambda": 0.001,
+            "fit_drift": 0.06955464970867732,
+            "sha256": "5d0037a56c5783e61d2a5aa35e1280f4dd141273ea5ddf3fbf596a9b1f6584a9",
+            "new": false
+          },
+          {
+            "lambda": 0.01,
+            "fit_drift": 0.020726990236204418,
+            "sha256": "97a2618542689a9a2d0d8c9a0686be7ad45a4089de8d19b9b48da5339e2f9eea",
+            "new": false
+          },
+          {
+            "lambda": 0.1,
+            "fit_drift": 0.0031996116377741553,
+            "sha256": "cdaa389eb036f9a7e121cdc220ea1af0a8b98916dfc14c42d71e2489b166d6ca",
+            "new": false
+          },
+          {
+            "lambda": 0.02455231689258254,
+            "fit_drift": 0.010898214977618762,
+            "sha256": "6596fcf4aacb7292521662b5bf36040fe81b7efa0772b1478a238a1b020b72a9",
+            "new": true
+          },
+          {
+            "lambda": 0.02825421416378877,
+            "fit_drift": 0.00974806549313551,
+            "sha256": "8d14f7b068f97b31168b86bc438d2e9b1a20642850130af9e39259a73676a800",
+            "new": true
+          }
+        ]
+      },
+      "ctd__budget4pct": {
+        "method": "ctd",
+        "budget": 0.04,
+        "selected_lambda": 0.0011599009578811307,
+        "selected_fit_drift": 0.0400531926789075,
+        "matched": true,
+        "records": [
+          {
+            "lambda": 0.001,
+            "fit_drift": 0.04327841829771503,
+            "sha256": "d262b494fd90bf4fb6302af7d230385d22dbac9aedb9f714aed4d4507958da84",
+            "new": false
+          },
+          {
+            "lambda": 0.01,
+            "fit_drift": 0.009488796402079036,
+            "sha256": "d9d914b14dc874258879a4609f81db7f188755d8497d928c37ac886b85269b6b",
+            "new": false
+          },
+          {
+            "lambda": 0.1,
+            "fit_drift": 0.0010008128927606645,
+            "sha256": "44130c2fb52d7c7da642777117d65fc87d0b31a1e55c1dce67235cd936797dfa",
+            "new": false
+          },
+          {
+            "lambda": 0.0012589254117941675,
+            "fit_drift": 0.03829705214618061,
+            "sha256": "c4e4b08eb58903eb63822db98c8d35c60507045931996f14398f6205d0956ab8",
+            "new": true
+          },
+          {
+            "lambda": 0.0011599009578811307,
+            "fit_drift": 0.0400531926789075,
+            "sha256": "dd2787c4c2195378ffbfe7ebd452e9daa39f2243af4a461efd9b10956fa23d68",
+            "new": true
+          }
+        ]
+      },
+      "l2__budget4pct": {
+        "method": "l2",
+        "budget": 0.04,
+        "selected_lambda": 0.0032453838837133786,
+        "selected_fit_drift": 0.040233937471745015,
+        "matched": true,
+        "records": [
+          {
+            "lambda": 0.001,
+            "fit_drift": 0.06955464970867732,
+            "sha256": "5d0037a56c5783e61d2a5aa35e1280f4dd141273ea5ddf3fbf596a9b1f6584a9",
+            "new": false
+          },
+          {
+            "lambda": 0.01,
+            "fit_drift": 0.020726990236204418,
+            "sha256": "97a2618542689a9a2d0d8c9a0686be7ad45a4089de8d19b9b48da5339e2f9eea",
+            "new": false
+          },
+          {
+            "lambda": 0.1,
+            "fit_drift": 0.0031996116377741553,
+            "sha256": "cdaa389eb036f9a7e121cdc220ea1af0a8b98916dfc14c42d71e2489b166d6ca",
+            "new": false
+          },
+          {
+            "lambda": 0.00286392938652231,
+            "fit_drift": 0.04301309368944632,
+            "sha256": "9f1879c98d63507bb54a885fa736b4a13d1c81d22a9e058b2d55cb28af865586",
+            "new": true
+          },
+          {
+            "lambda": 0.0032453838837133786,
+            "fit_drift": 0.040233937471745015,
+            "sha256": "b9c3c7e0919e379feeb588fb778c408b959ee77d727d15e1f9b71c3c8f7d05e4",
+            "new": true
+          }
+        ]
+      }
+    },
+    "new_calibration_candidates": 8,
+    "new_gradient_updates": 6080,
+    "confirmation_updates": 3040,
+    "max_direct_vs_quadratic_CTD_error": 3.3881317890172014e-21,
+    "verification": {
+      "all_input_source_checkpoint_hashes": true,
+      "same_E13_initial_geometry_targets_orders": true,
+      "fit_only_calibration_and_first_pass_rule_replayed": true,
+      "lambda_choices_frozen_before_confirmation": true,
+      "all12_frozen_before_evaluation": true,
+      "source_partition_mass_baseline_linear_verified": true,
+      "all12_direct_source_CTD_deltas_verified": true,
+      "all240_GT_and_fidelity_temporal_means_verified": true,
+      "all_optimizer_steps_and_radius_verified": true
+    },
+    "all_calibration_recipes_matched": true,
+    "all_confirmation_arms_matched": false,
+    "scope": "Fit-only seed42 calibration, frozenlambda future-order43/44 comparison on previously explored bouncingballs; no new scene or OT-plan/adaptive split learning.",
+    "limits": [
+      "One previously explored scene, fixed teacher/grouping/covariance/deformation/assignment and shared constant translations. No adaptive split or transport-plan learning.",
+      "Seed42 calibration not independent evidence;43/44 are future-order perturbations of the same base, not fullpipeline seeds.",
+      "Budgets chosen from the already explored fit-drift range, not from heldout or GT scores; this remains exploratory.",
+      "Same lambda across confirmation orders may not exactly match budget; report per-arm deviation and3% match flags and avoid equal-drift claim if not matched.",
+      "Calibration computes extra candidate updates; all attempts retained and counted, not equal total training compute.",
+      "No lambda retuning after GT or confirmation-order results; report all budgets."
+    ]
+  },
+  "perceptual_fit_loss": {
+    "protocol": "experiments/perceptual-fit-loss-v1.json",
+    "output": "outputs/ot/e18-perceptual-fit-loss-20261110-v1",
+    "beta": 0.1,
+    "order_seeds": [
+      42,
+      43,
+      44
+    ],
+    "fit_times": 76,
+    "holdout_times": 74,
+    "GT_views": 20,
+    "paired_beta_mean": {
+      "mean_covariance": {
+        "PSNR": 0.010041236877441406,
+        "SSIM": -4.231333732599799e-05,
+        "LPIPS_alex_v01": -0.0003026047100623443,
+        "temporal_residual256": 2.0793835558018388e-06,
+        "holdout_mixed_loss_delta": 3.004370064281662e-05
+      },
+      "moment_covariance": {
+        "PSNR": 0.046456336975097656,
+        "SSIM": -5.289812882743513e-05,
+        "LPIPS_alex_v01": -0.0011345345837374538,
+        "temporal_residual256": 5.615857187335627e-06,
+        "holdout_mixed_loss_delta": 3.765333550856333e-05
+      }
+    },
+    "scope": "SH and opacity only; fixed K10000 geometry and assignments; teacher-dependent per-time representative states; no adaptive split, no second scene."
+  },
+  "second_scene_validation": {
+    "scene": "jumpingjacks",
+    "protocol": "experiments/second-scene-validation-v1.json",
+    "baseline": "/data3/store1/yhy-b26/outputs/dnerf/jumpingjacks/baseline-e19-jumpingjacks-20261110-v1",
+    "run": "/data3/store1/yhy-b26/outputs/ot/e19-second-scene-jumpingjacks-20261110-v1",
+    "teacher_gaussians": 24985,
+    "shared_budget": 9276,
+    "teacher_metrics": {
+      "PSNR": 35.25097398757934,
+      "SSIM": 0.9853365570306778,
+      "LPIPS_alex_v01": 0.01613642965676263
+    },
+    "paired_beta": {
+      "mean_covariance": {
+        "PSNR": -0.008955192565913705,
+        "SSIM": -0.00010680556297304467,
+        "LPIPS_alex_v01": -0.000289387954398989,
+        "temporal_residual256": 1.2621618883365982e-05
+      },
+      "moment_covariance": {
+        "PSNR": -0.0020753860473661234,
+        "SSIM": -0.00012878477573385894,
+        "LPIPS_alex_v01": -0.0008867413969710462,
+        "temporal_residual256": 1.7050525288205302e-05
+      }
+    },
+    "paired_moment_minus_mean": {
+      "0.0": {
+        "PSNR": 1.2520052909851103,
+        "SSIM": 0.0028713166713714156,
+        "LPIPS_alex_v01": 0.005147814378142355,
+        "temporal_residual256": -0.0005048262263968794
+      },
+      "0.1": {
+        "PSNR": 1.2588850975036578,
+        "SSIM": 0.0028493374586106013,
+        "LPIPS_alex_v01": 0.0045504609355702975,
+        "temporal_residual256": -0.0005003973199920401
+      }
+    },
+    "scope": "One new baseline and one appearance order. Official D-NeRF test times are present in teacher training. Fixed assignment, teacher-dependent geometry, no adaptive 4DGS split."
+  },
+  "windowed_reassignment": {
+    "protocol": "experiments/windowed-reassignment-v1.json",
+    "run": "/data3/store1/yhy-b26/outputs/ot/e20-windowed-reassignment-20261110-v1",
+    "paired_new_minus_fixed": {
+      "window_full_geometry": {
+        "PSNR": 0.04553031921386719,
+        "SSIM": 3.825426101689011e-05,
+        "LPIPS_alex_v01": -0.00011716498993337085,
+        "temporal_residual256": -5.6127671575895155e-06
+      },
+      "window_position_only": {
+        "PSNR": 0.0477873802185087,
+        "SSIM": 4.374682903285354e-05,
+        "LPIPS_alex_v01": -0.00012834160588681698,
+        "temporal_residual256": -5.763899254140111e-06
+      }
+    },
+    "switch_summary": {
+      "window_full_geometry": {
+        "total": 20000,
+        "mean_per_window": 500.0,
+        "max_per_window": 500,
+        "mean_disagreement_with_fixed": 0.056879127476485894
+      },
+      "window_position_only": {
+        "total": 20000,
+        "mean_per_window": 500.0,
+        "max_per_window": 500,
+        "mean_disagreement_with_fixed": 0.056873123874324596
+      }
+    },
+    "covariance_fraction_of_fit_cost": 0.0006436508928566584,
+    "cross_method_label_disagreement": 0.0005223133880328197,
+    "posthoc_boundary_analysis": {
+      "label": "posthoc diagnostic after E20 training and GT evaluation; no arm or parameter selection",
+      "window_boundary_definition": "adjacent time pair i-1 -> i with i divisible by 5",
+      "boundary_pairs": 39,
+      "within_pairs": 160,
+      "arms": {
+        "window_full_geometry": {
+          "boundary": {
+            "fixed_residual": 0.0019141190762942035,
+            "new_residual": 0.0019539942582830405,
+            "delta": 3.987518198883696e-05,
+            "relative_delta_percent": 2.083213238020521,
+            "pairs": 39
+          },
+          "within": {
+            "fixed_residual": 0.0019522220703947824,
+            "new_residual": 0.0019355216156327515,
+            "delta": -1.6700454762030902e-05,
+            "relative_delta_percent": -0.8554587623657846,
+            "pairs": 160
+          },
+          "GT_beneficial_views": {
+            "PSNR": 17,
+            "SSIM": 11,
+            "LPIPS_alex_v01": 13
+          },
+          "full12_cost_reduction_percent": {
+            "fit": 27.066476861400538,
+            "holdout": 27.05851614535011
+          },
+          "switches_total": 20000
+        },
+        "window_position_only": {
+          "boundary": {
+            "fixed_residual": 0.0019141190762942035,
+            "new_residual": 0.0019537157555206274,
+            "delta": 3.9596679226423835e-05,
+            "relative_delta_percent": 2.0686633196866877,
+            "pairs": 39
+          },
+          "within": {
+            "fixed_residual": 0.0019522220703947824,
+            "new_residual": 0.001935401530136005,
+            "delta": -1.6820540258777458e-05,
+            "relative_delta_percent": -0.8616099835084834,
+            "pairs": 160
+          },
+          "GT_beneficial_views": {
+            "PSNR": 17,
+            "SSIM": 13,
+            "LPIPS_alex_v01": 14
+          },
+          "full12_cost_reduction_percent": {
+            "fit": 27.091144413368777,
+            "holdout": 27.08243998326861
+          },
+          "switches_total": 20000
+        }
+      }
+    },
+    "scope": "Offline teacher-dependent explored jumpingjacks scene, fit-only assignment decisions, fixed K and slot IDs; no new OT coupling or adaptive 4DGS split."
+  },
+  "gaussian_w2_scale_audit": {
+    "protocol": "experiments/gaussian-w2-scale-audit-v1.json",
+    "report": "outputs/ot/e21-gaussian-w2-scale-20261110-v1/report.json",
+    "audit": "outputs/ot/e21-gaussian-w2-scale-20261110-v1/audit.json",
+    "fit_times": 101,
+    "arms": 3,
+    "source_gaussians": 24985,
+    "fixed_old_covariance_share": 0.0006436508910531791,
+    "fixed_bures_covariance_share": 0.2108121757785832,
+    "window_full_position_cost_reduction_percent": 27.085774636260606,
+    "window_full_bures_cost_increase_percent": 4.861557112679704,
+    "window_full_w2_cost_reduction_percent": 20.350888119946276,
+    "audit_status": "passed",
+    "scope": "Assigned-pair cost audit only; no W2 reassignment, GT, training, adaptive split or GHAP CTD claim."
+  },
+  "official_training_split_pilot": {
+    "protocol": "experiments/official-training-split-pilot-v1.json",
+    "report": "outputs/ot/e22-official-training-split-20261110-v1c/report.json",
+    "audit": "outputs/ot/e22-official-training-split-20261110-v1c/audit.json",
+    "status": "completed and audited; v1/v1b invalid attempts excluded",
+    "common_warmup_steps": 128,
+    "post_steps_each": 152,
+    "added_gaussians_each_split_arm": 64,
+    "no_split_PSNR": 35.228518676757815,
+    "gradient_split_PSNR": 35.1293984413147,
+    "temporal_w2_split_PSNR": 35.22588672637939,
+    "scope": "Single late-stage official 4DGS continuation from reconstructed Adam. Temporal W2 compression-distortion score is not GHAP CTD split gain; neither split beats no split."
+  },
+  "research_direction_20261111": {
+    "primary_problem": "Compress a full dynamic 4DGS teacher into a budget-limited student that predicts motion independently, then allocate student capacity with cross-time distribution and rendering gain.",
+    "target_distribution": "Teacher Gaussian states at training times; student predictions must be generated by trainable canonical parameters and deformation, not per-time teacher aggregation at inference.",
+    "next_steps": [
+      "Train and audit an independent-motion student initialized from shared trajectory grouping.",
+      "Define source weights, covariance scale, temporal matching, and one reproducible teacher-student distribution objective; distinguish GHAP CTD from Gaussian W2 geometry.",
+      "Score split candidates by actual before/after window objective and fit-view rendering improvement minus capacity cost.",
+      "Compare no split, random and simple position/render selection at matched student budget and updates; evaluate GT, time continuity, storage and computation only after choices are frozen, then verify on a new scene."
+    ],
+    "not_yet_demonstrated": ["Independent student motion", "CTD-specific adaptive split advantage", "Full 4DGS from-scratch adaptive densification", "Physical mass transport"]
   }
 }

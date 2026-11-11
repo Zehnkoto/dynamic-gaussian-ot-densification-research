@@ -1,0 +1,269 @@
+{
+  "run": "/data3/store1/yhy-b26/outputs/ot/e16-covariance-moment-diagnostic-20261110-v1",
+  "report": {
+    "rows": [
+      {
+        "arm": "mean_covariance__before",
+        "PSNR": 33.61519069671631,
+        "SSIM": 0.9858217477798462,
+        "LPIPS_alex_v01": 0.026018098834902047,
+        "temporal_residual256": 0.0008574867609930506,
+        "fit": {
+          "PSNR_to_teacher": 34.207998175370065,
+          "L1_to_teacher": 0.0053469461578826765,
+          "mixed_loss_to_teacher": 0.007184054604486415
+        },
+        "holdout": {
+          "PSNR_to_teacher": 34.175556595261035,
+          "L1_to_teacher": 0.005086448197756466,
+          "mixed_loss_to_teacher": 0.006912928483625119
+        }
+      },
+      {
+        "arm": "moment_covariance__before",
+        "PSNR": 35.551361083984375,
+        "SSIM": 0.9884255796670913,
+        "LPIPS_alex_v01": 0.02863499419763684,
+        "temporal_residual256": 0.0006513140224281311,
+        "fit": {
+          "PSNR_to_teacher": 37.07885335621081,
+          "L1_to_teacher": 0.004238429093292277,
+          "mixed_loss_to_teacher": 0.005339902614267837
+        },
+        "holdout": {
+          "PSNR_to_teacher": 37.04115274790171,
+          "L1_to_teacher": 0.0040323394822661535,
+          "mixed_loss_to_teacher": 0.005131966500492716
+        }
+      },
+      {
+        "arm": "mean_covariance__seed42",
+        "PSNR": 37.494465065002444,
+        "SSIM": 0.9912463366985321,
+        "LPIPS_alex_v01": 0.014932600036263465,
+        "temporal_residual256": 0.0006171534829788635,
+        "fit": {
+          "PSNR_to_teacher": 40.65533231434069,
+          "L1_to_teacher": 0.0014777350512112637,
+          "mixed_loss_to_teacher": 0.001918495703169978
+        },
+        "holdout": {
+          "PSNR_to_teacher": 40.013275352684225,
+          "L1_to_teacher": 0.0017093433558034736,
+          "mixed_loss_to_teacher": 0.0022561310214695295
+        }
+      },
+      {
+        "arm": "moment_covariance__seed42",
+        "PSNR": 38.317329788208006,
+        "SSIM": 0.9919225066900254,
+        "LPIPS_alex_v01": 0.01889749332331121,
+        "temporal_residual256": 0.0004934949505231937,
+        "fit": {
+          "PSNR_to_teacher": 44.284082764073425,
+          "L1_to_teacher": 0.0012884652157816546,
+          "mixed_loss_to_teacher": 0.001507081541747443
+        },
+        "holdout": {
+          "PSNR_to_teacher": 43.412908966476856,
+          "L1_to_teacher": 0.0015113475509113759,
+          "mixed_loss_to_teacher": 0.001804741595028522
+        }
+      },
+      {
+        "arm": "mean_covariance__seed43",
+        "PSNR": 37.491553688049315,
+        "SSIM": 0.9912416905164718,
+        "LPIPS_alex_v01": 0.014954588375985622,
+        "temporal_residual256": 0.0006187043846944259,
+        "fit": {
+          "PSNR_to_teacher": 40.661514934740566,
+          "L1_to_teacher": 0.0014663361316228187,
+          "mixed_loss_to_teacher": 0.0019080147459661883
+        },
+        "holdout": {
+          "PSNR_to_teacher": 40.023178409885716,
+          "L1_to_teacher": 0.0016985065366670086,
+          "mixed_loss_to_teacher": 0.002246133190252491
+        }
+      },
+      {
+        "arm": "moment_covariance__seed43",
+        "PSNR": 38.310466575622556,
+        "SSIM": 0.991915500164032,
+        "LPIPS_alex_v01": 0.018895420571789147,
+        "temporal_residual256": 0.0004948425596390832,
+        "fit": {
+          "PSNR_to_teacher": 44.29141285544947,
+          "L1_to_teacher": 0.0012811296037398279,
+          "mixed_loss_to_teacher": 0.0015005257185916171
+        },
+        "holdout": {
+          "PSNR_to_teacher": 43.4250835728001,
+          "L1_to_teacher": 0.0015041441924089718,
+          "mixed_loss_to_teacher": 0.0017985059341692642
+        }
+      },
+      {
+        "arm": "mean_covariance__seed44",
+        "PSNR": 37.49313755035401,
+        "SSIM": 0.9912449240684509,
+        "LPIPS_alex_v01": 0.014961173525080085,
+        "temporal_residual256": 0.0006176254022733664,
+        "fit": {
+          "PSNR_to_teacher": 40.65759222131027,
+          "L1_to_teacher": 0.0014708446841196793,
+          "mixed_loss_to_teacher": 0.0019124571546471042
+        },
+        "holdout": {
+          "PSNR_to_teacher": 40.01551030133221,
+          "L1_to_teacher": 0.001704400040309977,
+          "mixed_loss_to_teacher": 0.0022524447365966
+        }
+      },
+      {
+        "arm": "moment_covariance__seed44",
+        "PSNR": 38.314961433410645,
+        "SSIM": 0.9919151097536087,
+        "LPIPS_alex_v01": 0.018933401303365828,
+        "temporal_residual256": 0.0004938939310283706,
+        "fit": {
+          "PSNR_to_teacher": 44.29517821261757,
+          "L1_to_teacher": 0.001287936224559273,
+          "mixed_loss_to_teacher": 0.0015065553016029298
+        },
+        "holdout": {
+          "PSNR_to_teacher": 43.41983207496437,
+          "L1_to_teacher": 0.001510856076886223,
+          "mixed_loss_to_teacher": 0.001805069955455995
+        }
+      }
+    ],
+    "paired_moment_minus_mean": [
+      {
+        "seed": 42,
+        "PSNR": 0.8228647232055621,
+        "SSIM": 0.0006761699914932251,
+        "LPIPS_alex_v01": 0.003964893287047744,
+        "temporal_residual256": -0.00012365853245566974,
+        "holdout_mixed_loss_delta": -0.00045138942644100746
+      },
+      {
+        "seed": 43,
+        "PSNR": 0.8189128875732408,
+        "SSIM": 0.0006738096475601418,
+        "LPIPS_alex_v01": 0.0039408321958035245,
+        "temporal_residual256": -0.0001238618250553427,
+        "holdout_mixed_loss_delta": -0.0004476272560832266
+      },
+      {
+        "seed": 44,
+        "PSNR": 0.8218238830566378,
+        "SSIM": 0.0006701856851578647,
+        "LPIPS_alex_v01": 0.003972227778285743,
+        "temporal_residual256": -0.0001237314712449958,
+        "holdout_mixed_loss_delta": -0.00044737478114060484
+      }
+    ],
+    "paired_mean": {
+      "PSNR": 0.8212004979451469,
+      "SSIM": 0.0006733884414037439,
+      "LPIPS_alex_v01": 0.003959317753712337,
+      "temporal_residual256": -0.00012375060958533607,
+      "holdout_mixed_loss_delta": -0.0004487971545549463
+    },
+    "E04_reproduction_PSNR_delta": {
+      "before": 0.0,
+      "after_seed42": -0.00031948089599609375
+    },
+    "scope": "Diagnostic of representative covariance construction, not adaptive splitting or independent motion compression; no claim of CTD descent for moment matching.",
+    "verification": {
+      "all6_frozen_before_evaluation": true,
+      "same_initial_appearance_and_orders": true,
+      "geometry_audit_passed": true,
+      "same_1520_steps": true,
+      "E04_control_reproduced": true
+    }
+  },
+  "audit": {
+    "verification": {
+      "all_source_and_checkpoint_hashes": true,
+      "all6_frozen_before_evaluation": true,
+      "all160_GT1200_fidelity1192_temporal_rows": true,
+      "all9120_updates_and_Adam1520": true,
+      "paired_orders_source_appearance_identical": true,
+      "independent_raw_second_moment_scatter_reconstruction": true
+    },
+    "max_independent_scatter_error": 2.344835543510726e-07,
+    "max_error_to_float32_rounding_bound": 0.9796086058756266,
+    "aggregate": {
+      "mean_covariance": {
+        "PSNR": {
+          "mean": 37.493052101135255,
+          "sample_sd": 0.0014575682205447465
+        },
+        "SSIM": {
+          "mean": 0.9912443170944849,
+          "sample_sd": 2.3818196784979074e-06
+        },
+        "LPIPS_alex_v01": {
+          "mean": 0.014949453979109725,
+          "sample_sd": 1.4962706615041177e-05
+        },
+        "temporal_residual256": {
+          "mean": 0.0006178277566488853,
+          "sample_sd": 7.950059765827983e-07
+        }
+      },
+      "moment_covariance": {
+        "PSNR": {
+          "mean": 38.3142525990804,
+          "sample_sd": 0.0034860803675574605
+        },
+        "SSIM": {
+          "mean": 0.9919177055358886,
+          "sample_sd": 4.162501154071984e-06
+        },
+        "LPIPS_alex_v01": {
+          "mean": 0.01890877173282206,
+          "sample_sd": 2.135499668920224e-05
+        },
+        "temporal_residual256": {
+          "mean": 0.0004940771470635492,
+          "sample_sd": 6.922345476549463e-07
+        }
+      }
+    },
+    "paired": [
+      {
+        "seed": 42,
+        "PSNR": 0.8228647232055621,
+        "SSIM": 0.0006761699914932251,
+        "LPIPS_alex_v01": 0.003964893287047744,
+        "temporal_residual256": -0.00012365853245566974
+      },
+      {
+        "seed": 43,
+        "PSNR": 0.8189128875732408,
+        "SSIM": 0.0006738096475601418,
+        "LPIPS_alex_v01": 0.0039408321958035245,
+        "temporal_residual256": -0.0001238618250553427
+      },
+      {
+        "seed": 44,
+        "PSNR": 0.8218238830566378,
+        "SSIM": 0.0006701856851578647,
+        "LPIPS_alex_v01": 0.003972227778285743,
+        "temporal_residual256": -0.0001237314712449958
+      }
+    ],
+    "E04_reproduction_PSNR_delta": {
+      "before": 0.0,
+      "after_seed42": -0.00031948089599609375
+    },
+    "scope": "Diagnostic of representative covariance construction, not adaptive splitting or independent motion compression; no claim of CTD descent for moment matching."
+  },
+  "decision": "diagnostic tradeoff; do not integrate as overall improvement or add more modules before diagnosing LPIPS and checking another scene",
+  "remote_publish_requested": false,
+  "full4DGS_training_densification_implemented": false
+}

@@ -1,0 +1,32 @@
+{
+  "version": "E16-covariance-moment-diagnostic-v1",
+  "status": "fixed protocol before any new training/evaluation",
+  "question": "Does including within-group center scatter in representative covariance improve rendering under unchanged shared assignments?",
+  "budget": 10000,
+  "order_seeds": [
+    42,
+    43,
+    44
+  ],
+  "epochs": 20,
+  "updates_per_arm": 1520,
+  "training_size": 400,
+  "conditions": {
+    "mean_covariance": 0,
+    "moment_covariance": 1
+  },
+  "learning_rates": {
+    "dc": 0.0025,
+    "rest": 0.000125,
+    "opacity": 0.01
+  },
+  "initialization": "E02 fixed shared representatives; zero SH/logit residuals, fresh Adam. Positions, source weights, labels and IDs identical across arms.",
+  "covariance": "Sigma_mean + coefficient * sum_i p_i (mu_i - weighted_mean)(mu_i - weighted_mean)^T. Coefficients 0 and 1 fixed, no sweep or tuning.",
+  "orders": "default_rng(seed), twenty sequential permutations of original76fit; identical across paired arms. seed42 must equal original E04 manifest.",
+  "loss": "0.8 L1 + 0.2 (1-SSIM) against frozen native400 full teacher. Only shared SH/opacity optimized.",
+  "evaluation": "Freeze all6 final models before before/after20GT800, all150teacher400 views, fixedcamera256 frame-delta residual; all results reported.",
+  "sanity": "Independently rebuild source group means/covariances and second moments; unchanged positions and counts; PSD tolerance; source hashes; Adam1520; seed42 control vs E04 repeated.",
+  "scope": "Diagnostic of representative covariance construction, not adaptive splitting or independent motion compression; no claim of CTD descent for moment matching.",
+  "decision": "No extra modules or coefficients selected on GT. Report gain or failure; even repeatable gain on this scene needs a second-scene check before integration.",
+  "storage": "New output only under owner data root, refuse overwrite, >3GiB free guard, no new video or image bulk."
+}

@@ -1,0 +1,9 @@
+{
+  "version": "E17b-teacher-perceptual-alignment-v1",
+  "status": "fixed before supplemental rendering",
+  "question": "Does moment matching worsen LPIPS relative to the frozen full teacher as well as to GT?",
+  "inputs": "Same two frozen E16 seed42 checkpoints and source states used by E17; 20 official test cameras and times.",
+  "metrics": "For each view render full teacher, mean-covariance student and moment-matching student at800; LPIPS Alex0.1 normalize=True to teacher and to GT, teacher-relative L1 and MSE. Reproduce E17 GT LPIPS within0.0002.",
+  "outcome": "If student-to-teacher LPIPS worsens too, teacher pixel training loss is misaligned with perceptual similarity. If it improves while GT LPIPS worsens, teacher bias contributes. Both cases remain observational.",
+  "limits": "No training or model selection. Same scene repeatedly explored; no causal claim or new method validation."
+}

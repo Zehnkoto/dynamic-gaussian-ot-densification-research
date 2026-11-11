@@ -1,0 +1,32 @@
+{
+  "version": "E18-perceptual-fit-loss-v1",
+  "status": "fixed protocol before new training or GT evaluation",
+  "question": "Can a fixed teacher-perceptual fit term improve frozen GT LPIPS without unacceptable PSNR or temporal loss?",
+  "budget": 10000,
+  "order_seeds": [
+    42,
+    43,
+    44
+  ],
+  "epochs": 20,
+  "updates_per_arm": 1520,
+  "training_size": 400,
+  "conditions": {
+    "mean_covariance": 0,
+    "moment_covariance": 1
+  },
+  "learning_rates": {
+    "dc": 0.0025,
+    "rest": 0.000125,
+    "opacity": 0.01
+  },
+  "perceptual_beta": 0.1,
+  "perceptual_metric": "LPIPS Alex v0.1, normalize=True, native400",
+  "loss": "0.8 L1 + 0.2 (1-SSIM) + 0.1 LPIPS against frozen full 4DGS teacher, fit76 only.",
+  "controls": "Six frozen E16 models at beta=0; matched geometry, IDs, initial appearance and training orders. Controls reused, no extra training.",
+  "initialization": "E02 fixed shared representatives; zero SH/logit residuals, fresh Adam; no trainable geometry.",
+  "evaluation": "All six beta=0.1 models frozen before any GT evaluation. Compare with immutable E16 beta=0 per-view rows and report all 3 paired order seeds and both shapes.",
+  "decision": "No coefficient sweep or GT selection. Report PSNR, SSIM, LPIPS, fit/holdout teacher fidelity and temporal residual; exploratory one-scene finding only.",
+  "scope": "Appearance-loss diagnostic, not adaptive split or independent compressed motion.",
+  "storage": "Owner data root only, refuse overwrite, 3GiB free guard."
+}
