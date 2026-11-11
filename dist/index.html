@@ -17,7 +17,7 @@
   <header class="topbar">
     <a class="brand" href="#top" aria-label="返回顶部"><span class="brand-mark">G↝G</span><span>研究图谱</span></a>
     <nav aria-label="主要导航">
-      <a href="#progress">当前进度</a><a href="#judgement">研究判断</a><a href="#framework">数学框架</a><a href="#roadmap">实验路线</a><a href="#papers">文献台账</a>
+      <a href="#progress">当前进度</a><a href="#judgement">研究判断</a><a href="#temporal">含时 PDE</a><a href="#framework">数学框架</a><a href="#roadmap">实验路线</a><a href="#papers">文献台账</a>
     </nav>
     <button id="themeToggle" class="icon-button" type="button" aria-label="切换明暗主题">◐</button>
   </header>
@@ -42,7 +42,7 @@
         </aside>
       </div>
       <div class="hero-stats">
-        <div><strong id="paperCount">21</strong><span>核心工作</span></div>
+        <div><strong id="paperCount">30</strong><span>核心工作</span></div>
         <div><strong>4</strong><span>动态变阶操作</span></div>
         <div><strong>3</strong><span>时间建模层级</span></div>
         <div><strong>1</strong><span>可证伪命题</span></div>
@@ -94,19 +94,33 @@
       <div class="verdict-grid">
         <article class="verdict yes"><span>真正缺口</span><h3>跨时间的变阶对应</h3><p>某帧产生的新 Gaussian 在下一帧应对应谁？遮挡是暂时不可见还是应当删除？局部细节应只在一帧 split，还是沿整段轨迹分裂？</p></article>
         <article class="verdict caution"><span>核心扩展</span><h3>从静态 CTD 到轨迹 CTD</h3><p>除位置和协方差，还要比较速度、deformation 或时间轨迹；assignment 应在滑动窗口内稳定，而不是每帧独立重聚类。</p></article>
-        <article class="verdict no"><span>建模警戒</span><h3>生灭不等于质量源汇</h3><p>Gaussian primitive 的增加和删除首先是表示容量变化。只有其权重被明确定义为物理密度时，才能进一步谈连续性方程与守恒。</p></article>
+        <article class="verdict no"><span>建模警戒</span><h3>生灭不等于质量源汇</h3><p>Gaussian primitive 的增加和删除首先是表示容量变化。归一化表示测度也可满足连续性方程；只有另行定义物理密度与单位，才能推断物质守恒。</p></article>
       </div>
       <div class="note-strip"><strong>为什么从 GHAP 出发</strong><span>它已经把“独立删点”提升为分布级全局约简，并明确把 dynamic 3DGS 和 adaptive reduction 留作未来工作；我们的主问题正是这两个方向的交叉。</span></div>
     </section>
 
+    <section id="temporal" class="section-shell section-block" aria-labelledby="temporalTitle">
+      <div class="section-heading"><span>02 / TEMPORAL PDE</span><h2 id="temporalTitle">让约简后的学生沿时间连续演化</h2><p>含时偏微分方程描述一个空间分布如何随场景时间变化。在这里，它先作为学生表示的输运约束：检查有限数量的 Gaussian 能否沿自己的运动轨迹延续，并指导跨窗口分组与容量决策。以下是待验证的方法设想。</p></div>
+      <div class="temporal-core">
+        <div><span class="temporal-label">从静态 GHAP 到动态学生</span><div class="equation temporal-equation">ν<sub>t</sub>(x)=Σ<sub>j</sub>m<sub>j</sub>𝒩(x;q<sub>j</sub>(t),Σ<sub>j</sub>(t))<br>∂<sub>t</sub>ν+∇·(νv)=0</div></div>
+        <p>GHAP 比较同一时刻的教师与约简分布；速度场 v 则描述学生分布如何流向下一时刻。先从学生自身的 deformation 估计运动，再检查位置、形状和分组是否连贯。这里的 m 是明确定义的表示权重，不直接等于渲染 opacity，也不代表真实物质。</p>
+      </div>
+      <div class="temporal-steps">
+        <article><span>01 / 两个时间轴</span><h3>场景时间与训练时间</h3><p>本项目的 t 是视频中的场景时间，约束 Gaussian 轨迹。PDEO 把训练优化过程表述为 PDE；它的稳定化经验可借鉴，方程所描述的时间轴需要分别定义。</p></article>
+        <article><span>02 / 先检验换组</span><h3>跨窗口连续性</h3><p>E20 的窗口换组略微改善整体画质，却使边界时间残差上升约 2%。先在固定高斯数和训练预算下，比较位置规则、W₂ 几何规则及加入输运连续性约束的规则。</p></article>
+        <article><span>03 / 再决定容量</span><h3>窗口内的 split 收益</h3><p>学生可独立运动后，比较同一学生拆分前后的教师—学生分布误差、渲染误差和连续性，再扣除新增 Gaussian 的容量成本。E22 的 W₂ 失真排序尚未测量这种边际收益。</p></article>
+      </div>
+      <p class="temporal-footnote">建模边界：连续性方程可用于归一化的数学表示测度；物理源汇、不可压缩流体或 Navier–Stokes 需要另外定义物理量与数据。split 应先保持表示权重，不能把 primitive 出生解释成物质产生。</p>
+    </section>
+
     <section id="framework" class="section-block dark-band">
       <div class="section-shell">
-      <div class="section-heading light"><span>02 / FORMULATION</span><h2>先明确教师、学生和 split 收益</h2><p>μ 是完整动态教师在各时刻的分布，ν 是可独立运动的预算受限学生分布。跨时间代价必须能衡量学生 split 前后的实际差距；下面的公式是待检验的目标，而非当前实验已实现的损失。</p></div>
+      <div class="section-heading light"><span>03 / FORMULATION</span><h2>先明确教师、学生和 split 收益</h2><p>μ 是完整动态教师在各时刻的分布，ν 是可独立运动的预算受限学生分布。含时输运约束作用于学生；跨时间代价必须能衡量学生 split 前后的实际差距。下面的公式是待检验的目标，并非当前实验已实现的损失。</p></div>
         <div class="pipeline" role="img" aria-label="最优传输驱动的高斯致密化方法流程">
-          <div class="pipe-node"><b>动态窗口</b><span>G<sub>t:t+K</sub> 与观测</span></div><i>→</i>
-          <div class="pipe-node accent"><b>时空 CTD</b><span>几何 + 运动 + 对应</span></div><i>→</i>
-          <div class="pipe-node accent"><b>变阶操作</b><span>split · merge · move · drop</span></div><i>→</i>
-          <div class="pipe-node"><b>稳定轨迹</b><span>质量—画质—时间</span></div>
+          <div class="pipe-node"><b>动态教师</b><span>训练窗口中的目标分布</span></div><i>→</i>
+          <div class="pipe-node accent"><b>预算学生</b><span>独立运动 + GHAP 初始化</span></div><i>→</i>
+          <div class="pipe-node accent"><b>含时输运</b><span>分组与轨迹连续性</span></div><i>→</i>
+          <div class="pipe-node"><b>容量决策</b><span>窗口收益决定 split</span></div>
         </div>
         <div class="formula-grid">
           <article class="formula-card wide key">
@@ -140,39 +154,39 @@
             <p>均值项是欧氏搬运，协方差项是 Bures 几何。GHAP 有意采用更便宜、barycenter 可闭式更新的 Frobenius 代价；替换成 W₂ 是可选研究变量，而不是修复 GHAP。</p>
           </article>
           <article class="formula-card wide key">
-            <div class="formula-top"><span>F · 连续时间解释</span><small>把逐帧 ADC 变成轨迹级容量分配</small></div>
-            <div class="equation small">min<sub>ρ,v</sub> ∫₀ᵀ∫ ½ρ‖v‖² dxdt + γ∫₀ᵀD(ρ<sub>t</sub>,μ<sub>N(t)</sub>)dt<br>s.t. ∂<sub>t</sub>ρ+∇·(ρv)=s</div>
-            <p>s=0 是质量保持的 Benamou–Brenier 动态 OT；只有确有源汇或表示质量变化时才使用 unbalanced OT。动态致密化应由时间窗口累计输运失真触发，而非逐帧阈值。</p>
+            <div class="formula-top"><span>F · 学生的含时输运约束</span><small>场景时间 t，不是训练迭代</small></div>
+            <div class="equation small">min<sub>ν,v</sub> ∫₀ᵀ [D(ν<sub>t</sub>,μ<sub>t</sub>)+βℒ<sub>render,t</sub>+λN(t)]dt + γR<sub>time</sub><br>s.t. ∂<sub>t</sub>ν+∇·(νv)=0</div>
+            <p>ν 是能独立运动的学生表示测度；其输运方程为跨窗口连续性提供目标，离散实现与权重定义仍需验证。split 改变参数数量时应保持表示测度的权重与初始矩。只有在量的源汇语义明确时才考虑非平衡 OT。</p>
           </article>
         </div>
       </div>
     </section>
 
     <section class="section-shell section-block">
-      <div class="section-heading"><span>03 / MEANING</span><h2>三层意义必须分开</h2><p>OT 提供严谨性，但“数学上的质量”“表示容量”和“物理物质”不是同一个概念。</p></div>
+      <div class="section-heading"><span>04 / MEANING</span><h2>三层意义必须分开</h2><p>OT 提供严谨性，但“数学上的质量”“表示容量”和“物理物质”不是同一个概念。</p></div>
       <div class="levels">
         <article><span class="level-no">L1</span><h3>表示论</h3><div class="equation small">min D<sub>OT</sub>(ν,μ<sub>N</sub>)+λN</div><p>OT 重新分配有限模型容量。即使 m 只是归一化权重，这一层仍有明确数学意义，无需声称物理守恒。</p></article>
-        <article><span class="level-no">L2</span><h3>输运守恒</h3><div class="equation small">∂<sub>t</sub>ρ+∇·(ρv)=s</div><p>若 m 表示密度或被动标量积分量，连续性方程赋予局部守恒意义；s 必须对应真实源汇或开放边界。</p></article>
+        <article><span class="level-no">L2</span><h3>表示测度的输运</h3><div class="equation small">∂<sub>t</sub>ν+∇·(νv)=0</div><p>明确定义的非负归一化权重足以讨论数学上的输运连续性。该约束不要求权重具有物理质量单位，也不保证渲染画面守恒。</p></article>
         <article><span class="level-no">L3</span><h3>具体物理</h3><div class="equation small">momentum · viscosity · pressure</div><p>Navier–Stokes、弹性或 MPM 是额外动力学模型。最小输运作用量并不等价于真实流体方程。</p></article>
       </div>
       <div class="note-strip"><strong>建模警戒线</strong><span>“新增一个 Gaussian primitive”只是增加离散自由度，不应被解释为产生新质量。split 应保持表示测度；物理质量需要独立状态与单位。</span></div>
     </section>
 
     <section id="roadmap" class="section-shell section-block">
-      <div class="section-heading"><span>04 / EXECUTION</span><h2>先闭合动态学生，再检验自适应 split</h2><p>当前优先解决“教师目标—独立学生—新增容量收益”的闭环。原生4DGS从头致密化可作为后续扩展，不再用压缩失真直接替代它的拆分收益。</p></div>
+      <div class="section-heading"><span>05 / EXECUTION</span><h2>先闭合动态学生，再检验自适应 split</h2><p>当前优先解决“教师目标—独立学生—新增容量收益”的闭环。含时 PDE 先服务于学生的跨窗口连续性；原生4DGS从头致密化留作后续扩展。</p></div>
       <div class="roadmap">
-        <article class="phase"><div class="phase-head"><span>01</span><small>当前首要缺口</small></div><h3>独立运动的预算学生</h3><ul><li>教师只提供训练目标；学生具有可训练的 canonical 参数与 deformation</li><li>共享轨迹分组初始化有限数量的学生高斯</li><li>推理时仅调用学生，检查未用于学生拟合的时间和视角</li></ul><div class="exit">退出条件：不读教师逐时刻状态，学生仍能渲染完整时间序列</div></article>
-        <article class="phase"><div class="phase-head"><span>02</span><small>方法定义与同预算检验</small></div><h3>教师—学生分布收益</h3><ul><li>明确源权重、协方差尺度、时间匹配与GHAP/CTD继承边界</li><li>估计候选split前后的窗口分布与渲染收益，扣除容量代价</li><li>同高斯预算和训练量对比不split、随机、简单渲染／位置规则</li></ul><div class="exit">退出条件：跨时间规则在画质、连续性和成本上胜过简单对照</div></article>
+        <article class="phase"><div class="phase-head"><span>01</span><small>当前首要缺口</small></div><h3>独立运动的预算学生</h3><ul><li>教师只提供训练目标；学生具有可训练的 canonical 参数与 deformation</li><li>共享轨迹分组初始化有限数量的学生高斯</li><li>从学生 deformation 定义速度；推理仅调用学生，检查约简拟合留出时间与视角</li></ul><div class="exit">退出条件：不读教师逐时刻状态，学生仍能渲染完整时间序列</div></article>
+        <article class="phase"><div class="phase-head"><span>02</span><small>方法定义与同预算检验</small></div><h3>输运连续性与分布收益</h3><ul><li>明确表示权重、协方差尺度、时间匹配与GHAP/CTD继承边界</li><li>在固定K下比较位置、W₂和含时输运约束的跨窗口分组，检查边界跳变</li><li>估计候选split前后的窗口分布与渲染收益，扣除容量代价</li></ul><div class="exit">退出条件：跨时间规则在画质、连续性和成本上胜过简单对照</div></article>
         <article class="phase"><div class="phase-head"><span>03</span><small>独立场景复验后</small></div><h3>原生训练与更多容量操作</h3><ul><li>在新场景冻结规则复验，报告速度、显存、模型大小</li><li>若证据成立，再接入4DGS原始训练阶段和完整Adam状态</li><li>之后再研究merge/prune、物理时间生灭与质量守恒语义</li></ul><div class="exit">退出条件：多场景同预算收益稳定，且不靠测试集调参</div></article>
       </div>
       <div class="metric-board">
-        <div><span>测度</span><b>D<sub>GMM</sub> · W₂ · split gain</b></div><div><span>视觉</span><b>PSNR · SSIM · LPIPS</b></div><div><span>效率</span><b>#G · time · FPS · VRAM</b></div><div><span>动态</span><b>transport · flicker · rollout</b></div>
+        <div><span>测度</span><b>D<sub>GMM</sub> · W₂ · split gain</b></div><div><span>视觉</span><b>PSNR · SSIM · LPIPS</b></div><div><span>效率</span><b>#G · time · FPS · VRAM</b></div><div><span>动态</span><b>窗口边界 · 输运残差 · rollout</b></div>
       </div>
     </section>
 
     <section id="papers" class="section-block paper-section">
       <div class="section-shell">
-        <div class="section-heading"><span>05 / LITERATURE</span><h2>可维护的文献台账</h2><p>优先链接论文主页、出版社与作者官方仓库。点击标签筛选；搜索支持标题、作者、方法和备注。</p></div>
+        <div class="section-heading"><span>06 / LITERATURE</span><h2>可维护的文献台账</h2><p>优先链接论文主页、出版社与作者官方仓库。新增含时 PDE、动态容量控制与轨迹建模的近邻工作；标签可筛选，搜索支持标题、作者、方法和备注。</p></div>
         <div class="paper-tools">
           <label class="search"><span>⌕</span><input id="paperSearch" type="search" placeholder="搜索论文、方法或关键词…" autocomplete="off"></label>
           <div id="filters" class="filters" aria-label="文献分类筛选"></div>
